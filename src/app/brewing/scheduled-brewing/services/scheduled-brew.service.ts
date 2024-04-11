@@ -74,6 +74,8 @@ export class ScheduledBrewService {
         let patchRequests$ =  this.recipeService.getRecipeRawById(String(brew.recipe)).pipe(
             combineLatestWith(this.ingredientService.getIngredients().pipe(take(1))),
             map(([recipe, inventory]) => {
+                console.log(recipe)
+                console.log(inventory)
                 const patchRequests = recipe.ingredients.map(ingredient => {
                     let inventoryItem = inventory.find(item => item.id === ingredient.id);
                     if (!inventoryItem) throw new Error("Database inconsistencie! Can't add the brew!");

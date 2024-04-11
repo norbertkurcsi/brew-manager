@@ -23,7 +23,7 @@ export class RecipeFormComponent implements OnInit{
     @Input() recipe?: Recipe;
     @Output() submitEmitter = new EventEmitter<Recipe>();
 
-    selectedIngredients$?: Observable<number[]>;
+    selectedIngredients$?: Observable<string[]>;
     filteredIngredients$?: Observable<Ingredient[]>;
     ingredientsChange$ = new BehaviorSubject(true);
 
@@ -38,7 +38,7 @@ export class RecipeFormComponent implements OnInit{
 
     showError = false;
     public defaultVal = { id: 0, name: "select an option" }
-    
+
     private initRecipe() {
         if (!this.recipe) {
             return;
@@ -53,10 +53,10 @@ export class RecipeFormComponent implements OnInit{
             this.addIngredient(ingredientForm);
         });
     }
-    
+
     ngOnInit(): void {
         this.selectedIngredients$ = this.ingredientsChange$.pipe(
-            map(() => this.ingredients.controls.map((ingredient) => parseInt(ingredient.value.ingredient.id))),
+            map(() => this.ingredients.controls.map((ingredient) => ingredient.value.ingredient.id)),
         );
 
         let ingredients$ = this.ingredientService.getIngredients().pipe(take(1));
@@ -95,7 +95,7 @@ export class RecipeFormComponent implements OnInit{
             });
             this.ingredients.push(ingredientForm);
         }
-        
+
         this.ingredientsChange$.next(true);
     }
 
@@ -111,13 +111,13 @@ export class RecipeFormComponent implements OnInit{
     private createRecipeFromFormValues() {
         let name = this.form.value.name || "";
         let recipe: Recipe = {
-            id: this.recipe?.id || 0,
+            id: this.recipe?.id || "0",
             name: name,
             ingredients: [] as RecipeIngredient[]
         }
         this.ingredients.controls.forEach(control => {
             const ingredient: RecipeIngredient = {
-                id: Number(control.value.ingredient.id),
+                id: String(control.value.ingredient.id),
                 amount: Number(control.value.amount)
             }
             recipe.ingredients.push(ingredient);

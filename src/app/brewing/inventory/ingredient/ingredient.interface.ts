@@ -1,5 +1,5 @@
 export interface Ingredient {
-    id: number;
+    id: string;
     name: string;
     stock: number;
     threshold: number;

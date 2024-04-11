@@ -36,7 +36,7 @@ export class NewElementComponent {
             let formThreshold = Number(this.form.value.threshold);
 
             let ingredient: Ingredient = {
-                id: 0,
+                id: '0',
                 name: formName,
                 stock: formStock,
                 threshold: formThreshold

@@ -66,10 +66,10 @@ export class NewBrewingComponent implements OnInit {
         this.showError = true;
         this.notEnoughIngredients = false;
         if (this.form.valid) {
-            let recipe = parseInt(this.form.value.recipe || "");
+            let recipe = this.form.value.recipe || "";
             let date = Date.parse(this.form.value.date || "");
             let brew: ScheduledBrew = {
-                id: 0,
+                id: "0",
                 recipe: recipe,
                 date: date
             }
