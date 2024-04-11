@@ -15,8 +15,8 @@ describe('RecipesComponent', () => {
     let routerSpy: jasmine.SpyObj<Router>;
 
     const recipes: Recipe[] = [
-        { id: 1, name: 'Recipe 1', ingredients: [] },
-        { id: 2, name: 'Recipe 2', ingredients: [] },
+        { id: "1", name: 'Recipe 1', ingredients: [] },
+        { id: "2", name: 'Recipe 2', ingredients: [] },
         ];
 
     beforeEach(async () => {
@@ -24,7 +24,7 @@ describe('RecipesComponent', () => {
         routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
         recipeServiceSpy.getRecipes.and.returnValue(of(recipes));
-        
+
         await TestBed.configureTestingModule({
         declarations: [RecipesComponent, RecipeCardComponent],
         providers: [

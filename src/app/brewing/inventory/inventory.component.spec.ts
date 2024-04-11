@@ -17,9 +17,9 @@ describe('InventoryComponent', () => {
     let mockRouter: jasmine.SpyObj<Router>;
     let mockRoute: jasmine.SpyObj<ActivatedRoute>;
 
-    const ingredient1: Ingredient = { id: 1, name: 'Ingredient 1', stock: 5, threshold: 2 };
-    const ingredient2: Ingredient = { id: 2, name: 'Ingredient 2', stock: 10, threshold: 5 };
-    const ingredient3: Ingredient = { id: 3, name: 'Ingredient 3', stock: 3, threshold: 1 };
+    const ingredient1: Ingredient = { id: "1", name: 'Ingredient 1', stock: 5, threshold: 2 };
+    const ingredient2: Ingredient = { id: "2", name: 'Ingredient 2', stock: 10, threshold: 5 };
+    const ingredient3: Ingredient = { id: "3", name: 'Ingredient 3', stock: 3, threshold: 1 };
     const ingredients: Ingredient[] = [ingredient1, ingredient2, ingredient3];
 
     beforeEach(async () => {
@@ -27,7 +27,7 @@ describe('InventoryComponent', () => {
         mockIngredientViewService = jasmine.createSpyObj('IngredientViewService', ['filterBySearchKeyword', 'sortIngredients', 'filterByRecentPage']);
         mockRouter = jasmine.createSpyObj('Router', ['navigateByUrl']);
         mockRoute = jasmine.createSpyObj('ActivatedRoute', ['queryParams']);
-    
+
         await TestBed.configureTestingModule({
             imports: [FormsModule],
             declarations: [InventoryComponent],

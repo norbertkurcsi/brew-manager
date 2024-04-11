@@ -10,8 +10,8 @@ describe('ScheduledItemComponent', () => {
     let component: ScheduledItemComponent;
     let fixture: ComponentFixture<ScheduledItemComponent>;
     let mockScheduledBrew: ScheduledBrew = {
-        id: 1,
-        recipe: 1,
+        id: "1",
+        recipe: "1",
         recipeName: 'Test Recipe',
         date: Date.parse('2023-04-17T12:00:00Z'),
     };
@@ -64,7 +64,7 @@ describe('ScheduledItemComponent', () => {
             mockScheduledBrew
         );
     });
-    
+
     it('should handle error when deleteScheduledBrew method fails', fakeAsync(() => {
         const mockError = new Error('Delete failed');
         spyOn(window, 'alert');

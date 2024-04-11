@@ -41,14 +41,14 @@ describe('NewRecipeComponent', () => {
     });
 
     it('should navigate to /recipes on successful recipe addition', () => {
-        const recipe: Recipe = { id: 1, name: 'Test Recipe', ingredients: [] };
+        const recipe: Recipe = { id: "1", name: 'Test Recipe', ingredients: [] };
         recipeServiceSpy.addRecipe.and.returnValue(of(recipe));
         recipeFormComponent.submitEmitter.emit(recipe);
         expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/recipes');
     });
 
     it('should display an alert on error', () => {
-        const recipe: Recipe = { id: 1, name: 'Test Recipe', ingredients: [] };
+        const recipe: Recipe = { id: "1", name: 'Test Recipe', ingredients: [] };
         recipeServiceSpy.addRecipe.and.returnValue(throwError({ message: 'Error adding recipe' }));
         spyOn(window, 'alert');
         recipeFormComponent.submitEmitter.emit(recipe);

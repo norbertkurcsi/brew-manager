@@ -8,10 +8,10 @@ import { HttpClient } from "@angular/common/http";
 import { Recipe } from "../interfaces/recipe.interface";
 
 const mockIngredients: Ingredient[] = [
-    { id: 1, name: 'fincsa', threshold:2, stock:3 },
-    { id: 2, name: 'mincsa', threshold:2, stock:3 },
-    { id: 3, name: 'habos', threshold:2, stock:3 },
-    { id: 3, name: 'babos', threshold:2, stock:3 },
+    { id: "1", name: 'fincsa', threshold:2, stock:3 },
+    { id: "2", name: 'mincsa', threshold:2, stock:3 },
+    { id: "3", name: 'habos', threshold:2, stock:3 },
+    { id: "3", name: 'babos', threshold:2, stock:3 },
 ];
 
 describe('RecipeService', () => {
@@ -39,10 +39,10 @@ describe('RecipeService', () => {
 
     it('should return recipes with ingredient names', () => {
         const recipes: Recipe[] = [
-            { id: 1, name: 'Recipe 1', ingredients: [{ id: 1, amount: 2 }, { id: 2, amount: 3 }] },
-            { id: 2, name: 'Recipe 2', ingredients: [{ id: 1, amount: 1 }, { id: 3, amount: 2 }] },
+            { id: "1", name: 'Recipe 1', ingredients: [{ id: "1", amount: 2 }, { id: "2", amount: 3 }] },
+            { id: "2", name: 'Recipe 2', ingredients: [{ id: "1", amount: 1 }, { id: "3", amount: 2 }] },
         ];
-        
+
         let result: Recipe[] = [];
 
         service.getRecipes().subscribe(recipes => {
@@ -54,19 +54,19 @@ describe('RecipeService', () => {
         req.flush(recipes);
         expect(result).toEqual([
             {
-            id: 1,
+            id: "1",
             name: 'Recipe 1',
             ingredients: [
-                { id: 1, amount: 2, name: 'fincsa' },
-                { id: 2, amount: 3, name: 'mincsa' },
+                { id: "1", amount: 2, name: 'fincsa' },
+                { id: "2", amount: 3, name: 'mincsa' },
             ]
             },
             {
-            id: 2,
+            id: "2",
             name: 'Recipe 2',
             ingredients: [
-                { id: 1, amount: 1, name: 'fincsa' },
-                { id: 3, amount: 2, name: 'habos' },
+                { id: "1", amount: 1, name: 'fincsa' },
+                { id: "3", amount: 2, name: 'habos' },
             ]
             },
         ]);
@@ -75,8 +75,8 @@ describe('RecipeService', () => {
 
    it('should emit recipes every 3 seconds', fakeAsync(() => {
         const recipes: Recipe[] = [
-            { id: 1, name: 'Recipe 1', ingredients: [{ id: 1, amount: 2 }, { id: 2, amount: 3 }] },
-            { id: 2, name: 'Recipe 2', ingredients: [{ id: 1, amount: 1 }, { id: 3, amount: 2 }] },
+            { id: "1", name: 'Recipe 1', ingredients: [{ id: "1", amount: 2 }, { id: "2", amount: 3 }] },
+            { id: "2", name: 'Recipe 2', ingredients: [{ id: "1", amount: 1 }, { id: "3", amount: 2 }] },
         ];
 
 
@@ -108,9 +108,9 @@ describe('RecipeService', () => {
         expect(result).toEqual(recipes);
         expect(count).toEqual(3);
     }));
-    
+
     it('should delete a recipe and emit the delete event', () => {
-        const recipe: Recipe = { id: 1, name: 'Test Recipe', ingredients: [] };
+        const recipe: Recipe = { id: "1", name: 'Test Recipe', ingredients: [] };
         let actualRecipes: Recipe[] | undefined;
 
         service.getRecipes().pipe(take(2)).subscribe((recipes) => {
@@ -135,7 +135,7 @@ describe('RecipeService', () => {
     });
 
     it('should give back the recipe with name of the given id', () => {
-        const recipe: Recipe = { id: 1, name: 'Recipe 1', ingredients: [{ id: 1, amount: 2 }, { id: 2, amount: 3 }] };
+        const recipe: Recipe = { id: "1", name: 'Recipe 1', ingredients: [{ id: "1", amount: 2 }, { id: "2", amount: 3 }] };
 
         let actualRecipe: Recipe | undefined;
 
@@ -148,11 +148,11 @@ describe('RecipeService', () => {
         req.flush(recipe);
         expect(actualRecipe).toEqual(
             {
-                id: 1,
+                id: "1",
                 name: 'Recipe 1',
                 ingredients: [
-                    { id: 1, amount: 2, name: 'fincsa' },
-                    { id: 2, amount: 3, name: 'mincsa' },
+                    { id: "1", amount: 2, name: 'fincsa' },
+                    { id: "2", amount: 3, name: 'mincsa' },
                 ]
             }
         );
@@ -161,8 +161,8 @@ describe('RecipeService', () => {
 
     it('should retrieve recipes', () => {
         const recipes: Recipe[] = [
-            { id: 1, name: 'Recipe 1', ingredients: [{ id: 1, amount: 2 }, { id: 2, amount: 3 }] },
-            { id: 2, name: 'Recipe 2', ingredients: [{ id: 1, amount: 1 }, { id: 3, amount: 2 }] },
+            { id: "1", name: 'Recipe 1', ingredients: [{ id: "1", amount: 2 }, { id: "2", amount: 3 }] },
+            { id: "2", name: 'Recipe 2', ingredients: [{ id: "1", amount: 1 }, { id: "3", amount: 2 }] },
         ];
         let actualRecipes: Recipe[] | undefined;
 
@@ -178,7 +178,7 @@ describe('RecipeService', () => {
     });
 
     it('should retrieve recipes', () => {
-        const recipe: Recipe = { id: 1, name: 'Recipe 1', ingredients: [{ id: 1, amount: 2 }, { id: 2, amount: 3 }] };
+        const recipe: Recipe = { id: "1", name: 'Recipe 1', ingredients: [{ id: "1", amount: 2 }, { id: "2", amount: 3 }] };
         let actualRecipe: Recipe | undefined;
 
         service.getRecipeRawById(String(recipe.id)).subscribe(recipe => {
@@ -193,7 +193,7 @@ describe('RecipeService', () => {
     });
 
     it('should retrieve recipes', () => {
-        const recipe: Recipe = { id: 1, name: 'Recipe 1', ingredients: [{ id: 1, amount: 2 }, { id: 2, amount: 3 }] };
+        const recipe: Recipe = { id: "1", name: 'Recipe 1', ingredients: [{ id: "1", amount: 2 }, { id: "2", amount: 3 }] };
         let actualRecipe: Recipe | undefined;
 
         service.editRecipe(recipe).subscribe(recipe => {
@@ -208,7 +208,7 @@ describe('RecipeService', () => {
     });
 
     it('should retrieve recipes', () => {
-        const recipe: Recipe = { id: 1, name: 'Recipe 1', ingredients: [{ id: 1, amount: 2 }, { id: 2, amount: 3 }] };
+        const recipe: Recipe = { id: "1", name: 'Recipe 1', ingredients: [{ id: "1", amount: 2 }, { id: "2", amount: 3 }] };
         let actualRecipe: Recipe | undefined;
 
         service.addRecipe(recipe).subscribe(recipe => {

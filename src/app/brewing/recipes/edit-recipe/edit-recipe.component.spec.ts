@@ -49,7 +49,7 @@ describe('EditRecipeComponent', () => {
 
     describe('ngOnInit', () => {
         it('should get the recipe by id', () => {
-            const recipeId = 1;
+            const recipeId = "1";
             const recipe: Recipe = { id: recipeId, name: 'Test Recipe', ingredients:[]};
             activatedRoute.snapshot.params = { recipeId: recipeId.toString() };
             recipeService.getRecipeById.and.returnValue(of(recipe));
@@ -62,7 +62,7 @@ describe('EditRecipeComponent', () => {
 
     describe('editRecipe', () => {
         it('should edit the recipe and navigate to recipes', () => {
-            const recipe: Recipe = { id: 1, name: 'Test Recipe', ingredients:[]};
+            const recipe: Recipe = { id: "1", name: 'Test Recipe', ingredients:[]};
             recipeService.editRecipe.and.returnValue(of(recipe));
 
             component.editRecipe(recipe);
@@ -72,7 +72,7 @@ describe('EditRecipeComponent', () => {
         });
 
         it('should handle errors', () => {
-            const recipe: Recipe = { id: 1, name: 'Test Recipe', ingredients:[] };
+            const recipe: Recipe = { id: "1", name: 'Test Recipe', ingredients:[] };
             const error = new Error('Test error');
             recipeService.editRecipe.and.returnValue(throwError(() => error));
             spyOn(window, 'alert');
@@ -87,7 +87,7 @@ describe('EditRecipeComponent', () => {
 
     describe('template', () => {
         it('should display the recipe form', () => {
-            const recipe: Recipe = { id: 1, name: 'Test Recipe', ingredients: [] };
+            const recipe: Recipe = { id: "1", name: 'Test Recipe', ingredients: [] };
             component.recipe$ = of(recipe);
             fixture.detectChanges();
 

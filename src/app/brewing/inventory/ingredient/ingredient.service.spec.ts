@@ -28,9 +28,9 @@ describe('IngredientService', () => {
 
     it('should get a list of ingredients', () => {
         const mockIngredients: Ingredient[] = [
-            { id: 1, name: 'Salt', stock: 2, threshold: 3 },
-            { id: 2, name: 'Pepper', stock: 2, threshold: 3 },
-            { id: 3, name: 'Sugar', stock: 2, threshold: 3 }
+            { id: "1", name: 'Salt', stock: 2, threshold: 3 },
+            { id: "2", name: 'Pepper', stock: 2, threshold: 3 },
+            { id: "3", name: 'Sugar', stock: 2, threshold: 3 }
         ];
         let actualIngredients: Ingredient[] | undefined;
 
@@ -46,7 +46,7 @@ describe('IngredientService', () => {
     });
 
     it('should delete an ingredient if it is not used in recipes', () => {
-        const mockIngredient: Ingredient = { id: 2, name: 'Pepper', stock: 2, threshold: 3 };
+        const mockIngredient: Ingredient = { id: "2", name: 'Pepper', stock: 2, threshold: 3 };
 
         service.deleteIngredient(mockIngredient).subscribe({
             next: (val) => { expect(val).toBeTruthy() },
@@ -63,7 +63,7 @@ describe('IngredientService', () => {
     });
 
     it('should throw an error if we want to delete an ingredients that is in the recipes', () => {
-        const mockIngredient: Ingredient = { id: 2, name: 'Pepper', stock: 2, threshold: 3 };
+        const mockIngredient: Ingredient = { id: "2", name: 'Pepper', stock: 2, threshold: 3 };
 
         service.deleteIngredient(mockIngredient).subscribe({
             next: () => { expect().nothing() },
@@ -78,7 +78,7 @@ describe('IngredientService', () => {
     });
 
     it('should get an ingredient by id', () => {
-        const mockIngredient: Ingredient = { id: 2, name: 'Pepper', stock: 2, threshold: 3 };
+        const mockIngredient: Ingredient = { id: "2", name: 'Pepper', stock: 2, threshold: 3 };
         let actualIngredient: Ingredient | undefined;
 
         service.getIngredientById(String(mockIngredient.id)).subscribe((ingredient) => {
@@ -93,7 +93,7 @@ describe('IngredientService', () => {
     });
 
     it('should throw an error if ingredient with requested id not exists', () => {
-        const mockIngredient: Ingredient = { id: 2, name: 'Pepper', stock: 2, threshold: 3 };
+        const mockIngredient: Ingredient = { id: "2", name: 'Pepper', stock: 2, threshold: 3 };
         const status = 404;
         const statusText = 'Not found';
         const errorEvent = new ErrorEvent('API error');
@@ -120,7 +120,7 @@ describe('IngredientService', () => {
     });
 
     it('should edit an ingredient', () => {
-        const mockIngredient: Ingredient = { id: 2, name: 'Pepper', stock: 2, threshold: 3 };
+        const mockIngredient: Ingredient = { id: "2", name: 'Pepper', stock: 2, threshold: 3 };
         let actualIngredient: Ingredient | undefined;
 
         service.editIngredient(mockIngredient).subscribe((ingredient) => {
@@ -136,7 +136,7 @@ describe('IngredientService', () => {
     });
 
     it('should add an ingredient', () => {
-        const mockIngredient: Ingredient = { id: 2, name: 'Pepper', stock: 2, threshold: 3 };
+        const mockIngredient: Ingredient = { id: "2", name: 'Pepper', stock: 2, threshold: 3 };
 
         service.addItem(mockIngredient).subscribe((ingredient) => {
             expect(ingredient).toEqual(mockIngredient);

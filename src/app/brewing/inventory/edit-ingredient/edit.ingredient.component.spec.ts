@@ -17,7 +17,7 @@ describe('EditIngredientComponent', () => {
     let routerSpy: jasmine.SpyObj<Router>;
 
     const ingredient: Ingredient = {
-            id: 1,
+            id: "1",
             name: 'Salt',
             stock: 10,
             threshold: 5
@@ -94,14 +94,14 @@ describe('EditIngredientComponent', () => {
         fixture.detectChanges();
 
         errorMessage = fixture.debugElement.query(By.css('[data-testid="stock-required"]'));
-        expect(errorMessage).not.toBeNull();    
+        expect(errorMessage).not.toBeNull();
         expect(errorMessage.nativeElement.textContent.trim()).toBe('*stock is required');
-  
+
     });
 
     it('should update the ingredient stock and navigate back to inventory after submitting the form', fakeAsync(() => {
         const updatedIngredient: Ingredient = {
-            id: 1,
+            id: "1",
             name: 'Salt',
             stock: 15,
             threshold: 5

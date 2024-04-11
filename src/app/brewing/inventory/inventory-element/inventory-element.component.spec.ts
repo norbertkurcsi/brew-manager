@@ -24,7 +24,7 @@ describe('InventoryElement', () => {
     });
 
     it('should render the ingredient data', () => {
-        const ingredient: Ingredient = { id: 1, name: 'Sugar', stock: 3.14159, threshold: 2 };
+        const ingredient: Ingredient = { id: "1", name: 'Sugar', stock: 3.14159, threshold: 2 };
         component.ingredient = ingredient;
         fixture.detectChanges();
         const cells = fixture.nativeElement.querySelectorAll('td');
@@ -35,7 +35,7 @@ describe('InventoryElement', () => {
     });
 
     it('should call deleteIngredient when delete button is clicked', () => {
-        const ingredient: Ingredient = { id: 1, name: 'Sugar', stock: 3.14159, threshold: 2 };
+        const ingredient: Ingredient = { id: "1", name: 'Sugar', stock: 3.14159, threshold: 2 };
         component.ingredient = ingredient;
         fixture.detectChanges();
 
@@ -49,7 +49,7 @@ describe('InventoryElement', () => {
     });
 
     it('should call deleteIngredient when delete button is clicked', fakeAsync(() => {
-        const ingredient: Ingredient = { id: 1, name: 'Sugar', stock: 3.14159, threshold: 2 };
+        const ingredient: Ingredient = { id: "1", name: 'Sugar', stock: 3.14159, threshold: 2 };
         component.ingredient = ingredient;
         fixture.detectChanges();
         const deleteButton = fixture.nativeElement.querySelector('#delete');
@@ -62,14 +62,14 @@ describe('InventoryElement', () => {
         deleteButton.dispatchEvent(new Event('click'));
         tick();
         fixture.detectChanges();
-        
+
         expect(window.alert).toHaveBeenCalledWith('Delete ingredient failed');
     }));
 
 
 
     it('should navigate to the edit page when edit button is clicked', () => {
-        const ingredient: Ingredient = { id: 1, name: 'Sugar', stock: 3.14159, threshold: 2 };
+        const ingredient: Ingredient = { id: "1", name: 'Sugar', stock: 3.14159, threshold: 2 };
         component.ingredient = ingredient;
         fixture.detectChanges();
         const editButton = fixture.nativeElement.querySelector('#edit');

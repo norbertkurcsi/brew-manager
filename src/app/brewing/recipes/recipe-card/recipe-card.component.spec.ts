@@ -32,11 +32,11 @@ describe('RecipeCardComponent', () => {
 
     it('should render recipe data correctly', () => {
         component.recipe = {
-            id: 1,
+            id: "1",
             name: 'Test Recipe',
             ingredients: [
-                {id: 1, name: 'Ingredient 1', amount: 1 },
-                {id: 1, name: 'Ingredient 2', amount: 2 }
+                {id: "1", name: 'Ingredient 1', amount: 1 },
+                {id: "1", name: 'Ingredient 2', amount: 2 }
             ]
         };
         fixture.detectChanges();
@@ -52,7 +52,7 @@ describe('RecipeCardComponent', () => {
     });
 
     it('should call deleteRecipe method when delete button is clicked', () => {
-        component.recipe = { id: 1, name: 'Test Recipe', ingredients: [] };
+        component.recipe = { id: "1", name: 'Test Recipe', ingredients: [] };
         fixture.detectChanges();
 
         recipeService.deleteRecipe.and.returnValue(of(component.recipe));
@@ -63,7 +63,7 @@ describe('RecipeCardComponent', () => {
     });
 
     it('should navigate to edit recipe page when edit button is clicked', () => {
-        component.recipe = { id: 1, name: 'Test Recipe', ingredients: [] };
+        component.recipe = { id: "1", name: 'Test Recipe', ingredients: [] };
         fixture.detectChanges();
 
         const navigateSpy = spyOn(component['router'], 'navigateByUrl');

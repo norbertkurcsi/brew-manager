@@ -48,8 +48,8 @@ describe('NewBrewingComponent', () => {
 
     it('should fetch recipes from service', () => {
         const recipes: Recipe[] = [
-            { id: 1, name: 'Recipe 1', ingredients: [] },
-            { id: 2, name: 'Recipe 2',  ingredients: [] },
+            { id: "1", name: 'Recipe 1', ingredients: [] },
+            { id: "2", name: 'Recipe 2',  ingredients: [] },
         ];
         recipeServiceSpy.getRecipes.and.returnValue(of(recipes));
         fixture.detectChanges();
@@ -61,8 +61,8 @@ describe('NewBrewingComponent', () => {
 
     it('should show error if recipe is not selected', () => {
         const recipes: Recipe[] = [
-            { id: 1, name: 'Recipe 1', ingredients: [] },
-            { id: 2, name: 'Recipe 2',  ingredients: [] },
+            { id: "1", name: 'Recipe 1', ingredients: [] },
+            { id: "2", name: 'Recipe 2',  ingredients: [] },
         ];
         recipeServiceSpy.getRecipes.and.returnValue(of(recipes));
 
@@ -87,8 +87,8 @@ describe('NewBrewingComponent', () => {
 
     it('should validate the form with dateGreaterOrEqualThanTodayValidator()', () => {
         const recipes: Recipe[] = [
-            { id: 1, name: 'Recipe 1', ingredients: [] },
-            { id: 2, name: 'Recipe 2',  ingredients: [] },
+            { id: "1", name: 'Recipe 1', ingredients: [] },
+            { id: "2", name: 'Recipe 2',  ingredients: [] },
         ];
         recipeServiceSpy.getRecipes.and.returnValue(of(recipes));
 
@@ -97,13 +97,13 @@ describe('NewBrewingComponent', () => {
 
         const dateInput: DebugElement = fixture.debugElement.query(By.css('#date'));
         const dateInputElement = dateInput.nativeElement;
-        
+
         dateInputElement.value = '2021-01-01';
         dateInput.triggerEventHandler('input', { target: dateInputElement });
 
         fixture.detectChanges();
         expect(component.form.valid).toBeFalse();
-        
+
         const errorSpan: DebugElement = fixture.debugElement.query(By.css('span[data-testid="required-date"]'));
         expect(errorSpan.nativeElement.textContent.trim()).toEqual('*please select a date that is not in the past');
     });
