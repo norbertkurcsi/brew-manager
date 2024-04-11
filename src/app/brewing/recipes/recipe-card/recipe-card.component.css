@@ -1,0 +1,62 @@
+#recipe-card {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 0 20px;
+    padding-bottom: 20px;
+    background-color: rgb(148, 148, 1);
+    width: 200px;
+
+}
+
+#recipe-card h3 {
+    text-align: center;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+#ingredient-flex {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.ing {
+    display: inline-block;
+    background-color: lightblue;
+    padding: 2px 8px;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+.ing:hover {
+    background-color: rgb(118, 168, 185);
+}
+
+#button-container {
+    text-align: center;
+}
+
+#button-container button {
+    margin-right: 10px;
+    font-size: 20px;
+    transition: all .5s;
+}
+
+#delete {
+    background-color: rgb(255, 70, 70);
+}
+
+#delete:hover {
+    background-color: rgb(150, 0, 0);
+    color: white;
+}
+#edit {
+    background-color: lightskyblue;
+}
+
+#edit:hover {
+    background-color: rgb(0, 115, 187);
+}

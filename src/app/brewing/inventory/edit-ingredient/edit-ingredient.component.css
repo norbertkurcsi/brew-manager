@@ -1,0 +1,64 @@
+#edit-container {
+    text-align: center;
+}
+
+form {
+    border: 3px solid grey;
+    border-radius: 20px;
+    padding: 10px 50px;
+    display: inline-block;
+    background-color: rgb(145, 145, 0);
+    margin-top: 50px;
+    text-align: left;
+    width: 250px;
+    clear: both;
+}
+
+form h2 {
+    text-align: center;
+}
+
+button {
+    padding: 5px 15px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+#cancel {
+    margin-top: 20px;
+    color: white;
+    background-color: rgb(255, 82, 82);
+    transition: all .5s;
+}
+
+#cancel:hover {
+    background-color: rgb(186, 3, 3);
+}
+
+form button {
+    background-color: skyblue;
+    transition: all .5s;
+}
+
+form button:hover {
+    background-color: rgb(30, 146, 192);
+}
+
+form input {
+    background-color: yellow;
+    width: 100%;
+    clear: both;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    padding: 5px 15px;
+}
+
+form input:hover {
+    background-color: rgb(213, 213, 0);
+}
+
+span {
+    color: white;
+    font-size: 12px;
+}

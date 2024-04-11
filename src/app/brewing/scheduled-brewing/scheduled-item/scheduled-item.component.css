@@ -1,0 +1,24 @@
+td {
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px 0;
+}
+
+#operations {
+    padding: 1px 0;
+}
+
+button {
+    margin-right: 10px;
+    font-size: 20px;
+    transition: all .5s;
+}
+
+#delete {
+    background-color: rgb(255, 70, 70);
+}
+
+#delete:hover {
+    background-color: rgb(150, 0, 0);
+    color: white;
+}

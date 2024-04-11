@@ -1,0 +1,40 @@
+<div id="new-item-container">
+    <form [formGroup]="form" (ngSubmit)="addItem()">
+        <h2>Add new item</h2>
+        <p>
+            <label for="name">Name: </label>
+            <input type="text" id="name" formControlName="name">
+            <span *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)">
+                <span *ngIf="form.controls.name.errors?.['required']">
+                    Name is required
+                </span>
+            </span>
+        </p>
+        <p>
+            <label for="stock">Stock: </label>
+            <input type="number" id="stock" formControlName="stock" min="0">
+            <span *ngIf="form.controls.stock.invalid && (form.controls.stock.dirty || form.controls.stock.touched)">
+                <span *ngIf="form.controls.stock.errors?.['required']" data-testid="required-stock">
+                    Stock is required
+                </span>
+                <span *ngIf="form.controls.stock.errors?.['min']"  data-testid="negative-stock">
+                    The stock can't be negative number
+                </span>
+            </span>
+        </p>
+        <p>
+            <label for="threshold">Threshold: </label>
+            <input type="number" id="threshold" formControlName="threshold" min="0">
+            <span *ngIf="form.controls.threshold.invalid && (form.controls.threshold.dirty || form.controls.threshold.touched)">
+                <span *ngIf="form.controls.threshold.errors?.['required']" data-testid="required-threshold">
+                    Threshold is required
+                </span>
+                <span *ngIf="form.controls.threshold.errors?.['min']">
+                    The threshold can't be negative number
+                </span>
+            </span>
+        </p>
+        <button type="submit" id="addbtn">Add item</button>
+    </form>
+    <button id="cancel" (click)="navigateBackToInventory()">Cancel</button>
+</div>

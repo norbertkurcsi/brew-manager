@@ -1,0 +1,19 @@
+<div id="login-container">
+    <form [formGroup]="form" (ngSubmit)="loginUser()">
+        <h1>Login</h1>
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" formControlName="login">
+            <span *ngIf="emptyLogin" class="hiba" id="username-error">*required username</span>
+        </p>
+        
+        <p>
+            <label for="username">Password:</label> 
+            <input type="password" id="password" formControlName="password">
+            <span *ngIf="emptyPass" class="hiba"  id="password-error">*required password</span>
+        </p>
+        
+        <button>Login</button>
+        <span *ngIf="wrongCredentials" class="hiba">*wrong user or password</span>
+    </form>
+</div>

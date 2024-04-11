@@ -1,0 +1,26 @@
+<h1>Brewing inventory</h1>
+<filter [search]="search$"></filter>
+<p>
+    <button id="new-element" (click)="navigateToNewItem()"><i class="fa fa-plus"></i> New item</button>
+    <pagination></pagination>
+    <select (change)="selectChanged($event)">
+        <option value="5">Pages of 5</option>
+        <option value="10">Pages of 10</option>
+        <option value="15">Pages of 15</option>
+        <option value="20">Pages of 20</option>
+    </select>
+</p>
+
+<table matSort (matSortChange)="sortData($event)">
+    <tr>
+        <th mat-sort-header="id">Id</th>
+        <th mat-sort-header="name">Name</th>
+        <th mat-sort-header="stock">Stock</th>
+        <th>Operations</th>
+    </tr>
+    <ng-container *ngIf="ingredients$ | async as ingredients">
+        <tr inventory-element *ngFor="let ingredient of ingredients" 
+        [ingredient]="ingredient"
+        [ngClass]="{red: ingredient.stock <= ingredient.threshold}"></tr>
+    </ng-container>
+</table>

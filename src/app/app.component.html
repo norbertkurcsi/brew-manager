@@ -1,0 +1,16 @@
+<header>
+  Brew Manager
+  <img src="assets/images.png" alt="">
+</header>
+<nav>
+  <ul>
+    <li><a routerLink="inventory">Inventory</a></li>
+    <li><a routerLink="recipes">Recipes</a></li>
+    <li><a routerLink="scheduled-brewing">Scheduled-brewing</a></li>
+    <li>
+      <span>User: {{getUserName()}}</span>
+    </li>
+    <li><button *ngIf="isUserLoggedIn()" (click)="logoutUser()">Logout</button></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

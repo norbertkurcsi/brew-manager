@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<testsuite name="Firefox 111.0 (Windows 10)" package="" timestamp="2023-04-11T10:57:50" id="0" hostname="CRHFBS3" tests="6" errors="1" failures="0" time="2.102">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/111.0"/>
+  </properties>
+  <testcase name="IngredientService should be created" time="0.015" classname="Firefox_111_0_(Windows_10).IngredientService"/>
+  <testcase name="IngredientService should get a list of ingredients" time="0.009" classname="Firefox_111_0_(Windows_10).IngredientService"/>
+  <testcase name="LoginService guard method returns true if it is logged in, otherwise /login UrlTree" time="1.04" classname="Firefox_111_0_(Windows_10).LoginService"/>
+  <testcase name="LoginService succesfully logs out after login" time="1.016" classname="Firefox_111_0_(Windows_10).LoginService"/>
+  <testcase name="LoginService returns null if wrong credentials" time="0.011" classname="Firefox_111_0_(Windows_10).LoginService"/>
+  <testcase name="LoginService logs in the user if correct credentials are given" time="0.011" classname="Firefox_111_0_(Windows_10).LoginService"/>
+  <system-out>
+    <![CDATA[Firefox 111.0 (Windows 10) ERROR
+  An error was thrown in afterAll
+  Error: NG0205: Injector has already been destroyed. in http://localhost:9876/_karma_webpack_/vendor.js (line 40038)
+  error properties: Object({ code: 205 })
+  assertNotDestroyed@http://localhost:9876/_karma_webpack_/vendor.js:47636:13
+  runInContext@http://localhost:9876/_karma_webpack_/vendor.js:47543:10
+  chainedInterceptorFn/<@http://localhost:9876/_karma_webpack_/vendor.js:14599:55
+  handle@http://localhost:9876/_karma_webpack_/vendor.js:14649:17
+  request/events$<@http://localhost:9876/_karma_webpack_/vendor.js:14416:150
+  doInnerSub@http://localhost:9876/_karma_webpack_/vendor.js:1669:70
+  outerNext@http://localhost:9876/_karma_webpack_/vendor.js:1664:52
+  OperatorSubscriber/this._next<@http://localhost:9876/_karma_webpack_/vendor.js:1279:15
+  next@http://localhost:9876/_karma_webpack_/vendor.js:420:12
+  fromArrayLike/<@http://localhost:9876/_karma_webpack_/vendor.js:1050:18
+  _trySubscribe@http://localhost:9876/_karma_webpack_/vendor.js:127:19
+  subscribe/<@http://localhost:9876/_karma_webpack_/vendor.js:121:113
+  errorContext@http://localhost:9876/_karma_webpack_/vendor.js:2991:5
+  subscribe@http://localhost:9876/_karma_webpack_/vendor.js:116:69
+  mergeInternals@http://localhost:9876/_karma_webpack_/vendor.js:1697:10
+  mergeMap/<@http://localhost:9876/_karma_webpack_/vendor.js:1734:149
+  operate/</<@http://localhost:9876/_karma_webpack_/vendor.js:3247:18
+  subscribe/<@http://localhost:9876/_karma_webpack_/vendor.js:121:42
+  errorContext@http://localhost:9876/_karma_webpack_/vendor.js:2991:5
+  subscribe@http://localhost:9876/_karma_webpack_/vendor.js:116:69
+  filter/<@http://localhost:9876/_karma_webpack_/vendor.js:1487:12
+  operate/</<@http://localhost:9876/_karma_webpack_/vendor.js:3247:18
+  subscribe/<@http://localhost:9876/_karma_webpack_/vendor.js:121:42
+  errorContext@http://localhost:9876/_karma_webpack_/vendor.js:2991:5
+  subscribe@http://localhost:9876/_karma_webpack_/vendor.js:116:69
+  map/<@http://localhost:9876/_karma_webpack_/vendor.js:1592:12
+  operate/</<@http://localhost:9876/_karma_webpack_/vendor.js:3247:18
+  subscribe/<@http://localhost:9876/_karma_webpack_/vendor.js:121:42
+  errorContext@http://localhost:9876/_karma_webpack_/vendor.js:2991:5
+  subscribe@http://localhost:9876/_karma_webpack_/vendor.js:116:69
+  exhaustMap/</<@http://localhost:9876/_karma_webpack_/vendor.js:1459:104
+  OperatorSubscriber/this._next<@http://localhost:9876/_karma_webpack_/vendor.js:1279:15
+  next@http://localhost:9876/_karma_webpack_/vendor.js:420:12
+  doInnerSub/<@http://localhost:9876/_karma_webpack_/vendor.js:1674:20
+  OperatorSubscriber/this._next<@http://localhost:9876/_karma_webpack_/vendor.js:1279:15
+  next@http://localhost:9876/_karma_webpack_/vendor.js:420:12
+  timer/</<@http://localhost:9876/_karma_webpack_/vendor.js:1243:20
+  _execute@http://localhost:9876/_karma_webpack_/vendor.js:2545:12
+  execute@http://localhost:9876/_karma_webpack_/vendor.js:2534:24
+  flush@http://localhost:9876/_karma_webpack_/vendor.js:2607:26
+  timer@http://localhost:9876/_karma_webpack_/polyfills.js:2333:27
+  invokeTask@http://localhost:9876/_karma_webpack_/polyfills.js:382:171
+  onInvokeTask@http://localhost:9876/_karma_webpack_/vendor.js:3681:33
+  invokeTask@http://localhost:9876/_karma_webpack_/polyfills.js:382:54
+  runTask@http://localhost:9876/_karma_webpack_/polyfills.js:184:37
+  invokeTask@http://localhost:9876/_karma_webpack_/polyfills.js:459:26
+  4924/ZoneTask/this.invoke@http://localhost:9876/_karma_webpack_/polyfills.js:448:38
+  4924/patchTimer/scheduleTask/data.args[0]@http://localhost:9876/_karma_webpack_/polyfills.js:2315:26
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

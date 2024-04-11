@@ -1,0 +1,54 @@
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+tr:hover {
+    background-color: rgb(255, 253, 105);
+}
+
+table {
+    margin: 20px auto;
+}
+
+th {
+    padding: 5px 45px;
+    background-color: rgb(187, 187, 41);
+}
+
+
+h1, filter {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin: 10px;
+}
+
+p button {
+    padding: 4px 30px;
+    background-color: lightskyblue;
+    transition: all .5s;
+    border-radius: 10px;
+}
+
+p button:hover {
+    background-color: rgb(0, 115, 187);
+}
+
+p select {
+    margin-left: 20px;
+    background-color: lightskyblue;
+    padding: 4px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.red {
+    background-color: rgb(255, 106, 106);
+}
+
+.red:hover {
+    background-color: rgb(250, 88, 88);
+}

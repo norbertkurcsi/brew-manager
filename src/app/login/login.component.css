@@ -1,0 +1,52 @@
+#login-container {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.hiba {
+    color: red;
+}
+
+form { 
+    border: 2px solid black;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+    clear: both;
+    text-align: left;
+    width: 200px;
+    padding: 30px 50px;
+    height: 230px;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: skyblue;
+    padding: 5px 15px;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+button:hover {
+    background-color: rgb(62, 152, 187);
+}
+
+input {
+    width: 100%;
+    clear: both;
+}
+
+p{
+    margin-top: 20px;
+}
+
+span {
+    font-size: 12px;
+}

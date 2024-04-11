@@ -1,0 +1,8 @@
+<p>
+    <button (click)="navigateToNewRecipe()"><i class="fa fa-plus"></i>Add new recipe</button>
+</p>
+<div id="flex-container">
+    <ng-container *ngIf="recipes$ | async as recipes">
+        <recipe-card *ngFor="let recipe of recipes" [recipe]="recipe"></recipe-card>
+    </ng-container>
+</div>

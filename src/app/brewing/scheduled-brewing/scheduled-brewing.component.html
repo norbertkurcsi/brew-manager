@@ -1,0 +1,14 @@
+<h1>Scheduled Brews</h1>
+<p><button (click)="navigateToNewBrewingPage()"><i class="fa fa-plus"></i> Add new brewing</button></p>
+<table matSort (matSortChange)="sortData($event)">
+    <tr>
+        <th id="id-header">ID</th>
+        <th id="recipe-header">Recipe</th>
+        <th mat-sort-header="date">Date</th>
+        <th id="operations-header">Operations</th>
+    </tr>
+    <ng-container *ngIf="brewings$ | async as brewings">
+        <tr scheduled-item *ngFor="let brewing of brewings" [brewing]="brewing">
+        </tr>
+    </ng-container>
+</table>

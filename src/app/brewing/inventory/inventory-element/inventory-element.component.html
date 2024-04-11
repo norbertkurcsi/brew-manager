@@ -1,0 +1,7 @@
+<td>{{ingredient?.id}}</td>
+<td>{{ingredient?.name}}</td>
+<td>{{ingredient?.stock | number: '1.2-2'}}</td>
+<td id="operations">
+    <button (click)="navigateToEditPage()" id="edit"><i class="fa fa-edit"></i></button>
+    <button (click)="deleteIngredient()" id="delete"><i class="fa fa-trash"></i></button>
+</td>
