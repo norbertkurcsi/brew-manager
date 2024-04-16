@@ -11,25 +11,29 @@
     behaviors:NavigationViewHeaderBehavior.HeaderMode="Never"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="ItemTemplate" x:DataType="models:SampleOrder">
-            <Grid Height="60">
+        <DataTemplate x:Key="ItemTemplate" x:DataType="models:Ingredient">
+            <Grid Height="90" Padding="5,15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <FontIcon
-                    Grid.Column="0"
-                    VerticalAlignment="Center"
-                    FontSize="32"
-                    Glyph="{x:Bind Symbol}"
-                    AutomationProperties.Name="{x:Bind SymbolName}" />
-                <StackPanel
-                    Grid.Column="1"
-                    Margin="{StaticResource SmallLeftMargin}"
-                    VerticalAlignment="Center">
-                    <TextBlock Text="{x:Bind Company}" Style="{StaticResource ListTitleStyle}" />
-                    <TextBlock Text="{x:Bind Status}" Style="{StaticResource ListSubTitleStyle}" />
-                </StackPanel>
+
+                <Ellipse Height="60" Width="60" Grid.Column="0" VerticalAlignment="Center">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding ImageUrl}"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <TextBlock Grid.Column="1" Text="{x:Bind Name}" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" FontWeight="ExtraBold"/>
+                <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="{x:Bind Stock}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Text="items" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="10" FontWeight="Bold"/>
+                </Grid>
+
             </Grid>
         </DataTemplate>
 
@@ -83,14 +87,40 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+            <TextBlock Text="Sort by:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="SortByComboBox" VerticalAlignment="Center" Margin="5"
+                      ItemsSource="{x:Bind ViewModel.SortProperties}" 
+                      SelectedItem="{x:Bind ViewModel.SelectedSortProperty, Mode=TwoWay}"/>
+            <ComboBox x:Name="SortDirectionComboBox" VerticalAlignment="Center" Margin="5"
+                      ItemsSource="{x:Bind ViewModel.SortDirections}" 
+                      SelectedItem="{x:Bind ViewModel.SelectedSortDirection, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="1">
+            <TextBlock Text="Page:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="PageComboBox" VerticalAlignment="Center" Margin="5"
+                  ItemsSource="{Binding ViewModel.PageNumbers}" 
+                  SelectedItem="{Binding ViewModel.SelectedPage, Mode=TwoWay}"/>
+            <Button Content="Previous" VerticalAlignment="Center" Margin="5" Command="{x:Bind ViewModel.PreviousPageCommand}"/>
+            <Button Content="Next" VerticalAlignment="Center" Margin="5" Command="{x:Bind ViewModel.NextPageCommand}"/>
+        </StackPanel>
+
         <controls:ListDetailsView
             x:Uid="Inventory"
+            Grid.Row="2"
             x:Name="ListDetailsViewControl"
             BackButtonBehavior="Manual"
             Background="Transparent"
             BorderBrush="Transparent"
             DetailsTemplate="{StaticResource DetailsTemplate}"
-            ItemsSource="{x:Bind ViewModel.SampleItems}"
+            ItemsSource="{x:Bind ViewModel.SampleItems, Mode=OneWay}"
             ItemTemplate="{StaticResource ItemTemplate}"
             ListHeaderTemplate="{StaticResource MinimalListHeaderTemplate}"
             NoSelectionContentTemplate="{StaticResource NoSelectionContentTemplate}"

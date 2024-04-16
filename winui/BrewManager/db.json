@@ -1,0 +1,236 @@
+{
+  "inventory": [
+    {
+      "id": "4",
+      "name": "sor",
+      "stock": 48.09,
+      "threshold": 7,
+      "imageUrl": "https://picsum.photos/300"
+    },
+    {
+      "id": "5",
+      "name": "malt",
+      "stock": 17,
+      "threshold": 7,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "1",
+      "name": "ez",
+      "stock": 106,
+      "threshold": 7,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "2",
+      "name": "az",
+      "stock": 52,
+      "threshold": 7,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "11",
+      "name": "malt",
+      "stock": 23,
+      "threshold": 7,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "14",
+      "name": "barmi",
+      "stock": 64,
+      "threshold": 2,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "15",
+      "name": "barmi",
+      "stock": 31,
+      "threshold": 10,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "16",
+      "name": "asd",
+      "stock": 97.19,
+      "threshold": 3,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "17",
+      "name": "dfdgf",
+      "stock": 100,
+      "threshold": 4,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "18",
+      "name": "fincsmincsa",
+      "stock": 24,
+      "threshold": 5,
+      "imageUrl": "https://picsum.photos/200"
+    },
+    {
+      "id": "19",
+      "name": "malt2",
+      "stock": 10,
+      "threshold": 12,
+      "imageUrl": "https://picsum.photos/200"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "1",
+      "name": "Crazy racoon",
+      "ingredients": [
+        {
+          "id": "2",
+          "amount": 3
+        },
+        {
+          "id": "15",
+          "amount": 2
+        },
+        {
+          "id": "16",
+          "amount": 10.6
+        },
+        {
+          "id": "1",
+          "amount": 3
+        },
+        {
+          "id": "17",
+          "amount": 15
+        },
+        {
+          "id": "14",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Fincsa mincsa",
+      "ingredients": [
+        {
+          "id": "2",
+          "amount": 3
+        },
+        {
+          "id": "16",
+          "amount": 5
+        },
+        {
+          "id": "14",
+          "amount": 3
+        },
+        {
+          "id": "15",
+          "amount": 2
+        },
+        {
+          "id": "1",
+          "amount": 14
+        },
+        {
+          "id": "11",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Barna sorocske",
+      "ingredients": [
+        {
+          "id": "2",
+          "amount": 3
+        },
+        {
+          "id": "11",
+          "amount": 2
+        },
+        {
+          "id": "15",
+          "amount": 2
+        },
+        {
+          "id": "16",
+          "amount": 3
+        },
+        {
+          "id": "14",
+          "amount": 3
+        },
+        {
+          "id": "4",
+          "amount": 7.09
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Safe recipe",
+      "ingredients": [
+        {
+          "id": "18",
+          "amount": 5
+        },
+        {
+          "id": "4",
+          "amount": 2
+        },
+        {
+          "id": "5",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "0",
+      "name": "Valami új",
+      "ingredients": [
+        {
+          "id": "4",
+          "amount": 1
+        },
+        {
+          "id": "15",
+          "amount": 3
+        }
+      ]
+    }
+  ],
+  "scheduled-brews": [
+    {
+      "id": "8",
+      "recipe": "2",
+      "date": 1679788800000
+    },
+    {
+      "id": "10",
+      "recipe": "3",
+      "date": 1680220800000
+    },
+    {
+      "id": "11",
+      "recipe": "3",
+      "date": 1680220800000
+    }
+  ],
+  "users": [
+    {
+      "login": "admin",
+      "password": "admin"
+    },
+    {
+      "login": "cook",
+      "password": "cook"
+    },
+    {
+      "login": "brewmaster",
+      "password": "brewmaster"
+    }
+  ]
+}
