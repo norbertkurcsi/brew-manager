@@ -6,36 +6,49 @@ import { BehaviorSubject, combineLatestWith, Observable, map } from "rxjs";
 import { ScheduledBrew } from "./interfaces/schedules-brews.interface";
 import { ScheduledBrewService } from "./services/scheduled-brew.service";
 
+/**
+ * Component for displaying and managing scheduled brewing.
+ */
 @Component({
-    selector: 'scheduled-brewing',
-    templateUrl: 'scheduled-brewing.component.html',
-    styleUrls: ['scheduled-brewing.component.css']
+  selector: 'scheduled-brewing',
+  templateUrl: 'scheduled-brewing.component.html',
+  styleUrls: ['scheduled-brewing.component.css']
 })
-export class ScheduledBrewingComponent implements OnInit{
-    constructor(
-        private brewingService: ScheduledBrewService,
-        private router: Router
-    ) { }
-    
-    brewings$?: Observable<ScheduledBrew[]>;
-    sort$ = new BehaviorSubject({ active: '', direction: '' } as Sort);
+export class ScheduledBrewingComponent implements OnInit {
+  constructor(
+    private brewingService: ScheduledBrewService,
+    private router: Router
+  ) { }
 
-    ngOnInit(): void {
-        this.brewings$ = this.brewingService.getBrewings().pipe(
-            combineLatestWith(this.sort$),
-            map(([brewings, sort]) => {
-                let result = cloneDeep(brewings);
-                result = this.brewingService.sortBrewings(result, sort);
-                return result;
-            })
-        );
-    }
+  /** Observable of scheduled brews. */
+  brewings$?: Observable<ScheduledBrew[]>;
 
-    public navigateToNewBrewingPage() {
-        this.router.navigateByUrl('scheduled-brewing/new');
-    }
+  /** BehaviorSubject for sorting configuration. */
+  sort$ = new BehaviorSubject({ active: '', direction: '' } as Sort);
 
-    public sortData(sort: Sort) {
-        this.sort$.next(sort);
-    }
+  ngOnInit(): void {
+    this.brewings$ = this.brewingService.getBrewings().pipe(
+      combineLatestWith(this.sort$),
+      map(([brewings, sort]) => {
+        let result = cloneDeep(brewings);
+        result = this.brewingService.sortBrewings(result, sort);
+        return result;
+      })
+    );
+  }
+
+  /**
+   * Navigates to the page for creating a new scheduled brewing.
+   */
+  public navigateToNewBrewingPage(): void {
+    this.router.navigateByUrl('scheduled-brewing/new');
+  }
+
+  /**
+   * Sorts the data based on the provided sort configuration.
+   * @param sort The sort configuration.
+   */
+  public sortData(sort: Sort): void {
+    this.sort$.next(sort);
+  }
 }
