@@ -1,119 +1,110 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome 123.0.0.0 (Mac OS 10.15.7)" package="" timestamp="2024-04-11T16:49:17" id="0" hostname="Norberts-MacBook-Pro.local" tests="111" errors="0" failures="0" time="0.173">
+<testsuite name="Chrome 123.0.0.0 (Mac OS 10.15.7)" package="" timestamp="2024-04-16T10:05:06" id="0" hostname="Norberts-MacBook-Pro.local" tests="102" errors="0" failures="0" time="0.131">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"/>
   </properties>
-  <testcase name="IngredientService should get a list of ingredients" time="0.036" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
-  <testcase name="IngredientService should delete an ingredient if it is not used in recipes" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
+  <testcase name="NewElementComponent after deleting the name input it should display the error message" time="0.017" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="NewElementComponent should display the error message if stock input is focused and then click away" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="NewElementComponent should create the component" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="NewElementComponent should alert message if adding the ingredient fails" time="0.005" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="NewElementComponent should display error message if threshold is empty" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="NewElementComponent cancel button pressed, it should navigate back to inventory" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="NewElementComponent should display error message if stock is empty" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="NewElementComponent should display the error message if name input is focused and then click away" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="NewElementComponent if form is filled in correctly it should add the ingredient to the inventory, and navigate to inventory" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
+  <testcase name="PaginationComponent should create the component" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).PaginationComponent"/>
+  <testcase name="PaginationComponent stepOnNextPage should navigate to the next page" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).PaginationComponent stepOnNextPage"/>
+  <testcase name="PaginationComponent stepOnPrevPage should navigate to the previous page when current page is greater than 1" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).PaginationComponent stepOnPrevPage"/>
+  <testcase name="PaginationComponent stepOnPrevPage should not navigate when current page is 1" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).PaginationComponent stepOnPrevPage"/>
+  <testcase name="ScheduledBrewService sortBrewings should return the unsorted array when sort is not active" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService sortBrewings"/>
+  <testcase name="ScheduledBrewService sortBrewings should return the array unsorted if sort direction is invalid" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService sortBrewings"/>
+  <testcase name="ScheduledBrewService sortBrewings should sort the array in ascending order by date when sort direction is &quot;asc&quot;" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService sortBrewings"/>
+  <testcase name="ScheduledBrewService sortBrewings should sort the array in descending order by date when sort direction is &quot;desc&quot;" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService sortBrewings"/>
+  <testcase name="ScheduledBrewService should get brewings with recipe names" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService"/>
+  <testcase name="ScheduledBrewService should be created" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService"/>
+  <testcase name="ScheduledItemComponent should create" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
+  <testcase name="ScheduledItemComponent should render scheduled brew details" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
+  <testcase name="ScheduledItemComponent should handle error when deleteScheduledBrew method fails" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
+  <testcase name="ScheduledItemComponent should call deleteScheduledBrew method when delete button is clicked" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
+  <testcase name="ScheduledItemComponent should not call deleteScheduledBrew when brewing is undefined" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
+  <testcase name="NewRecipeComponent should navigate to /recipes on successful recipe addition" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewRecipeComponent"/>
+  <testcase name="NewRecipeComponent should display an alert on error" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewRecipeComponent"/>
+  <testcase name="NewRecipeComponent should render the recipe-form component" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewRecipeComponent"/>
+  <testcase name="EditIngredientComponent should display alert if the edit fails" time="0.004" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
+  <testcase name="EditIngredientComponent should show error message when stock input is empty" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
+  <testcase name="EditIngredientComponent should update the ingredient stock and navigate back to inventory after submitting the form" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
+  <testcase name="EditIngredientComponent should render the ingredient values correctly in the DOM" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
+  <testcase name="EditIngredientComponent should get the ingredient correctlz from the query params" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
+  <testcase name="AppComponent should call logout method on click" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
+  <testcase name="AppComponent should show user name when user is logged in" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
+  <testcase name="AppComponent should display guest if user in not logged in" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
+  <testcase name="AppComponent should create the app" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
+  <testcase name="IngredientViewService filterByRecentPage should return an empty array when the parameter is not a number" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterByRecentPage"/>
+  <testcase name="IngredientViewService filterByRecentPage should navigate to the last page and return an empty array when the parameter is a number outside the range of pages" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterByRecentPage"/>
+  <testcase name="IngredientViewService filterByRecentPage should return the first page by default when the parameter is undefined" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterByRecentPage"/>
+  <testcase name="IngredientViewService filterByRecentPage should return the corresponding page when the parameter is a number within the range of pages" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterByRecentPage"/>
+  <testcase name="IngredientViewService filterBySearchKeyword should return all ingredients when search keyword is empty" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterBySearchKeyword"/>
+  <testcase name="IngredientViewService filterBySearchKeyword should filter ingredients by search keyword" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterBySearchKeyword"/>
+  <testcase name="IngredientViewService sortIngredients should sort by name in ascending order" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
+  <testcase name="IngredientViewService sortIngredients should sort by ID in descending order" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
+  <testcase name="IngredientViewService sortIngredients should sort by ID in ascending order" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
+  <testcase name="IngredientViewService sortIngredients should return the ingredients list without sorting when sort direction is set but sort active is not set" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
+  <testcase name="IngredientViewService sortIngredients should return unsorted ingredients when Sort object is not active" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
+  <testcase name="IngredientViewService sortIngredients should sort ingredients by stock in descending order" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
+  <testcase name="FilterComponent should emit search string on valueChange" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FilterComponent"/>
+  <testcase name="FilterComponent should create" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FilterComponent"/>
   <testcase name="IngredientService should throw an error if ingredient with requested id not exists" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
+  <testcase name="IngredientService should get an ingredient by id" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
   <testcase name="IngredientService should edit an ingredient" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
   <testcase name="IngredientService should be created" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
   <testcase name="IngredientService should throw an error if we want to delete an ingredients that is in the recipes" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
-  <testcase name="IngredientService should get an ingredient by id" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
-  <testcase name="IngredientService should add an ingredient" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
-  <testcase name="ScheduledItemComponent should call deleteScheduledBrew method when delete button is clicked" time="0.006" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
-  <testcase name="ScheduledItemComponent should render scheduled brew details" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
-  <testcase name="ScheduledItemComponent should create" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
-  <testcase name="ScheduledItemComponent should handle error when deleteScheduledBrew method fails" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
-  <testcase name="ScheduledItemComponent should not call deleteScheduledBrew when brewing is undefined" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledItemComponent"/>
-  <testcase name="NewElementComponent should display the error message if name input is focused and then click away" time="0.007" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="NewElementComponent should create the component" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="NewElementComponent after deleting the name input it should display the error message" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="NewElementComponent cancel button pressed, it should navigate back to inventory" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="NewElementComponent should alert message if adding the ingredient fails" time="0.007" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="NewElementComponent should display error message if threshold is empty" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="NewElementComponent if form is filled in correctly it should add the ingredient to the inventory, and navigate to inventory" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="NewElementComponent should display error message if stock is empty" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="NewElementComponent should display the error message if stock input is focused and then click away" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewElementComponent"/>
-  <testcase name="LoginComponent if credentials are correct, should call the router's navigate function to /inventory" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginComponent"/>
-  <testcase name="LoginComponent should display required password, if password is empty, and the submit is pressed" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginComponent"/>
-  <testcase name="LoginComponent should display required username, if username is empty, and the submit is pressed" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginComponent"/>
+  <testcase name="IngredientService should delete an ingredient if it is not used in recipes" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
+  <testcase name="IngredientService should add an ingredient" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
+  <testcase name="IngredientService should get a list of ingredients" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientService"/>
   <testcase name="LoginComponent should create the component" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginComponent"/>
+  <testcase name="LoginComponent if credentials are correct, should call the router's navigate function to /inventory" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginComponent"/>
+  <testcase name="LoginComponent should display required password, if password is empty, and the submit is pressed" time="0.004" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginComponent"/>
   <testcase name="LoginComponent if credentials are incorrect, should delete the form values and display that the user or pass are incorrect" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginComponent"/>
-  <testcase name="ScheduledBrewService should get brewings with recipe names" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService"/>
-  <testcase name="ScheduledBrewService sortBrewings should return the unsorted array when sort is not active" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService sortBrewings"/>
-  <testcase name="ScheduledBrewService sortBrewings should sort the array in descending order by date when sort direction is &quot;desc&quot;" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService sortBrewings"/>
-  <testcase name="ScheduledBrewService sortBrewings should return the array unsorted if sort direction is invalid" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService sortBrewings"/>
-  <testcase name="ScheduledBrewService sortBrewings should sort the array in ascending order by date when sort direction is &quot;asc&quot;" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService sortBrewings"/>
-  <testcase name="ScheduledBrewService should be created" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).ScheduledBrewService"/>
-  <testcase name="PaginationComponent stepOnPrevPage should navigate to the previous page when current page is greater than 1" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).PaginationComponent stepOnPrevPage"/>
-  <testcase name="PaginationComponent stepOnPrevPage should not navigate when current page is 1" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).PaginationComponent stepOnPrevPage"/>
-  <testcase name="PaginationComponent stepOnNextPage should navigate to the next page" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).PaginationComponent stepOnNextPage"/>
-  <testcase name="PaginationComponent should create the component" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).PaginationComponent"/>
-  <testcase name="RecipeService should retrieve recipes" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
-  <testcase name="RecipeService should retrieve recipes" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
+  <testcase name="LoginComponent should display required username, if username is empty, and the submit is pressed" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginComponent"/>
+  <testcase name="FirstCapDirective should not capitalize the first letter when input is empty" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FirstCapDirective"/>
+  <testcase name="FirstCapDirective should create an instance" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FirstCapDirective"/>
+  <testcase name="FirstCapDirective should capitalize the first letter of input" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FirstCapDirective"/>
+  <testcase name="InventoryElement should navigate to the edit page when edit button is clicked" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryElement"/>
+  <testcase name="InventoryElement should call deleteIngredient when delete button is clicked" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryElement"/>
+  <testcase name="InventoryElement should call deleteIngredient when delete button is clicked" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryElement"/>
+  <testcase name="InventoryElement should render the ingredient data" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryElement"/>
+  <testcase name="RecipesComponent should call navigateByUrl method when navigateToNewRecipe is called" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipesComponent"/>
+  <testcase name="RecipesComponent should display recipe cards with the correct recipe" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipesComponent"/>
+  <testcase name="RecipesComponent should create" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipesComponent"/>
+  <testcase name="EditRecipeComponent editRecipe should edit the recipe and navigate to recipes" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent editRecipe"/>
+  <testcase name="EditRecipeComponent editRecipe should handle errors" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent editRecipe"/>
+  <testcase name="EditRecipeComponent template should display the recipe form" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent template"/>
+  <testcase name="EditRecipeComponent ngOnInit should get the recipe by id" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent ngOnInit"/>
+  <testcase name="EditRecipeComponent should create" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent"/>
+  <testcase name="RecipeService should retrieve recipes" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
+  <testcase name="RecipeService should delete a recipe and emit the delete event" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
   <testcase name="RecipeService should retrieve recipes" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
   <testcase name="RecipeService should emit recipes every 3 seconds" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
-  <testcase name="RecipeService should delete a recipe and emit the delete event" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
-  <testcase name="RecipeService should give back the recipe with name of the given id" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
-  <testcase name="RecipeService should return recipes with ingredient names" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
+  <testcase name="RecipeService should retrieve recipes" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
   <testcase name="RecipeService should retrieve recipes" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
-  <testcase name="BrewingModule Routing should navigate to the scheduled-brewing page if user is logged in" time="0.007" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="BrewingModule Routing should navigate to the scheduled-brewing/new page if user is logged in" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="BrewingModule Routing should navigate to the recipe/new page if user is logged in" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="BrewingModule Routing should redirect to login if user is not logged in" time="0.005" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="BrewingModule Routing should navigate to inventory/new page if user is logged in" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="BrewingModule Routing should navigate to the inventory item page if user is logged in" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="BrewingModule Routing should navigate to the recipe item page if user is logged in" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="BrewingModule Routing should navigate to inventory page if user is logged in" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="BrewingModule Routing should navigate to the recipe page if user is logged in" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).BrewingModule Routing"/>
-  <testcase name="IngredientViewService sortIngredients should sort by name in ascending order" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
-  <testcase name="IngredientViewService sortIngredients should return the ingredients list without sorting when sort direction is set but sort active is not set" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
-  <testcase name="IngredientViewService sortIngredients should sort ingredients by stock in descending order" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
-  <testcase name="IngredientViewService sortIngredients should sort by ID in descending order" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
-  <testcase name="IngredientViewService sortIngredients should sort by ID in ascending order" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
-  <testcase name="IngredientViewService sortIngredients should return unsorted ingredients when Sort object is not active" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService sortIngredients"/>
-  <testcase name="IngredientViewService filterBySearchKeyword should return all ingredients when search keyword is empty" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterBySearchKeyword"/>
-  <testcase name="IngredientViewService filterBySearchKeyword should filter ingredients by search keyword" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterBySearchKeyword"/>
-  <testcase name="IngredientViewService filterByRecentPage should navigate to the last page and return an empty array when the parameter is a number outside the range of pages" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterByRecentPage"/>
-  <testcase name="IngredientViewService filterByRecentPage should return an empty array when the parameter is not a number" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterByRecentPage"/>
-  <testcase name="IngredientViewService filterByRecentPage should return the corresponding page when the parameter is a number within the range of pages" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterByRecentPage"/>
-  <testcase name="IngredientViewService filterByRecentPage should return the first page by default when the parameter is undefined" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).IngredientViewService filterByRecentPage"/>
-  <testcase name="NewBrewingComponent should validate the form with dateGreaterOrEqualThanTodayValidator()" time="0.004" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewBrewingComponent"/>
-  <testcase name="NewBrewingComponent should create" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewBrewingComponent"/>
-  <testcase name="NewBrewingComponent should fetch recipes from service" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewBrewingComponent"/>
+  <testcase name="RecipeService should give back the recipe with name of the given id" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
+  <testcase name="RecipeService should return recipes with ingredient names" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeService"/>
+  <testcase name="NewBrewingComponent should fetch recipes from service" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewBrewingComponent"/>
   <testcase name="NewBrewingComponent should show error if recipe is not selected" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewBrewingComponent"/>
-  <testcase name="AppComponent should show user name when user is logged in" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
-  <testcase name="AppComponent should create the app" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
-  <testcase name="AppComponent should call logout method on click" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
-  <testcase name="AppComponent should display guest if user in not logged in" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
-  <testcase name="NewRecipeComponent should display an alert on error" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewRecipeComponent"/>
-  <testcase name="NewRecipeComponent should navigate to /recipes on successful recipe addition" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewRecipeComponent"/>
-  <testcase name="NewRecipeComponent should render the recipe-form component" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewRecipeComponent"/>
-  <testcase name="InventoryElement should navigate to the edit page when edit button is clicked" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryElement"/>
-  <testcase name="InventoryElement should call deleteIngredient when delete button is clicked" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryElement"/>
-  <testcase name="InventoryElement should render the ingredient data" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryElement"/>
-  <testcase name="InventoryElement should call deleteIngredient when delete button is clicked" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryElement"/>
-  <testcase name="LoginService guard method returns true if it is logged in, otherwise /login UrlTree" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginService"/>
+  <testcase name="NewBrewingComponent should validate the form with dateGreaterOrEqualThanTodayValidator()" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewBrewingComponent"/>
+  <testcase name="NewBrewingComponent should create" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).NewBrewingComponent"/>
   <testcase name="LoginService succesfully logs out after login" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginService"/>
+  <testcase name="LoginService logs in the user if correct credentials are given" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginService"/>
+  <testcase name="LoginService guard method returns true if it is logged in, otherwise /login UrlTree" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginService"/>
   <testcase name="LoginService returns null if wrong credentials" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginService"/>
-  <testcase name="LoginService logs in the user if correct credentials are given" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).LoginService"/>
-  <testcase name="EditIngredientComponent should update the ingredient stock and navigate back to inventory after submitting the form" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
-  <testcase name="EditIngredientComponent should display alert if the edit fails" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
-  <testcase name="EditIngredientComponent should show error message when stock input is empty" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
-  <testcase name="EditIngredientComponent should get the ingredient correctlz from the query params" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
-  <testcase name="EditIngredientComponent should render the ingredient values correctly in the DOM" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditIngredientComponent"/>
-  <testcase name="FilterComponent should emit search string on valueChange" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FilterComponent"/>
-  <testcase name="FilterComponent should create" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FilterComponent"/>
-  <testcase name="RecipeCardComponent should handle error when delete method fails" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeCardComponent"/>
-  <testcase name="RecipeCardComponent should render recipe data correctly" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeCardComponent"/>
-  <testcase name="RecipeCardComponent should call deleteRecipe method when delete button is clicked" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeCardComponent"/>
-  <testcase name="RecipeCardComponent should navigate to edit recipe page when edit button is clicked" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeCardComponent"/>
-  <testcase name="EditRecipeComponent editRecipe should handle errors" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent editRecipe"/>
-  <testcase name="EditRecipeComponent editRecipe should edit the recipe and navigate to recipes" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent editRecipe"/>
-  <testcase name="EditRecipeComponent should create" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent"/>
-  <testcase name="EditRecipeComponent template should display the recipe form" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent template"/>
-  <testcase name="EditRecipeComponent ngOnInit should get the recipe by id" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).EditRecipeComponent ngOnInit"/>
-  <testcase name="RecipesComponent should display recipe cards with the correct recipe" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipesComponent"/>
-  <testcase name="RecipesComponent should call navigateByUrl method when navigateToNewRecipe is called" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipesComponent"/>
-  <testcase name="RecipesComponent should create" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipesComponent"/>
-  <testcase name="FirstCapDirective should capitalize the first letter of input" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FirstCapDirective"/>
-  <testcase name="FirstCapDirective should not capitalize the first letter when input is empty" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FirstCapDirective"/>
-  <testcase name="FirstCapDirective should create an instance" time="0" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).FirstCapDirective"/>
-  <testcase name="InventoryComponent should navigate to new item page on button click" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryComponent"/>
+  <testcase name="InventoryComponent should navigate to new item page on button click" time="0.003" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryComponent"/>
+  <testcase name="InventoryComponent should call sortData() and update the sort$ behavior subject" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryComponent"/>
   <testcase name="InventoryComponent should create" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryComponent"/>
   <testcase name="InventoryComponent should emit new page size when user selects a new page size" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryComponent"/>
-  <testcase name="InventoryComponent should call sortData() and update the sort$ behavior subject" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).InventoryComponent"/>
+  <testcase name="RecipeCardComponent should handle error when delete method fails" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeCardComponent"/>
+  <testcase name="RecipeCardComponent should call deleteRecipe method when delete button is clicked" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeCardComponent"/>
+  <testcase name="RecipeCardComponent should navigate to edit recipe page when edit button is clicked" time="0.001" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeCardComponent"/>
+  <testcase name="RecipeCardComponent should render recipe data correctly" time="0.002" classname="Chrome_123_0_0_0_(Mac_OS_10_15_7).RecipeCardComponent"/>
   <system-out>
     <![CDATA[
 ]]>

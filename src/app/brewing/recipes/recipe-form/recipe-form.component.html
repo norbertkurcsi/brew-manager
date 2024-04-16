@@ -1,5 +1,5 @@
 <div id="form" [formGroup]="form">
-    <p id="name">
+    <p>
         <label for="name">Recipe name: </label>
         <input firstCap type="text" formControlName="name" id="name" (focus)="showError = false" (blur)="showError = true">
         <span *ngIf="form.controls.name.invalid && showError" class="error">
