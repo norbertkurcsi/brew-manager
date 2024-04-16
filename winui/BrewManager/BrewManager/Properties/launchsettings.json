@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "BrewManager (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "BrewManager (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
