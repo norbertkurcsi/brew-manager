@@ -1,81 +1,74 @@
 {
   "inventory": [
     {
-      "id": 4,
-      "name": "sor",
-      "stock": 48.09,
+      "id": "4",
+      "name": "sor uj mezooo",
+      "stock": 50,
       "threshold": 7,
-      "imageUrl": "https://picsum.photos/300"
+      "imageUrl": "asd"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "malt",
       "stock": 17,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "ez",
       "stock": 106,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "az",
       "stock": 52,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "malt",
       "stock": 23,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "barmi",
       "stock": 64,
       "threshold": 2,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "barmi",
       "stock": 31,
       "threshold": 10,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "asd",
-      "stock": 97.19,
+      "stock": 97.198,
       "threshold": 3,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "dfdgf",
       "stock": 100,
       "threshold": 4,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": 18,
-      "name": "fincsmincsa",
-      "stock": 24,
-      "threshold": 5,
-      "imageUrl": "https://picsum.photos/200"
-    },
-    {
-      "id": 19,
-      "name": "malt2",
-      "stock": 10,
-      "threshold": 12,
-      "imageUrl": "https://picsum.photos/200"
+      "id": "844c",
+      "name": "",
+      "stock": 0,
+      "threshold": 0,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/anonym.jpeg"
     }
   ],
   "recipes": [
@@ -222,15 +215,18 @@
   "users": [
     {
       "login": "admin",
-      "password": "admin"
+      "password": "admin",
+      "id": "1864"
     },
     {
       "login": "cook",
-      "password": "cook"
+      "password": "cook",
+      "id": "6e8f"
     },
     {
       "login": "brewmaster",
-      "password": "brewmaster"
+      "password": "brewmaster",
+      "id": "c9ef"
     }
   ]
 }

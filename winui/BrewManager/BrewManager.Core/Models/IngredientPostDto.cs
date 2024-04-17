@@ -5,12 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BrewManager.Core.Models;
-
-public class Ingredient
+public class IngredientPostDto
 {
-    public string Id{
-       get; set;
-    }
     public string Name
     {
         get; set;
@@ -29,4 +25,3 @@ public class Ingredient
         set;
     }
 }
-

@@ -4,18 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:BrewManager.Core.Models"
-    xmlns:converters="using:BrewManager.Converters" xmlns:sys="using:System"
+    xmlns:models="using:BrewManager.Core.Models" 
+    xmlns:sys="using:System"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <converters:PageNumberConverter x:Key="PageNumberConverter"/>
-    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400" />
@@ -35,7 +33,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Inventory" VerticalAlignment="Center" FontWeight="Bold" FontSize="30"/>
-                <Button Grid.Column="1" HorizontalAlignment="Right">
+                <Button Grid.Column="1" HorizontalAlignment="Right" Command="{x:Bind ViewModel.AddNewItemCommand}">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                         <SymbolIcon Symbol="Add"/>
                         <TextBlock Margin="5,0,0,0">Add new</TextBlock>
@@ -77,6 +75,7 @@
         </Grid>
 
         <ListView Grid.Row="1"
+                  Grid.RowSpan="2"
                   Grid.Column="0"
                   Background="{ThemeResource AppBarBackgroundThemeBrush}"
                   ItemsSource="{x:Bind ViewModel.SampleItems, Mode=OneWay}"
@@ -109,20 +108,41 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+        <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Visibility="{x:Bind ViewModel.IsFormVisible, Mode=OneWay}">
             <StackPanel Padding="10 15 10 15"
                         Margin="8 0 8 8"
                         Orientation="Vertical"
-                        Spacing="15">
+                        Spacing="20">
                 <StackPanel Margin="20">
-                    <TextBox Text="{x:Bind ViewModel.Selected.Id, Mode=TwoWay}" IsEnabled="False" Header="Id"/>
-                    <TextBox Text="{x:Bind ViewModel.Selected.Name, Mode=TwoWay}" Header="Nameee"/>
-                    <TextBox Text="{x:Bind ViewModel.Selected.Stock, Mode=TwoWay}" Header="Stock" />
-                    <TextBox Text="{x:Bind ViewModel.Selected.Threshold, Mode=TwoWay}" Header="Threshold"/>
-                    <TextBox Text="{x:Bind ViewModel.Selected.ImageUrl, Mode=TwoWay}" Header="Image URL"/>
-                    <Button Content="Save" Margin="0,10,0,0" Command="{x:Bind ViewModel.NextPageCommand}"/>
+                    <TextBlock Visibility="{x:Bind ViewModel.IsAdd, Mode=OneWay}" FontWeight="Bold" FontSize="30">Add new item</TextBlock>
+                    <TextBlock Visibility="{x:Bind ViewModel.IsEdit, Mode=OneWay}" FontWeight="Bold" FontSize="30">Edit item</TextBlock>
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center">
+                        <Ellipse Height="120" Width="120">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Button VerticalAlignment="Center" Margin="5" Command="{x:Bind ViewModel.OpenFileCommand}">
+                            <SymbolIcon Symbol="Edit"/>
+                        </Button>
+                    </StackPanel>
+                    <TextBox Text="{x:Bind ViewModel.EditedIngredient.Id, Mode=TwoWay}" IsEnabled="False" Header="Id" Visibility="{x:Bind ViewModel.IsEdit, Mode=OneWay}"/>
+                    <TextBox Text="{x:Bind ViewModel.EditedIngredient.Name, Mode=TwoWay}" Header="Name"/>
+                    <NumberBox Value="{x:Bind ViewModel.EditedIngredient.Stock, Mode=TwoWay}" Header="Stock" />
+                    <NumberBox Value="{x:Bind ViewModel.EditedIngredient.Threshold, Mode=TwoWay}" Header="Threshold"/>
+                    <TextBox Text="{x:Bind ViewModel.ImageUrl, Mode=TwoWay}" IsEnabled="False" Header="Image URL"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Save" Margin="0,10,0,0" Command="{x:Bind ViewModel.SaveItemCommand}"/>
+                        <Button Content="Delete" Margin="0,10,0,0" Command="{x:Bind ViewModel.DeleteItemCommand}"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
+        <InfoBar 
+            Grid.Column="1"
+            Grid.Row="3"
+            IsOpen="{x:Bind ViewModel.IsInfoBarOpen, Mode=OneWay}" 
+            Message="{x:Bind ViewModel.InfoBarMassege, Mode=OneWay}" 
+            Severity="{x:Bind ViewModel.InfoBarSeverity, Mode=OneWay}" />
     </Grid>
 </Page>

@@ -13,6 +13,13 @@ public class IngredientService : IIngredientService
 {
     private readonly string _baseUrl = "http://localhost:3000";
 
+    public event EventHandler<SnackbarEventArgs> RequestResult;
+
+    private void OnRequestResult(string message, bool isSuccess)
+    {
+        RequestResult?.Invoke(this, new SnackbarEventArgs(message, isSuccess));
+    }
+
     public async Task<InventoryGetResponse> GetInventoryItemsAsync(int perPage, int page, string sort, ListSortDirection listSortDirection)
     {
         using var client = new HttpClient();
@@ -34,6 +41,61 @@ public class IngredientService : IIngredientService
         }
 
         return await client.GetFromJsonAsync<InventoryGetResponse>(uriBuilder.Uri);
-
     }
+
+    public async Task UpdateIngredientAsync(Ingredient ingredient)
+    {
+        using var client = new HttpClient();
+
+        var response = await client.PatchAsJsonAsync($"{_baseUrl}/inventory/{ingredient.Id}", ingredient);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            OnRequestResult("Request failed, see application logs", false);
+        }
+        else
+        {
+            OnRequestResult("Inventory item successfully updated", true);
+        }
+    }
+
+    public async Task CreateIngredientAsync(Ingredient ingredient)
+    {
+        var postIngredient = new IngredientPostDto()
+        {
+            Name = ingredient.Name,
+            Threshold = ingredient.Threshold,
+            Stock = ingredient.Stock,
+            ImageUrl = ingredient.ImageUrl,
+        };
+        using var client = new HttpClient();
+
+        var response = await client.PostAsJsonAsync($"{_baseUrl}/inventory", postIngredient);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            OnRequestResult("Request failed, see application logs", false);
+        }
+        else
+        {
+            OnRequestResult("Inventory item successfully added", true);
+        }
+    }
+
+    public async Task DeleteIngredientAsync(string id)
+    {
+        using var client = new HttpClient();
+
+        var response = await client.DeleteAsync($"{_baseUrl}/inventory/{id}");
+
+        if (!response.IsSuccessStatusCode)
+        {
+            OnRequestResult("Request failed, see application logs", false);
+        }
+        else
+        {
+            OnRequestResult("Inventory item successfully deleted", true);
+        }
+    }
+
 }

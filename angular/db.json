@@ -2,9 +2,10 @@
   "inventory": [
     {
       "id": "4",
-      "name": "sor",
+      "name": "sor uj",
       "stock": 48.09,
-      "threshold": 7
+      "threshold": 7,
+      "imageUrl": "https://picsum.photos/300"
     },
     {
       "id": "5",
@@ -211,15 +212,18 @@
   "users": [
     {
       "login": "admin",
-      "password": "admin"
+      "password": "admin",
+      "id": "7237"
     },
     {
       "login": "cook",
-      "password": "cook"
+      "password": "cook",
+      "id": "f04b"
     },
     {
       "login": "brewmaster",
-      "password": "brewmaster"
+      "password": "brewmaster",
+      "id": "e4f3"
     }
   ]
 }
