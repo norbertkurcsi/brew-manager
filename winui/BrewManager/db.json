@@ -1,77 +1,77 @@
 {
   "inventory": [
     {
-      "id": "4",
+      "id": 4,
       "name": "sor",
       "stock": 48.09,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/300"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "malt",
       "stock": 17,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "ez",
       "stock": 106,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "az",
       "stock": 52,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "malt",
       "stock": 23,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "14",
+      "id": 14,
       "name": "barmi",
       "stock": 64,
       "threshold": 2,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "15",
+      "id": 15,
       "name": "barmi",
       "stock": 31,
       "threshold": 10,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "16",
+      "id": 16,
       "name": "asd",
       "stock": 97.19,
       "threshold": 3,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "17",
+      "id": 17,
       "name": "dfdgf",
       "stock": 100,
       "threshold": 4,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "18",
+      "id": 18,
       "name": "fincsmincsa",
       "stock": 24,
       "threshold": 5,
       "imageUrl": "https://picsum.photos/200"
     },
     {
-      "id": "19",
+      "id": 19,
       "name": "malt2",
       "stock": 10,
       "threshold": 12,

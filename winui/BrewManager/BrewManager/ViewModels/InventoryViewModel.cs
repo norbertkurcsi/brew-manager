@@ -9,110 +9,117 @@ using BrewManager.Core.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace BrewManager.ViewModels
+namespace BrewManager.ViewModels;
+
+public partial class InventoryViewModel : ObservableRecipient, INavigationAware
 {
-    public partial class InventoryViewModel : ObservableRecipient, INavigationAware
+    private readonly IIngredientService _ingredientService;
+
+    [ObservableProperty]
+    private Ingredient? selected;
+
+    public ObservableCollection<Ingredient> SampleItems { get; private set; } = new ObservableCollection<Ingredient>();
+
+    public ObservableCollection<string> SortProperties { get; } = new ObservableCollection<string>();
+    public ObservableCollection<ListSortDirection> SortDirections { get; } = new ObservableCollection<ListSortDirection>();
+    public ObservableCollection<int> PageSizes { get; } = new ObservableCollection<int> { 5, 10, 15 };
+
+
+
+    public InventoryViewModel(IIngredientService ingredientService)
     {
-        private readonly IIngredientService _ingredientService;
+        _ingredientService = ingredientService;
 
-        [ObservableProperty]
-        private Ingredient? selected;
-        private List<Ingredient> _originalOrder = new List<Ingredient>();
-
-        public ObservableCollection<Ingredient> SampleItems { get; private set; } = new ObservableCollection<Ingredient>();
-
-        public ObservableCollection<string> SortProperties { get; } = new ObservableCollection<string>();
-        public ObservableCollection<ListSortDirection> SortDirections { get; } = new ObservableCollection<ListSortDirection>();
-
-
-        public InventoryViewModel(IIngredientService ingredientService)
+        var ingredientType = typeof(Ingredient);
+        var properties = ingredientType.GetProperties();
+        SortProperties.Add("<none>");
+        foreach (var property in properties)
         {
-            _ingredientService = ingredientService;
+            SortProperties.Add(property.Name);
+        }
 
-            var ingredientType = typeof(Ingredient);
-            var properties = ingredientType.GetProperties();
-            SortProperties.Add("<none>");
-            foreach (var property in properties)
+        SortDirections.Add(ListSortDirection.Ascending);
+        SortDirections.Add(ListSortDirection.Descending);
+        PropertyChanged += OnPropertyChanged;
+    }
+
+
+    
+
+    public async void OnNavigatedTo(object parameter)
+    {
+        await GetItemsAsync();
+    }
+
+    private async Task GetItemsAsync ()
+    {
+        SampleItems.Clear();
+
+        var data = await _ingredientService.GetInventoryItemsAsync(SelectedPageSize, CurrentPageNumber, SelectedSortProperty, SelectedSortDirection);
+        TotalPages = data.Pages;
+
+        foreach (var item in data.Data)
+        {
+            SampleItems.Add(item);
+        }
+    }
+
+    
+
+    public void EnsureItemSelected()
+    {
+        //Selected ??= SampleItems.First();
+    }
+
+    private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(SelectedSortProperty) || e.PropertyName == nameof(SelectedSortDirection) || e.PropertyName == nameof(SelectedPageSize))
+        {
+            if(e.PropertyName == nameof(SelectedPageSize))
             {
-                SortProperties.Add(property.Name);
+                CurrentPageNumber = 1;
             }
-
-            SortDirections.Add(ListSortDirection.Ascending);
-            SortDirections.Add(ListSortDirection.Descending);
-            PropertyChanged += OnPropertyChanged;
+            await GetItemsAsync();
         }
+    }
 
-        public async void OnNavigatedTo(object parameter)
+
+    [RelayCommand]
+    private async void PreviousPage()
+    {
+        if(CurrentPageNumber != 1)
         {
-            SampleItems.Clear();
-
-            _originalOrder = await _ingredientService.GetInventoryItemsAsync();
-
-            foreach (var item in _originalOrder)
-            {
-                SampleItems.Add(item);
-            }
+            CurrentPageNumber--;
+            await GetItemsAsync();
         }
+    }
 
-        public void OnNavigatedFrom()
+    [RelayCommand]
+    private async void NextPage()
+    {
+        if(CurrentPageNumber < TotalPages)
         {
+            CurrentPageNumber++;
+            await GetItemsAsync();
         }
+    }
 
-        public void EnsureItemSelected()
-        {
-            //Selected ??= SampleItems.First();
-        }
+    [ObservableProperty]
+    public string selectedSortProperty = "<none>";
 
-        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(SelectedSortProperty) || e.PropertyName == nameof(SelectedSortDirection))
-            {
-                SortChanged();
-            }
-        }
+    [ObservableProperty]
+    public ListSortDirection selectedSortDirection;
 
-        [RelayCommand]
-        private void SortChanged()
-        {
-            if (SelectedSortProperty != "<none>")
-            {
-                var property = typeof(Ingredient).GetProperty(SelectedSortProperty);
-                if (property != null)
-                {
-                    if (SelectedSortDirection == ListSortDirection.Ascending)
-                    {
-                        var sortedItems = SampleItems.OrderBy(x => property.GetValue(x)).ToList();
-                        SampleItems.Clear();
-                        foreach (var item in sortedItems)
-                        {
-                            SampleItems.Add(item);
-                        }
-                    }
-                    else
-                    {
-                        var sortedItems = SampleItems.OrderByDescending(x => property.GetValue(x)).ToList();
-                        SampleItems.Clear();
-                        foreach (var item in sortedItems)
-                        {
-                            SampleItems.Add(item);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                SampleItems.Clear();
-                foreach(var item in _originalOrder) 
-                {
-                    SampleItems.Add(item);
-                }
-            }
-        }
+    [ObservableProperty]
+    public int selectedPageSize = 5;
 
-        [ObservableProperty]
-        public string selectedSortProperty = "<none>";
+    [ObservableProperty]
+    public int currentPageNumber = 1;
 
-        [ObservableProperty]
-        public ListSortDirection selectedSortDirection;
+    [ObservableProperty]
+    public int totalPages;
+
+    public void OnNavigatedFrom()
+    {
     }
 }

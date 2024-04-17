@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,5 +10,5 @@ namespace BrewManager.Core.Contracts.Services;
 
 public interface IIngredientService
 {
-    public Task<List<Ingredient>> GetInventoryItemsAsync();
+    public Task<InventoryGetResponse> GetInventoryItemsAsync(int perPage, int page, string sort, ListSortDirection listSortDirection);
 }

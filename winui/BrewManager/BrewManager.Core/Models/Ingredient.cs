@@ -9,7 +9,7 @@ namespace BrewManager.Core.Models;
 
 public class Ingredient
 {
-    public string Id{
+    public int Id{
        get; set;
     }
     public string Name
