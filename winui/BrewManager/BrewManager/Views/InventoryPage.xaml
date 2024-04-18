@@ -91,7 +91,7 @@
 
                         <Ellipse Height="60" Width="60" Grid.Column="0" VerticalAlignment="Center">
                             <Ellipse.Fill>
-                                <ImageBrush ImageSource="{Binding ImageUrl}"/>
+                                <ImageBrush ImageSource="{x:Bind ImageUrl}"/>
                             </Ellipse.Fill>
                         </Ellipse>
 

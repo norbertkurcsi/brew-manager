@@ -49,7 +49,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
 
     public ObservableCollection<string> SortProperties { get; } = new ObservableCollection<string>();
     public ObservableCollection<ListSortDirection> SortDirections { get; } = new ObservableCollection<ListSortDirection>();
-    public ObservableCollection<int> PageSizes { get; } = new ObservableCollection<int> { 5, 10, 15 };
+    public ObservableCollection<int> PageSizes { get; } = new ObservableCollection<int> { 15, 50, 100 };
 
 
 
@@ -119,8 +119,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
             Id = null,
             Name = string.Empty,
             Threshold = 0,
-            Stock = 0,
-            ImageUrl = ImageUrl
+            Stock = 0
         };
         ImageUrl = _emptyImageUrl;
     }
@@ -135,6 +134,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
     {
         if (EditedIngredient == null) return;
 
+        EditedIngredient.ImageUrl = ImageUrl;
         if(string.IsNullOrWhiteSpace(EditedIngredient.Id))
         {
             _ingredientService.CreateIngredientAsync(EditedIngredient);
@@ -193,6 +193,10 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
         {
             IsFormVisible = Visibility.Visible;
             EditedIngredient = Selected;
+            if(EditedIngredient != null)
+            {
+                ImageUrl = EditedIngredient.ImageUrl;
+            }
             IsEdit = true;
             IsAdd = false;
         }
@@ -229,7 +233,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
     public ListSortDirection selectedSortDirection;
 
     [ObservableProperty]
-    public int selectedPageSize = 5;
+    public int selectedPageSize = 15;
 
     [ObservableProperty]
     public int currentPageNumber = 1;

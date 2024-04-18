@@ -12,7 +12,7 @@
       "name": "malt",
       "stock": 17,
       "threshold": 7,
-      "imageUrl": "https://picsum.photos/200"
+      "imageUrl": "asdasd"
     },
     {
       "id": "1",
@@ -26,7 +26,7 @@
       "name": "az",
       "stock": 52,
       "threshold": 7,
-      "imageUrl": "https://picsum.photos/200"
+      "imageUrl": "asdasd"
     },
     {
       "id": "11",
@@ -69,6 +69,20 @@
       "stock": 0,
       "threshold": 0,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/anonym.jpeg"
+    },
+    {
+      "id": "29eb",
+      "name": "",
+      "stock": 0,
+      "threshold": 0,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/6398eff7-3369-473b-83b9-39bcbab35854.jpg"
+    },
+    {
+      "id": "be2f",
+      "name": "",
+      "stock": 0,
+      "threshold": 0,
+      "imageUrl": "asdasd"
     }
   ],
   "recipes": [

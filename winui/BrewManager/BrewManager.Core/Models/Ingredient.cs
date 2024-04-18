@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BrewManager.Core.Models;
 
+
 public class Ingredient
 {
     public string Id{
@@ -23,6 +24,7 @@ public class Ingredient
     {
         get; set;
     }
+
     public string ImageUrl
     {
         get;
