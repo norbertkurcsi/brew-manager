@@ -5,7 +5,7 @@
       "name": "sor uj mezooo",
       "stock": 50,
       "threshold": 7,
-      "imageUrl": "asd"
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/95eaaf4b-6085-4305-9f12-8d99194d0d4f.jpg"
     },
     {
       "id": "5",
@@ -19,7 +19,7 @@
       "name": "ez",
       "stock": 106,
       "threshold": 7,
-      "imageUrl": "https://picsum.photos/200"
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/207a71d9-7a53-489a-96a6-1c04f48fb352.jpg"
     },
     {
       "id": "2",

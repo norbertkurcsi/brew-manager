@@ -119,7 +119,7 @@
                     <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center">
                         <Ellipse Height="120" Width="120">
                             <Ellipse.Fill>
-                                <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"/>
+                                <ImageBrush ImageSource="{x:Bind ViewModel.EditedIngredient.ImageUrl, Mode=OneWay}"/>
                             </Ellipse.Fill>
                         </Ellipse>
                         <Button VerticalAlignment="Center" Margin="5" Command="{x:Bind ViewModel.OpenFileCommand}">
@@ -130,7 +130,7 @@
                     <TextBox Text="{x:Bind ViewModel.EditedIngredient.Name, Mode=TwoWay}" Header="Name"/>
                     <NumberBox Value="{x:Bind ViewModel.EditedIngredient.Stock, Mode=TwoWay}" Header="Stock" />
                     <NumberBox Value="{x:Bind ViewModel.EditedIngredient.Threshold, Mode=TwoWay}" Header="Threshold"/>
-                    <TextBox Text="{x:Bind ViewModel.ImageUrl, Mode=TwoWay}" IsEnabled="False" Header="Image URL"/>
+                    <TextBox Text="{x:Bind ViewModel.EditedIngredient.ImageUrl, Mode=TwoWay}" IsEnabled="False" Header="Image URL"/>
                     <StackPanel Orientation="Horizontal">
                         <Button Content="Save" Margin="0,10,0,0" Command="{x:Bind ViewModel.SaveItemCommand}"/>
                         <Button Content="Delete" Margin="0,10,0,0" Command="{x:Bind ViewModel.DeleteItemCommand}"/>

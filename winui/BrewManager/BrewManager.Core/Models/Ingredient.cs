@@ -1,34 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace BrewManager.Core.Models;
 
 
-public class Ingredient
+public partial class Ingredient : ObservableObject
 {
-    public string Id{
-       get; set;
-    }
-    public string Name
-    {
-        get; set;
-    }
-    public double Stock
-    {
-        get; set;
-    }
-    public int Threshold
-    {
-        get; set;
-    }
+    [ObservableProperty]
+    public string id;
 
-    public string ImageUrl
-    {
-        get;
-        set;
-    }
+    [ObservableProperty]
+    public string name;
+
+    [ObservableProperty]
+    public double stock;
+
+    [ObservableProperty]
+    public int threshold;
+
+    [ObservableProperty]
+    public string imageUrl;
+
 }
 

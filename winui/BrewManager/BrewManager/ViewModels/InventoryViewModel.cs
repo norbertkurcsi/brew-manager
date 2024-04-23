@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Windows.Input;
 using BrewManager.Contracts.ViewModels;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
@@ -14,7 +11,6 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using WinRT.Interop;
-using CommunityToolkit.WinUI.Helpers;
 
 namespace BrewManager.ViewModels;
 
@@ -100,10 +96,10 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
 
         StorageFile file = await fileOpenPicker.PickSingleFileAsync();
 
-        if (file != null)
+        if (file != null && EditedIngredient != null)
         {
             var url = await _storageService.UploadIngredientImageAsync($"{Guid.NewGuid()}.jpg", await file.OpenStreamForReadAsync());
-            ImageUrl = url.ToString();
+            EditedIngredient.ImageUrl = url.ToString();
         }
     }
 
@@ -119,22 +115,16 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
             Id = null,
             Name = string.Empty,
             Threshold = 0,
-            Stock = 0
+            Stock = 0,
+            ImageUrl = "https://brewmanager.blob.core.windows.net/ingredients/anonym.jpeg"
         };
-        ImageUrl = _emptyImageUrl;
     }
-
-    [ObservableProperty]
-    private string imageUrl = _emptyImageUrl;
-
-    private static readonly string _emptyImageUrl = "https://brewmanager.blob.core.windows.net/ingredients/anonym.jpeg";
 
     [RelayCommand]
     private void SaveItem()
     {
         if (EditedIngredient == null) return;
 
-        EditedIngredient.ImageUrl = ImageUrl;
         if(string.IsNullOrWhiteSpace(EditedIngredient.Id))
         {
             _ingredientService.CreateIngredientAsync(EditedIngredient);
@@ -193,10 +183,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
         {
             IsFormVisible = Visibility.Visible;
             EditedIngredient = Selected;
-            if(EditedIngredient != null)
-            {
-                ImageUrl = EditedIngredient.ImageUrl;
-            }
+
             IsEdit = true;
             IsAdd = false;
         }
