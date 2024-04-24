@@ -5,9 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:BrewManager.Core.Models" 
-    xmlns:sys="using:System"
+    xmlns:sys="using:System" xmlns:converters="using:BrewManager.Converters"
     mc:Ignorable="d">
 
+
+    <Page.Resources>
+        <converters:StockThresholdToBrushConverter x:Key="StockThresholdToBrushConverter" />
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -83,7 +87,7 @@
                   Padding="20">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Ingredient">
-                    <Grid Height="90" Padding="5,15">
+                    <Grid Height="90" Padding="5,15" Background="{Binding Converter={StaticResource StockThresholdToBrushConverter}}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />

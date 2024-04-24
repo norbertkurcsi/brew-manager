@@ -2,9 +2,9 @@
   "inventory": [
     {
       "id": "4",
-      "name": "sor uj mezoooo",
-      "stock": 6,
-      "threshold": 5,
+      "name": "ztzthtzh",
+      "stock": 222,
+      "threshold": 100,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/95eaaf4b-6085-4305-9f12-8d99194d0d4f.jpg"
     },
     {
@@ -16,8 +16,8 @@
     },
     {
       "id": "1",
-      "name": "ez",
-      "stock": 106,
+      "name": "ezlélé",
+      "stock": 5,
       "threshold": 7,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/207a71d9-7a53-489a-96a6-1c04f48fb352.jpg"
     },
@@ -76,13 +76,6 @@
       "stock": 0,
       "threshold": 0,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/6398eff7-3369-473b-83b9-39bcbab35854.jpg"
-    },
-    {
-      "id": "be2f",
-      "name": "",
-      "stock": 0,
-      "threshold": 0,
-      "imageUrl": "asdasd"
     }
   ],
   "recipes": [
