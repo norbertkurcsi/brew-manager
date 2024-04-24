@@ -46,7 +46,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
     public ObservableCollection<string> SortProperties { get; } = new ObservableCollection<string>();
     public ObservableCollection<ListSortDirection> SortDirections { get; } = new ObservableCollection<ListSortDirection>();
     public ObservableCollection<int> PageSizes { get; } = new ObservableCollection<int> { 15, 50, 100 };
-
+    public ObservableCollection<string> ErrorList = new();
 
 
     public InventoryViewModel(IIngredientService ingredientService, IStorageService storageService)
@@ -114,13 +114,14 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
         {
             Id = null,
             Name = string.Empty,
-            Threshold = 0,
+            Threshold = 1,
             Stock = 0,
             ImageUrl = "https://brewmanager.blob.core.windows.net/ingredients/anonym.jpeg"
         };
+        editedIngredient.PropertyChanged += OnPropertyChanged;
     }
 
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(validateInputs))]
     private void SaveItem()
     {
         if (EditedIngredient == null) return;
@@ -182,12 +183,56 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
         } else if(e.PropertyName == nameof(Selected))
         {
             IsFormVisible = Visibility.Visible;
-            EditedIngredient = Selected;
-
+            if(Selected != null)
+            {
+                EditedIngredient = new Ingredient
+                {
+                    Id = Selected.Id,
+                    Name = Selected.Name,
+                    Stock = Selected.Stock,
+                    Threshold = Selected.Threshold,
+                    ImageUrl = Selected.ImageUrl
+                };
+                editedIngredient.PropertyChanged += OnPropertyChanged;
+            }
             IsEdit = true;
             IsAdd = false;
+            SaveItemCommand.NotifyCanExecuteChanged();
+        } else if(e.PropertyName == nameof(EditedIngredient.Name) || e.PropertyName == nameof(EditedIngredient.Stock) || e.PropertyName == nameof(EditedIngredient.Threshold))
+        {
+            SaveItemCommand.NotifyCanExecuteChanged();
+        }
+    }
+
+    private bool validateInputs()
+    {
+        if (EditedIngredient == null)
+        {
+            return false;
         }
 
+        var isValid = true;
+        ErrorList.Clear();
+
+        if (string.IsNullOrEmpty(EditedIngredient.Name) || EditedIngredient.Name.Length < 4)
+        {
+            isValid = false;
+            ErrorList.Add("Name of the recipe must be at least 4 characters long");
+        }
+
+        if (double.IsNaN(EditedIngredient.Stock) || EditedIngredient.Stock < 0)
+        {
+            isValid = false;
+            ErrorList.Add("Stock must be a positive decimal number");
+        }
+
+        if (double.IsNaN(EditedIngredient.Threshold) || EditedIngredient.Threshold < 1)
+        {
+            isValid = false;
+            ErrorList.Add("Threshold must be greater than 0");
+        }
+
+        return isValid;
     }
 
 

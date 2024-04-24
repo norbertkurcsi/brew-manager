@@ -127,14 +127,21 @@
                         </Button>
                     </StackPanel>
                     <TextBox Text="{x:Bind ViewModel.EditedIngredient.Id, Mode=TwoWay}" IsEnabled="False" Header="Id" Visibility="{x:Bind ViewModel.IsEdit, Mode=OneWay}"/>
-                    <TextBox Text="{x:Bind ViewModel.EditedIngredient.Name, Mode=TwoWay}" Header="Name"/>
-                    <NumberBox Value="{x:Bind ViewModel.EditedIngredient.Stock, Mode=TwoWay}" Header="Stock" />
-                    <NumberBox Value="{x:Bind ViewModel.EditedIngredient.Threshold, Mode=TwoWay}" Header="Threshold"/>
+                    <TextBox Text="{x:Bind ViewModel.EditedIngredient.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Name"/>
+                    <NumberBox Value="{x:Bind ViewModel.EditedIngredient.Stock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Stock" />
+                    <NumberBox Value="{x:Bind ViewModel.EditedIngredient.Threshold, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Threshold"/>
                     <TextBox Text="{x:Bind ViewModel.EditedIngredient.ImageUrl, Mode=TwoWay}" IsEnabled="False" Header="Image URL"/>
                     <StackPanel Orientation="Horizontal">
                         <Button Content="Save" Margin="0,10,0,0" Command="{x:Bind ViewModel.SaveItemCommand}"/>
                         <Button Content="Delete" Margin="0,10,0,0" Command="{x:Bind ViewModel.DeleteItemCommand}"/>
                     </StackPanel>
+                    <ItemsControl ItemsSource="{x:Bind ViewModel.ErrorList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Foreground="Red"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
