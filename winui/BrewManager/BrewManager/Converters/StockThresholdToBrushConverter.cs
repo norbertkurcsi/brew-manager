@@ -2,6 +2,7 @@
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
+using Windows.UI;
 
 
 
@@ -13,7 +14,7 @@ public class StockThresholdToBrushConverter : IValueConverter
     {
         if (value is Ingredient ingredient)
         {
-            return ingredient.Stock < ingredient.Threshold ? new SolidColorBrush() { Color = Colors.PaleVioletRed } : new SolidColorBrush() { Color = Colors.Transparent };
+            return ingredient.Stock < ingredient.Threshold ? new SolidColorBrush() { Color = Color.FromArgb(255,255,153,153) } : new SolidColorBrush() { Color = Colors.Transparent };
         }
 
         return new SolidColorBrush() { Color = Colors.Transparent };
