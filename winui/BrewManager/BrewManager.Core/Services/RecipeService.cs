@@ -41,7 +41,7 @@ public class RecipeService : IRecipeService
                 Id = recipeDto.Id,
                 Name = recipeDto.Name,
                 ImageUrl = recipeDto.ImageUrl,
-                Ingredients = new List<RecipeIngredient>()
+                Ingredients = new ObservableCollection<RecipeIngredient>()
             };
 
             foreach (var ingredientDto in recipeDto.Ingredients)

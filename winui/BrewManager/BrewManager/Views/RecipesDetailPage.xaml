@@ -42,9 +42,9 @@
                     <Image
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                        Source="{x:Bind ViewModel.Recipe.ImageUrl}"
+                        Source="{x:Bind ViewModel.Recipe.ImageUrl, Mode=OneWay}"
                         Stretch="UniformToFill"
-                        AutomationProperties.Name="{x:Bind ViewModel.Recipe.Name}" />
+                        AutomationProperties.Name="{x:Bind ViewModel.Recipe.Name, Mode=TwoWay}" />
                 </Grid>
 
                 <TextBlock
@@ -57,16 +57,16 @@
             </RelativePanel>
 
             <ScrollViewer Margin="12,12,12,0">
-                <ListView ItemsSource="{x:Bind ViewModel.Recipe.Ingredients}">
+                <ListView ItemsSource="{x:Bind ViewModel.Recipe.Ingredients, Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:RecipeIngredient">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
-                                <Image Source="{x:Bind Ingredient.ImageUrl}" Width="50" Height="50" Margin="0,0,12,0" />
-                                <TextBlock Text="{x:Bind Ingredient.Name}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}" />
+                                <Image Source="{x:Bind Ingredient.ImageUrl, Mode=OneWay}" Width="50" Height="50" Margin="0,0,12,0" />
+                                <TextBlock Text="{x:Bind Ingredient.Name, Mode=TwoWay}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}" />
                                 <Button Command="{Binding ElementName=ContentArea, Path=DataContext.AddAmountCommand}" CommandParameter="{Binding}" Margin="0,0,6,0">
                                     <SymbolIcon Symbol="Add"/>
                                 </Button>
-                                <TextBlock Text="{x:Bind Amount}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,0,6,0" />
+                                <TextBlock Text="{x:Bind Amount, Mode=TwoWay}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,0,6,0" />
                                 <Button Command="{Binding ElementName=ContentArea, Path=DataContext.RemoveAmountCommand}" CommandParameter="{Binding}" Margin="0,0,6,0">
                                     <SymbolIcon Symbol="Remove"/>
                                 </Button>

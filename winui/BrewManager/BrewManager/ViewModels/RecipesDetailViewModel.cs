@@ -1,4 +1,5 @@
-﻿using BrewManager.Contracts.ViewModels;
+﻿using System.ComponentModel;
+using BrewManager.Contracts.ViewModels;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
 
@@ -16,6 +17,12 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
     public RecipesDetailViewModel(IRecipeService recipeService)
     {
         this.recipeService = recipeService;
+        PropertyChanged += OnPropertyChanged;
+    }
+
+    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        var asd = 0;
     }
 
     public void OnNavigatedTo(object parameter)
@@ -30,6 +37,7 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
     private void AddAmount(RecipeIngredient ingredient)
     {
         ingredient.Amount += 1;
+        IngredientsChanged();
     }
 
     [RelayCommand]
@@ -38,6 +46,18 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         if(ingredient.Amount >= 1 )
         {
             ingredient.Amount -= 1;
+            IngredientsChanged();
+        }
+    }
+
+    private void IngredientsChanged()
+    {
+        if(Recipe == null) { return; }
+        var old = Recipe.Ingredients;
+        Recipe.Ingredients = new();
+        foreach( var ingredient in old )
+        {
+            Recipe.Ingredients.Add( ingredient );
         }
     }
 

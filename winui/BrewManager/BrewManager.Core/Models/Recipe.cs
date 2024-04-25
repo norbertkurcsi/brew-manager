@@ -1,26 +1,21 @@
 ﻿
 
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace BrewManager.Core.Models;
 
-public class Recipe
+public partial class Recipe: ObservableObject
 {
-    public string Id
-    {
-        get; set;
-    }
-    public string Name
-    {
-        get; set;
-    }
-    public string ImageUrl
-    {
-        get; set;
-    }
+    [ObservableProperty]
+    public string id;
+    [ObservableProperty]
+    public string name;
+    [ObservableProperty]
+    public string imageUrl;
 
-    public List<RecipeIngredient> Ingredients
-    {
-        get; set;
-    }
+    [ObservableProperty]
+    public ObservableCollection<RecipeIngredient> ingredients;
 }
 
 public class RecipeGetDto
