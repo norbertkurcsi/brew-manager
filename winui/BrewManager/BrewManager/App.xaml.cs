@@ -67,6 +67,7 @@ public partial class App : Application
             services.AddSingleton<ISampleDataService, SampleDataService>();
             services.AddSingleton<IFileService, FileService>();
             services.AddTransient<IIngredientService, IngredientService>();
+            services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<IStorageService, StorageService>();
 
             // Views and ViewModels

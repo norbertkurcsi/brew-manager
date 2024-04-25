@@ -12,12 +12,12 @@
       "name": "malt",
       "stock": 17,
       "threshold": 7,
-      "imageUrl": "asdasd"
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/3c1227ce-d42c-4a94-98d1-cc939d645eca.jpg"
     },
     {
       "id": "1",
-      "name": "ezlélé",
-      "stock": 5,
+      "name": "ezededed",
+      "stock": 78,
       "threshold": 7,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/207a71d9-7a53-489a-96a6-1c04f48fb352.jpg"
     },
@@ -72,7 +72,7 @@
     },
     {
       "id": "29eb",
-      "name": "",
+      "name": "https://picsum.photos/200",
       "stock": 0,
       "threshold": 0,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/6398eff7-3369-473b-83b9-39bcbab35854.jpg"
@@ -82,6 +82,7 @@
     {
       "id": "1",
       "name": "Crazy racoon",
+      "imageUrl": "https://picsum.photos/200",
       "ingredients": [
         {
           "id": "2",
@@ -112,6 +113,7 @@
     {
       "id": "2",
       "name": "Fincsa mincsa",
+      "imageUrl": "https://picsum.photos/200",
       "ingredients": [
         {
           "id": "2",
@@ -142,6 +144,7 @@
     {
       "id": "3",
       "name": "Barna sorocske",
+      "imageUrl": "https://picsum.photos/200",
       "ingredients": [
         {
           "id": "2",
@@ -172,6 +175,7 @@
     {
       "id": "5",
       "name": "Safe recipe",
+      "imageUrl": "https://picsum.photos/200",
       "ingredients": [
         {
           "id": "18",
@@ -190,6 +194,7 @@
     {
       "id": "0",
       "name": "Valami új",
+      "imageUrl": "https://picsum.photos/200",
       "ingredients": [
         {
           "id": "4",

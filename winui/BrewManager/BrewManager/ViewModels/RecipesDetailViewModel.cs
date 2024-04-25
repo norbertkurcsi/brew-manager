@@ -3,27 +3,41 @@ using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace BrewManager.ViewModels;
 
 public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAware
 {
-    private readonly ISampleDataService _sampleDataService;
-
     [ObservableProperty]
-    private SampleOrder? item;
+    private Recipe? recipe;
+    private readonly IRecipeService recipeService;
 
-    public RecipesDetailViewModel(ISampleDataService sampleDataService)
+    public RecipesDetailViewModel(IRecipeService recipeService)
     {
-        _sampleDataService = sampleDataService;
+        this.recipeService = recipeService;
     }
 
-    public async void OnNavigatedTo(object parameter)
+    public void OnNavigatedTo(object parameter)
     {
-        if (parameter is long orderID)
+        if (parameter is Recipe recipeParam)
         {
-            var data = await _sampleDataService.GetContentGridDataAsync();
-            Item = data.First(i => i.OrderID == orderID);
+            Recipe = recipeParam;
+        }
+    }
+
+    [RelayCommand]
+    private void AddAmount(RecipeIngredient ingredient)
+    {
+        ingredient.Amount += 1;
+    }
+
+    [RelayCommand]
+    private void RemoveAmount(RecipeIngredient ingredient)
+    {
+        if(ingredient.Amount >= 1 )
+        {
+            ingredient.Amount -= 1;
         }
     }
 

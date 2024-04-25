@@ -34,9 +34,9 @@ public sealed partial class RecipesDetailPage : Page
         {
             var navigationService = App.GetService<INavigationService>();
 
-            if (ViewModel.Item != null)
+            if (ViewModel.Recipe != null)
             {
-                navigationService.SetListDataItemForNextConnectedAnimation(ViewModel.Item);
+                navigationService.SetListDataItemForNextConnectedAnimation(ViewModel.Recipe);
             }
         }
     }

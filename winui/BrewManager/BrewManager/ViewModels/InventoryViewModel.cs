@@ -154,7 +154,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
     {
         SampleItems.Clear();
 
-        var data = await _ingredientService.GetInventoryItemsAsync(SelectedPageSize, CurrentPageNumber, SelectedSortProperty, SelectedSortDirection);
+        var data = await _ingredientService.GetInventoryItemsPagedAsync(SelectedPageSize, CurrentPageNumber, SelectedSortProperty, SelectedSortDirection);
         TotalPages = data.Pages;
 
         foreach (var item in data.Data)

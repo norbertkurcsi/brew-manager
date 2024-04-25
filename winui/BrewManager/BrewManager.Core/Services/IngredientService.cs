@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
 
+
 namespace BrewManager.Core.Services;
 public class IngredientService : IIngredientService
 {
-    private readonly string _baseUrl = "http://localhost:3000";
-
     public event EventHandler<SnackbarEventArgs> RequestResult;
 
     private void OnRequestResult(string message, bool isSuccess)
@@ -20,11 +19,11 @@ public class IngredientService : IIngredientService
         RequestResult?.Invoke(this, new SnackbarEventArgs(message, isSuccess));
     }
 
-    public async Task<InventoryGetResponse> GetInventoryItemsAsync(int perPage, int page, string sort, ListSortDirection listSortDirection)
+    public async Task<InventoryGetResponse> GetInventoryItemsPagedAsync(int perPage, int page, string sort, ListSortDirection listSortDirection)
     {
         using var client = new HttpClient();
 
-        UriBuilder uriBuilder = new UriBuilder($"{_baseUrl}/inventory")
+        UriBuilder uriBuilder = new UriBuilder($"{Secrets.BaseUrl}/inventory")
         {
             Query = $"_page={page}&_per_page={perPage}"
         };
@@ -43,11 +42,17 @@ public class IngredientService : IIngredientService
         return await client.GetFromJsonAsync<InventoryGetResponse>(uriBuilder.Uri);
     }
 
+    public async Task<List<Ingredient>> GetInventoryItemsAsync()
+    {
+        using var client = new HttpClient();
+        return await client.GetFromJsonAsync<List<Ingredient>>($"{Secrets.BaseUrl}/inventory");
+    }
+
     public async Task UpdateIngredientAsync(Ingredient ingredient)
     {
         using var client = new HttpClient();
 
-        var response = await client.PatchAsJsonAsync($"{_baseUrl}/inventory/{ingredient.Id}", ingredient);
+        var response = await client.PatchAsJsonAsync($"{Secrets.BaseUrl}/inventory/{ingredient.Id}", ingredient);
 
         if (!response.IsSuccessStatusCode)
         {
@@ -70,7 +75,7 @@ public class IngredientService : IIngredientService
         };
         using var client = new HttpClient();
 
-        var response = await client.PostAsJsonAsync($"{_baseUrl}/inventory", postIngredient);
+        var response = await client.PostAsJsonAsync($"{Secrets.BaseUrl}/inventory", postIngredient);
 
         if (!response.IsSuccessStatusCode)
         {
@@ -86,7 +91,7 @@ public class IngredientService : IIngredientService
     {
         using var client = new HttpClient();
 
-        var response = await client.DeleteAsync($"{_baseUrl}/inventory/{id}");
+        var response = await client.DeleteAsync($"{Secrets.BaseUrl}/inventory/{id}");
 
         if (!response.IsSuccessStatusCode)
         {

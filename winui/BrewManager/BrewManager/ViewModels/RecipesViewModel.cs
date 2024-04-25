@@ -14,22 +14,21 @@ namespace BrewManager.ViewModels;
 public partial class RecipesViewModel : ObservableRecipient, INavigationAware
 {
     private readonly INavigationService _navigationService;
-    private readonly ISampleDataService _sampleDataService;
+    private readonly IRecipeService _recipeService;
 
-    public ObservableCollection<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
+    public ObservableCollection<Recipe> Source { get; } = new ObservableCollection<Recipe>();
 
-    public RecipesViewModel(INavigationService navigationService, ISampleDataService sampleDataService)
+    public RecipesViewModel(INavigationService navigationService, IRecipeService recipeService)
     {
         _navigationService = navigationService;
-        _sampleDataService = sampleDataService;
+        _recipeService = recipeService;
     }
 
     public async void OnNavigatedTo(object parameter)
     {
         Source.Clear();
 
-        // TODO: Replace with real data.
-        var data = await _sampleDataService.GetContentGridDataAsync();
+        var data = await _recipeService.GetRecipesAsync();
         foreach (var item in data)
         {
             Source.Add(item);
@@ -41,12 +40,12 @@ public partial class RecipesViewModel : ObservableRecipient, INavigationAware
     }
 
     [RelayCommand]
-    private void OnItemClick(SampleOrder? clickedItem)
+    private void OnItemClick(Recipe? clickedItem)
     {
         if (clickedItem != null)
         {
             _navigationService.SetListDataItemForNextConnectedAnimation(clickedItem);
-            _navigationService.NavigateTo(typeof(RecipesDetailViewModel).FullName!, clickedItem.OrderID);
+            _navigationService.NavigateTo(typeof(RecipesDetailViewModel).FullName!, clickedItem);
         }
     }
 }
