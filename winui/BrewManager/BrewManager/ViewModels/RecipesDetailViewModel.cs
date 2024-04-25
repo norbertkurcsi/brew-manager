@@ -37,7 +37,7 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
     private void AddAmount(RecipeIngredient ingredient)
     {
         ingredient.Amount += 1;
-        IngredientsChanged();
+        IngredientChanged(ingredient.Ingredient.Id);
     }
 
     [RelayCommand]
@@ -46,19 +46,20 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         if(ingredient.Amount >= 1 )
         {
             ingredient.Amount -= 1;
-            IngredientsChanged();
+            IngredientChanged(ingredient.Ingredient.Id);
         }
     }
 
-    private void IngredientsChanged()
+    private void IngredientChanged(string id)
     {
         if(Recipe == null) { return; }
-        var old = Recipe.Ingredients;
-        Recipe.Ingredients = new();
-        foreach( var ingredient in old )
+        var old = Recipe.Ingredients.FirstOrDefault(ing => ing.Ingredient.Id == id);
+        var index = Recipe.Ingredients.IndexOf(old);
+        Recipe.Ingredients[index] = new RecipeIngredient
         {
-            Recipe.Ingredients.Add( ingredient );
-        }
+            Ingredient = old.Ingredient,
+            Amount = old.Amount
+        };
     }
 
     public void OnNavigatedFrom()

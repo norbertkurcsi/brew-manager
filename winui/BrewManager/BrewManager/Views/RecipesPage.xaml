@@ -10,7 +10,23 @@
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Recipes" FontWeight="Bold" FontSize="30" VerticalAlignment="Center" Margin="10,20,40,30"/>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Background="LightGreen">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                <SymbolIcon Symbol="Add"/>
+                <TextBlock Margin="5,0,0,0">Add new</TextBlock>
+            </StackPanel>
+        </Button>
         <controls:AdaptiveGridView
+            Grid.Row="1" Grid.ColumnSpan="2"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
             DesiredWidth="180"
