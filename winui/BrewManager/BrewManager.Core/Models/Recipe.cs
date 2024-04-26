@@ -38,6 +38,22 @@ public class RecipeGetDto
     }
 }
 
+public class RecipePostDto
+{
+    public string Name
+    {
+        get; set;
+    }
+    public string ImageUrl
+    {
+        get; set;
+    }
+    public List<RecipeIngredientHeader> Ingredients
+    {
+        get; set;
+    }
+}
+
 public class RecipeIngredientHeader
 {
     public string Id

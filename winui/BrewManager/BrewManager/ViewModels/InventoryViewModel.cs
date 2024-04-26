@@ -88,7 +88,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
         FileOpenPicker fileOpenPicker = new()
         {
             ViewMode = PickerViewMode.Thumbnail,
-            FileTypeFilter = { ".jpg", ".jpeg", ".png" },
+            FileTypeFilter = { ".jpg"},
         };
 
         var windowHandle = WindowNative.GetWindowHandle(App.MainWindow);

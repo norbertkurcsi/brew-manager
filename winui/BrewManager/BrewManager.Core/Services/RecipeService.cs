@@ -19,6 +19,12 @@ public class RecipeService : IRecipeService
         this.ingredientService = ingredientService;
     }
 
+    public async Task DeleteRecipeAsync(string id)
+    {
+        using var client = new HttpClient();
+        await client.DeleteAsync($"{Secrets.BaseUrl}/recipes/{id}");
+    }
+
     public async Task<List<Recipe>> GetRecipesAsync()
     {
         using var client = new HttpClient();
@@ -27,6 +33,12 @@ public class RecipeService : IRecipeService
 
         var recipes = mapFromRecipeDtosAndIngredients(recipeDtos, ingredients);
         return recipes;
+    }
+
+    public async Task PostRecipeAsync(RecipePostDto recipe)
+    {
+        using var client = new HttpClient();
+        await client.PostAsJsonAsync($"{Secrets.BaseUrl}/recipes", recipe);
     }
 
     private List<Recipe> mapFromRecipeDtosAndIngredients(List<RecipeGetDto> recipeDtos, List<Ingredient> ingredients)

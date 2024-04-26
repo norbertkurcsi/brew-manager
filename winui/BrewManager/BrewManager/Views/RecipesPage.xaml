@@ -9,7 +9,7 @@
     xmlns:models="using:BrewManager.Core.Models"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea">
+    <Grid x:Name="ContentArea" DataContext="{x:Bind ViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -19,7 +19,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Recipes" FontWeight="Bold" FontSize="30" VerticalAlignment="Center" Margin="10,20,40,30"/>
-        <Button Grid.Column="1" HorizontalAlignment="Left" Background="LightGreen">
+        <Button Grid.Column="1" HorizontalAlignment="Left" Background="LightGreen" Command="{x:Bind ViewModel.AddButtonClickedCommand}">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                 <SymbolIcon Symbol="Add"/>
                 <TextBlock Margin="5,0,0,0">Add new</TextBlock>
@@ -46,9 +46,21 @@
                             Padding="10,0,0,0"
                             VerticalAlignment="Bottom"
                             Background="#88000000">
-                            <TextBlock VerticalAlignment="Center"
-                                   Foreground="White"
-                                   Text="{x:Bind Name}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Text="{x:Bind Name}" />
+                                <Button Grid.Column="1" 
+                                        Background="Transparent"
+                                        Command="{Binding ElementName=ContentArea, Path=DataContext.DeleteRecipeCommand}" 
+                                        CommandParameter="{Binding}">
+                                    <SymbolIcon Symbol="Delete" Foreground="White"/>
+                                </Button>
+                            </Grid>
                         </Border>
                     </Grid>
                 </DataTemplate>

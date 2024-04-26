@@ -8,4 +8,5 @@ namespace BrewManager.Core.Models;
 public interface IStorageService
 {
     public Task<Uri> UploadIngredientImageAsync(string fileName, Stream stream);
+    public Task<Uri> UploadRecipeImageAsync(string fileName, Stream stream);
 }

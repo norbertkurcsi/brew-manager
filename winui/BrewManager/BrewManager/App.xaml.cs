@@ -59,6 +59,7 @@ public partial class App : Application
             // Services
             services.AddTransient<INavigationViewService, NavigationViewService>();
 
+            services.AddSingleton<INewRecipeDialogService, NewRecipeDialogService>();
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();

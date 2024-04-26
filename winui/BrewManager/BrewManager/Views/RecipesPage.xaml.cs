@@ -1,10 +1,15 @@
 ﻿using BrewManager.ViewModels;
-
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace BrewManager.Views;
 
-public sealed partial class RecipesPage : Page
+public interface IXamlRoot
+{
+    public XamlRoot GetXamlRoot();
+}
+
+public sealed partial class RecipesPage : Page, IXamlRoot
 {
     public RecipesViewModel ViewModel
     {
@@ -14,6 +19,12 @@ public sealed partial class RecipesPage : Page
     public RecipesPage()
     {
         ViewModel = App.GetService<RecipesViewModel>();
+        ViewModel.XamlRoot = this;
         InitializeComponent();
+    }
+
+    public XamlRoot GetXamlRoot()
+    {
+        return XamlRoot;
     }
 }

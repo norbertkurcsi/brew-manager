@@ -15,4 +15,12 @@ public class StorageService : IStorageService
         await blobClient.UploadAsync(stream, true);
         return blobClient.Uri;
     }
+
+    public async Task<Uri> UploadRecipeImageAsync(string fileName, Stream stream)
+    {
+        var containerClient = _blobServiceClient.GetBlobContainerClient("recipes");
+        BlobClient blobClient = containerClient.GetBlobClient(fileName);
+        await blobClient.UploadAsync(stream, true);
+        return blobClient.Uri;
+    }
 }
