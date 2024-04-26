@@ -28,11 +28,36 @@ public class RecipeService : IRecipeService
     public async Task<List<Recipe>> GetRecipesAsync()
     {
         using var client = new HttpClient();
-        var recipeDtos = await client.GetFromJsonAsync<List<RecipeGetDto>>($"{Secrets.BaseUrl}/recipes");
+        var recipeDtos = await client.GetFromJsonAsync<List<RecipeDto>>($"{Secrets.BaseUrl}/recipes");
         var ingredients = await ingredientService.GetInventoryItemsAsync();
 
         var recipes = mapFromRecipeDtosAndIngredients(recipeDtos, ingredients);
         return recipes;
+    }
+
+    public async Task ModifyRecipeAsync(Recipe recipe)
+    {
+        using var client = new HttpClient();
+        var recipeDto = mapRecipeToRecipeDto(recipe);
+        await client.PatchAsJsonAsync($"{Secrets.BaseUrl}/recipes/{recipe.Id}", recipeDto);
+    }
+
+    private RecipeDto mapRecipeToRecipeDto(Recipe recipe)
+    {
+        var result = new RecipeDto()
+        {
+            Id = recipe.Id,
+            Name = recipe.Name,
+            ImageUrl = recipe.ImageUrl,
+            Ingredients = new()
+        };
+
+        foreach(var ingredient in recipe.Ingredients)
+        {
+            result.Ingredients.Add(new RecipeIngredientHeader { Amount = ingredient.Amount, Id = ingredient.Ingredient.Id });
+        }
+
+        return result;
     }
 
     public async Task PostRecipeAsync(RecipePostDto recipe)
@@ -41,7 +66,7 @@ public class RecipeService : IRecipeService
         await client.PostAsJsonAsync($"{Secrets.BaseUrl}/recipes", recipe);
     }
 
-    private List<Recipe> mapFromRecipeDtosAndIngredients(List<RecipeGetDto> recipeDtos, List<Ingredient> ingredients)
+    private List<Recipe> mapFromRecipeDtosAndIngredients(List<RecipeDto> recipeDtos, List<Ingredient> ingredients)
     {
 
         var recipes = new List<Recipe>();

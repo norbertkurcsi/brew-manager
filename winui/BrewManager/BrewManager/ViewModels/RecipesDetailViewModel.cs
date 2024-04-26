@@ -1,8 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using BrewManager.Contracts.ViewModels;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
-
+using BrewManager.Helpers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -12,25 +13,60 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
 {
     [ObservableProperty]
     private Recipe? recipe;
+    private Recipe? originalRecipe;
     private readonly IRecipeService recipeService;
+    private readonly IIngredientService ingredientService;
 
-    public RecipesDetailViewModel(IRecipeService recipeService)
+    public ObservableCollection<Ingredient> Ingredients = new();
+
+    [ObservableProperty]
+    private Ingredient? selectedIngredient;
+
+
+    public RecipesDetailViewModel(IRecipeService recipeService, IIngredientService ingredientService)
     {
         this.recipeService = recipeService;
-        PropertyChanged += OnPropertyChanged;
+        this.ingredientService = ingredientService;
     }
 
-    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        var asd = 0;
-    }
 
-    public void OnNavigatedTo(object parameter)
+    public async void OnNavigatedTo(object parameter)
     {
         if (parameter is Recipe recipeParam)
         {
-            Recipe = recipeParam;
+            originalRecipe = recipeParam;
+            Recipe = DeepCopyHelper.DeepClone(recipeParam);
+            Ingredients.Clear();
+            foreach (var ingredient in await ingredientService.GetInventoryItemsAsync())
+            {
+                Ingredients.Add(ingredient);
+            }
+
+            foreach(var ingredient in Recipe.Ingredients)
+            {
+                var toRemove = Ingredients.FirstOrDefault(i => i.Id == ingredient.Ingredient.Id);
+                if (toRemove != null)
+                    Ingredients.Remove(toRemove);
+            }
+
+            SelectedIngredient = Ingredients.FirstOrDefault();
         }
+    }
+
+    [RelayCommand]
+    private void AddIngredient()
+    {
+        if (Recipe == null) return;
+
+        Recipe.Ingredients.Add(new RecipeIngredient
+        {
+            Ingredient = DeepCopyHelper.DeepClone(SelectedIngredient),
+            Amount = 0
+        });
+        Ingredients.Remove(SelectedIngredient);
+        SelectedIngredient = Ingredients.FirstOrDefault();
+
+        SaveRecipeCommand.NotifyCanExecuteChanged();
     }
 
     [RelayCommand]
@@ -38,6 +74,7 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
     {
         ingredient.Amount += 1;
         IngredientChanged(ingredient.Ingredient.Id);
+        SaveRecipeCommand.NotifyCanExecuteChanged();
     }
 
     [RelayCommand]
@@ -47,7 +84,52 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         {
             ingredient.Amount -= 1;
             IngredientChanged(ingredient.Ingredient.Id);
+            SaveRecipeCommand.NotifyCanExecuteChanged();
         }
+    }
+
+    [RelayCommand]
+    private void RemoveIngredient(RecipeIngredient ingredient)
+    {
+        if (Recipe == null) return;
+        Recipe.Ingredients.Remove(ingredient);
+        Ingredients.Add(ingredient.Ingredient);
+        SaveRecipeCommand.NotifyCanExecuteChanged();
+    }
+
+    [RelayCommand(CanExecute = nameof(isRecipeModified))]
+    private async void SaveRecipe()
+    {
+        await recipeService.ModifyRecipeAsync(Recipe);
+        originalRecipe = DeepCopyHelper.DeepClone(Recipe);
+        SaveRecipeCommand.NotifyCanExecuteChanged();
+    }
+
+    private bool isRecipeModified()
+    {
+        if (originalRecipe == null || Recipe == null)
+            return false;
+
+        if (originalRecipe.Ingredients.Count != Recipe.Ingredients.Count)
+            return true;
+
+        Dictionary<string, float> ingredientAmounts = new Dictionary<string, float>();
+
+        foreach (var ingredient in originalRecipe.Ingredients)
+        {
+            ingredientAmounts[ingredient.Ingredient.Id] = ingredient.Amount;
+        }
+
+        foreach (var ingredient in Recipe.Ingredients)
+        {
+            if (!ingredientAmounts.ContainsKey(ingredient.Ingredient.Id) ||
+                !EqualityComparer<float>.Default.Equals(ingredientAmounts[ingredient.Ingredient.Id], ingredient.Amount))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void IngredientChanged(string id)

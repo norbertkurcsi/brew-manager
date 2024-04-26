@@ -11,4 +11,5 @@ public interface IRecipeService
     public Task<List<Recipe>> GetRecipesAsync();
     public Task PostRecipeAsync(RecipePostDto recipe);
     public Task DeleteRecipeAsync(string id);
+    public Task ModifyRecipeAsync(Recipe recipe);
 }

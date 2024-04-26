@@ -54,7 +54,6 @@ public partial class RecipesViewModel : ObservableRecipient, INavigationAware
     {
         ContentDialog dialog = new ContentDialog();
 
-        // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
         dialog.XamlRoot = XamlRoot.GetXamlRoot();
         dialog.Title = "Add new recipe";
         dialog.PrimaryButtonText = "Save";

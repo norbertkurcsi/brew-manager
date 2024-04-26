@@ -18,7 +18,7 @@ public partial class Recipe: ObservableObject
     public ObservableCollection<RecipeIngredient> ingredients;
 }
 
-public class RecipeGetDto
+public class RecipeDto
 {
     public string Id
     {

@@ -47,13 +47,30 @@
                         AutomationProperties.Name="{x:Bind ViewModel.Recipe.Name, Mode=TwoWay}" />
                 </Grid>
 
-                <TextBlock
-                    x:Name="title"
-                    Margin="{StaticResource XXSmallTopMargin}"
-                    RelativePanel.AlignTopWithPanel="True"
-                    RelativePanel.RightOf="itemHero"
-                    Style="{ThemeResource TitleTextBlockStyle}"
-                    Text="{x:Bind ViewModel.Recipe.Name, Mode=OneWay}" />
+                <StackPanel Orientation="Vertical"
+                            RelativePanel.AlignTopWithPanel="True"
+                            RelativePanel.RightOf="itemHero">
+                    <TextBlock
+                        x:Name="title"
+                        Margin="{StaticResource XXSmallTopMargin}"
+                        Style="{ThemeResource TitleTextBlockStyle}"
+                        Text="{x:Bind ViewModel.Recipe.Name, Mode=OneWay}" />
+                    <Button Command="{x:Bind ViewModel.SaveRecipeCommand}" Margin="0,0,6,0">
+                        <SymbolIcon Symbol="Save"/>
+                    </Button>
+                    <ComboBox
+                        ItemsSource="{x:Bind ViewModel.Ingredients, Mode=TwoWay}"
+                        SelectedItem="{x:Bind ViewModel.SelectedIngredient, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Ingredient">
+                                <TextBlock Text="{x:Bind Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                     <Button Command="{x:Bind ViewModel.AddIngredientCommand}" Margin="0,0,6,0">
+                        <SymbolIcon Symbol="Add"/>
+                    </Button>
+                </StackPanel>
             </RelativePanel>
 
             <ScrollViewer Margin="12,12,12,0">
@@ -69,6 +86,9 @@
                                 <TextBlock Text="{x:Bind Amount, Mode=TwoWay}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,0,6,0" />
                                 <Button Command="{Binding ElementName=ContentArea, Path=DataContext.RemoveAmountCommand}" CommandParameter="{Binding}" Margin="0,0,6,0">
                                     <SymbolIcon Symbol="Remove"/>
+                                </Button>
+                                <Button Command="{Binding ElementName=ContentArea, Path=DataContext.RemoveIngredientCommand}" CommandParameter="{Binding}" Margin="0,0,6,0">
+                                    <SymbolIcon Symbol="Delete"/>
                                 </Button>
                             </StackPanel>
                         </DataTemplate>
