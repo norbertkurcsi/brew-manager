@@ -41,15 +41,11 @@ public class ScheduledBrewingDto
 
 public class ScheduledBrewingPostDto
 {
-    public string Id
-    {
-        get; set;
-    }
     public string Recipe
     {
         get; set;
     }
-    public DateTime Date
+    public DateTimeOffset Date
     {
         get; set;
     }

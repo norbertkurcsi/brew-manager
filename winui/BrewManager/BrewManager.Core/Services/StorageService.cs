@@ -1,5 +1,5 @@
 ﻿using Azure.Storage.Blobs;
-using BrewManager.Core.Models;
+using BrewManager.Core.Contracts.Services;
 
 namespace BrewManager.Core.Services;
 

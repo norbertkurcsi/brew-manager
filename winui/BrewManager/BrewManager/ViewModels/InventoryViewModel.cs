@@ -163,12 +163,6 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
         }
     }
 
-    
-
-    public void EnsureItemSelected()
-    {
-        //Selected ??= SampleItems.First();
-    }
 
     private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
     {

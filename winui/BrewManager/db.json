@@ -3,63 +3,63 @@
     {
       "id": "4",
       "name": "ztzthtzh",
-      "stock": 222,
+      "stock": 223.0900001525879,
       "threshold": 100,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/95eaaf4b-6085-4305-9f12-8d99194d0d4f.jpg"
     },
     {
       "id": "5",
       "name": "malt",
-      "stock": 17,
+      "stock": 15,
       "threshold": 2222,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/3c1227ce-d42c-4a94-98d1-cc939d645eca.jpg"
     },
     {
       "id": "1",
       "name": "ezededed",
-      "stock": 78,
+      "stock": 64,
       "threshold": 100,
       "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/207a71d9-7a53-489a-96a6-1c04f48fb352.jpg"
     },
     {
       "id": "2",
       "name": "az",
-      "stock": 52,
+      "stock": 55,
       "threshold": 7,
       "imageUrl": "asdasd"
     },
     {
       "id": "11",
       "name": "malt",
-      "stock": 23,
+      "stock": 17,
       "threshold": 7,
       "imageUrl": "https://picsum.photos/200"
     },
     {
       "id": "14",
       "name": "barmi",
-      "stock": 64,
+      "stock": 65,
       "threshold": 2,
       "imageUrl": "https://picsum.photos/200"
     },
     {
       "id": "15",
       "name": "barmi",
-      "stock": 31,
+      "stock": 24,
       "threshold": 10,
       "imageUrl": "https://picsum.photos/200"
     },
     {
       "id": "16",
       "name": "asd",
-      "stock": 97.198,
+      "stock": 78.99799923706054,
       "threshold": 3,
       "imageUrl": "https://picsum.photos/200"
     },
     {
       "id": "17",
       "name": "dfdgf",
-      "stock": 100,
+      "stock": 70,
       "threshold": 4,
       "imageUrl": "https://picsum.photos/200"
     },
@@ -195,18 +195,6 @@
       ]
     },
     {
-      "id": "23b8",
-      "name": "",
-      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/2495c9ff-92cc-4131-bd84-9e1fdbf46724.jpg",
-      "ingredients": []
-    },
-    {
-      "id": "9189",
-      "name": "",
-      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/a1db3825-b702-4420-bfa0-030a27a3bd89.jpg",
-      "ingredients": []
-    },
-    {
       "id": "8db4",
       "name": "",
       "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/55762196-dcba-44c4-a44f-65f1ef05613c.jpg",
@@ -275,19 +263,9 @@
   ],
   "scheduled-brews": [
     {
-      "id": "8",
+      "id": "8475",
       "recipe": "2",
-      "date": 1679788800000
-    },
-    {
-      "id": "10",
-      "recipe": "3",
-      "date": 1680220800000
-    },
-    {
-      "id": "11",
-      "recipe": "3",
-      "date": 1680220800000
+      "date": "2024-04-27T16:52:13.2786873+02:00"
     }
   ],
   "users": [

@@ -18,12 +18,4 @@ public sealed partial class InventoryPage : Page
         ViewModel = App.GetService<InventoryViewModel>();
         InitializeComponent();
     }
-
-    private void OnViewStateChanged(object sender, ListDetailsViewState e)
-    {
-        if (e == ListDetailsViewState.Both)
-        {
-            ViewModel.EnsureItemSelected();
-        }
-    }
 }

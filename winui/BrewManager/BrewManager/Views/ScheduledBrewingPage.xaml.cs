@@ -18,12 +18,4 @@ public sealed partial class ScheduledBrewingPage : Page
         ViewModel = App.GetService<ScheduledBrewingViewModel>();
         InitializeComponent();
     }
-
-    private void OnViewStateChanged(object sender, ListDetailsViewState e)
-    {
-        if (e == ListDetailsViewState.Both)
-        {
-            ViewModel.EnsureItemSelected();
-        }
-    }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewManager.Core.Models;
+namespace BrewManager.Core.Contracts.Services;
 public interface IStorageService
 {
     public Task<Uri> UploadIngredientImageAsync(string fileName, Stream stream);
