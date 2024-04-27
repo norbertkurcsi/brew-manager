@@ -5,6 +5,7 @@ using BrewManager.Contracts.Services;
 using BrewManager.Contracts.ViewModels;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
+using BrewManager.Core.Services;
 using BrewManager.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -18,6 +19,9 @@ public partial class RecipesViewModel : ObservableRecipient, INavigationAware
     private readonly INavigationService _navigationService;
     private readonly IRecipeService _recipeService;
     private readonly INewRecipeDialogService newRecipeDialogService;
+    private readonly ILoginService loginService;
+    [ObservableProperty]
+    private bool isLoggedIn = false;
 
     public ObservableCollection<Recipe> Source { get; } = new ObservableCollection<Recipe>();
     public IXamlRoot XamlRoot
@@ -26,16 +30,25 @@ public partial class RecipesViewModel : ObservableRecipient, INavigationAware
         internal set;
     }
 
-    public RecipesViewModel(INavigationService navigationService, IRecipeService recipeService, INewRecipeDialogService newRecipeDialogService)
+    public RecipesViewModel(
+        INavigationService navigationService, 
+        IRecipeService recipeService, 
+        INewRecipeDialogService newRecipeDialogService,
+        ILoginService loginService)
     {
         _navigationService = navigationService;
         _recipeService = recipeService;
         this.newRecipeDialogService = newRecipeDialogService;
+        this.loginService = loginService;
     }
 
     public void OnNavigatedTo(object parameter)
     {
-        refreshRecipes();
+        IsLoggedIn = loginService.GetLoggedInUser() != null;
+        if(IsLoggedIn)
+        {
+            refreshRecipes();
+        }
     }
 
     private async void refreshRecipes()

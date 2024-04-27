@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BrewManager.Core.Services;
-internal class Secrets
+public class Secrets
 {
     public static string BaseUrl => "http://localhost:3000";
 

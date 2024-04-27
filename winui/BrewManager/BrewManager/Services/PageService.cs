@@ -18,6 +18,7 @@ public class PageService : IPageService
         Configure<RecipesViewModel, RecipesPage>();
         Configure<RecipesDetailViewModel, RecipesDetailPage>();
         Configure<ScheduledBrewingViewModel, ScheduledBrewingPage>();
+        Configure<LoginViewModel, LoginPage>();
     }
 
     public Type GetPageType(string key)

@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using BrewManager.Contracts.Services;
 using BrewManager.Contracts.ViewModels;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
+using BrewManager.Core.Services;
 using BrewManager.Helpers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -16,40 +18,47 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
     private Recipe? originalRecipe;
     private readonly IRecipeService recipeService;
     private readonly IIngredientService ingredientService;
-
+    private readonly ILoginService loginService;
     public ObservableCollection<Ingredient> Ingredients = new();
 
     [ObservableProperty]
     private Ingredient? selectedIngredient;
 
+    [ObservableProperty]
+    private bool isLoggedIn = false;
 
-    public RecipesDetailViewModel(IRecipeService recipeService, IIngredientService ingredientService)
+    public RecipesDetailViewModel(IRecipeService recipeService, IIngredientService ingredientService, ILoginService loginService)
     {
         this.recipeService = recipeService;
         this.ingredientService = ingredientService;
+        this.loginService = loginService;
     }
 
 
     public async void OnNavigatedTo(object parameter)
     {
-        if (parameter is Recipe recipeParam)
+        IsLoggedIn = loginService.GetLoggedInUser() != null;
+        if(IsLoggedIn)
         {
-            originalRecipe = recipeParam;
-            Recipe = DeepCopyHelper.DeepClone(recipeParam);
-            Ingredients.Clear();
-            foreach (var ingredient in await ingredientService.GetInventoryItemsAsync())
+            if (parameter is Recipe recipeParam)
             {
-                Ingredients.Add(ingredient);
-            }
+                originalRecipe = recipeParam;
+                Recipe = DeepCopyHelper.DeepClone(recipeParam);
+                Ingredients.Clear();
+                foreach (var ingredient in await ingredientService.GetInventoryItemsAsync())
+                {
+                    Ingredients.Add(ingredient);
+                }
 
-            foreach(var ingredient in Recipe.Ingredients)
-            {
-                var toRemove = Ingredients.FirstOrDefault(i => i.Id == ingredient.Ingredient.Id);
-                if (toRemove != null)
-                    Ingredients.Remove(toRemove);
-            }
+                foreach (var ingredient in Recipe.Ingredients)
+                {
+                    var toRemove = Ingredients.FirstOrDefault(i => i.Id == ingredient.Ingredient.Id);
+                    if (toRemove != null)
+                        Ingredients.Remove(toRemove);
+                }
 
-            SelectedIngredient = Ingredients.FirstOrDefault();
+                SelectedIngredient = Ingredients.FirstOrDefault();
+            }
         }
     }
 

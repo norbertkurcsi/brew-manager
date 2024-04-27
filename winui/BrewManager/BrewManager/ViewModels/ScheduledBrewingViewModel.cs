@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using BrewManager.Contracts.Services;
 using BrewManager.Contracts.ViewModels;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
@@ -16,9 +17,12 @@ public partial class ScheduledBrewingViewModel : ObservableRecipient, INavigatio
     private ScheduledBrewing? selected;
     private readonly IScheduledBrewingService scheduledBrewingService;
     private readonly IRecipeService recipeService;
-
+    private readonly ILoginService loginService;
     [ObservableProperty]
     private bool isDetailsVisible = false;
+
+    [ObservableProperty]
+    private bool isLoggedIn = false;
 
     [ObservableProperty]
     private Recipe? selectedRecipe;
@@ -30,11 +34,11 @@ public partial class ScheduledBrewingViewModel : ObservableRecipient, INavigatio
     public ObservableCollection<Recipe> AvailableRecipes { get; private set; } = new ObservableCollection<Recipe>();
 
 
-    public ScheduledBrewingViewModel(IScheduledBrewingService scheduledBrewingService, IRecipeService recipeService)
+    public ScheduledBrewingViewModel(IScheduledBrewingService scheduledBrewingService, IRecipeService recipeService, ILoginService loginService)
     {
         this.scheduledBrewingService = scheduledBrewingService;
         this.recipeService = recipeService;
-
+        this.loginService = loginService;
         PropertyChanged += propertyChanged;
     }
 
@@ -54,7 +58,11 @@ public partial class ScheduledBrewingViewModel : ObservableRecipient, INavigatio
 
     public async void OnNavigatedTo(object parameter)
     {
-        await refreshScheduledBrewings();
+        IsLoggedIn = loginService.GetLoggedInUser() != null;
+        if(IsLoggedIn)
+        {
+            await refreshScheduledBrewings();
+        }
     }
 
     private async Task refreshScheduledBrewings()

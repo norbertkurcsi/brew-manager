@@ -2,7 +2,6 @@
 using BrewManager.Contracts.Services;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Services;
-using BrewManager.Helpers;
 using BrewManager.Services;
 using BrewManager.ViewModels;
 using BrewManager.Views;
@@ -10,6 +9,7 @@ using BrewManager.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using Windows.Storage;
 
 namespace BrewManager;
 
@@ -64,6 +64,7 @@ public partial class App : Application
 
             // Core Services
             services.AddSingleton<IFileService, FileService>();
+            services.AddSingleton<ILoginService, LoginService>();
             services.AddTransient<IIngredientService, IngredientService>();
             services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<IStorageService, StorageService>();
@@ -80,6 +81,8 @@ public partial class App : Application
             services.AddTransient<InventoryPage>();
             services.AddTransient<ShellPage>();
             services.AddTransient<ShellViewModel>();
+            services.AddTransient<LoginPage>();
+            services.AddTransient<LoginViewModel>();
 
             // Configuration
         }).
@@ -93,6 +96,7 @@ public partial class App : Application
         // TODO: Log and handle exceptions as appropriate.
         // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
     }
+
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {

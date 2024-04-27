@@ -13,7 +13,7 @@
         <converters:StockThresholdToBrushConverter x:Key="StockThresholdToBrushConverter" />
     </Page.Resources>
 
-    <Grid>
+    <Grid Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />

@@ -11,6 +11,7 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using WinRT.Interop;
+using BrewManager.Contracts.Services;
 
 namespace BrewManager.ViewModels;
 
@@ -18,8 +19,12 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
 {
     private readonly IIngredientService _ingredientService;
     private readonly IStorageService _storageService;
+    private readonly ILoginService loginService;
     [ObservableProperty]
     private Ingredient? selected;
+
+    [ObservableProperty]
+    private bool isLoggedIn = false;
 
     [ObservableProperty]
     private Ingredient? editedIngredient = null;
@@ -49,10 +54,11 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
     public ObservableCollection<string> ErrorList = new();
 
 
-    public InventoryViewModel(IIngredientService ingredientService, IStorageService storageService)
+    public InventoryViewModel(IIngredientService ingredientService, IStorageService storageService, ILoginService loginService)
     {
         _ingredientService = ingredientService;
         this._storageService = storageService;
+        this.loginService = loginService;
         var ingredientType = typeof(Ingredient);
         var properties = ingredientType.GetProperties();
         SortProperties.Add("<none>");
@@ -147,7 +153,11 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
 
     public async void OnNavigatedTo(object parameter)
     {
-        await GetItemsAsync();
+        IsLoggedIn = loginService.GetLoggedInUser() != null;
+        if(IsLoggedIn)
+        {
+            await GetItemsAsync();
+        }
     }
 
     private async Task GetItemsAsync ()

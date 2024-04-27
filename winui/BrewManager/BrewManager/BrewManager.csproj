@@ -16,6 +16,7 @@
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\LoginPage.xaml" />
     <None Remove="Views\NewRecipeDialogContent.xaml" />
   </ItemGroup>
 
@@ -40,6 +41,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BrewManager.Core\BrewManager.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

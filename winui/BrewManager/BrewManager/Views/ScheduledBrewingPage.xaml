@@ -8,8 +8,8 @@
     xmlns:models="using:BrewManager.Core.Models"
     xmlns:views="using:BrewManager.Views"
     mc:Ignorable="d">
-    
-    <Grid>
+
+    <Grid Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
