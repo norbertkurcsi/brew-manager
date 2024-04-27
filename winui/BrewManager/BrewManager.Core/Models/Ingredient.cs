@@ -12,7 +12,7 @@ public partial class Ingredient : ObservableObject
     public string name;
 
     [ObservableProperty]
-    public double stock;
+    public int stock;
 
     [ObservableProperty]
     public int threshold;

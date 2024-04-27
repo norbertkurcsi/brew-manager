@@ -60,7 +60,7 @@ public class RecipeIngredientHeader
     {
         get; set;
     }
-    public float Amount
+    public int Amount
     {
         get; set;
     }
@@ -72,7 +72,7 @@ public class RecipeIngredient
     {
     get; set; 
     }
-    public float Amount
+    public int Amount
     {
         get; set;
     }

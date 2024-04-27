@@ -11,7 +11,7 @@ public class IngredientPostDto
     {
         get; set;
     }
-    public double Stock
+    public int Stock
     {
         get; set;
     }
