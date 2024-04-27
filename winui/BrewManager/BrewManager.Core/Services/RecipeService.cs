@@ -35,6 +35,37 @@ public class RecipeService : IRecipeService
         return recipes;
     }
 
+    public async Task<List<Recipe>> GetRecipesReadyForBrewingAsync()
+    {
+        using var client = new HttpClient();
+        var recipeDtos = await client.GetFromJsonAsync<List<RecipeDto>>($"{Secrets.BaseUrl}/recipes");
+        var ingredients = await ingredientService.GetInventoryItemsAsync();
+
+        var recipes = mapFromRecipeDtosAndIngredients(recipeDtos, ingredients);
+        recipes = recipes.FindAll(recipe =>
+        {
+            foreach (var ingredient in recipe.Ingredients)
+            {
+                if (ingredient.Amount > ingredient.Ingredient.Stock)
+                {
+                    return false;
+                }
+            }
+            return true;
+        });
+        return recipes;
+    }
+
+    public async Task<Recipe> GetRecipeByIdAsync(string recipe)
+    {
+        using var client = new HttpClient();
+        var recipeDto = await client.GetFromJsonAsync<RecipeDto>($"{Secrets.BaseUrl}/recipes/{recipe}");
+        var ingredients = await ingredientService.GetInventoryItemsAsync();
+
+        var recipes = mapFromRecipeDtosAndIngredients(new List<RecipeDto> { recipeDto }, ingredients);
+        return recipes.First();
+    }
+
     public async Task ModifyRecipeAsync(Recipe recipe)
     {
         using var client = new HttpClient();

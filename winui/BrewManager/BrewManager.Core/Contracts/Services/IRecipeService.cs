@@ -9,7 +9,9 @@ namespace BrewManager.Core.Contracts.Services;
 public interface IRecipeService
 {
     public Task<List<Recipe>> GetRecipesAsync();
+    public Task<List<Recipe>> GetRecipesReadyForBrewingAsync();
     public Task PostRecipeAsync(RecipePostDto recipe);
     public Task DeleteRecipeAsync(string id);
     public Task ModifyRecipeAsync(Recipe recipe);
+    public Task<Recipe> GetRecipeByIdAsync(string recipe);
 }

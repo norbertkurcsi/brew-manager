@@ -58,7 +58,6 @@ public partial class App : Application
 
             // Services
             services.AddTransient<INavigationViewService, NavigationViewService>();
-
             services.AddSingleton<INewRecipeDialogService, NewRecipeDialogService>();
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
@@ -70,6 +69,7 @@ public partial class App : Application
             services.AddTransient<IIngredientService, IngredientService>();
             services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<IStorageService, StorageService>();
+            services.AddTransient<IScheduledBrewingService, ScheduledBrewingService>();
 
             // Views and ViewModels
             services.AddTransient<ScheduledBrewingViewModel>();
