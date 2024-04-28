@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization.Json;
 
 namespace BrewManager.Helpers;
 
+/// <summary>
+/// Provides methods for deep cloning objects.
+/// </summary>
 public static class DeepCopyHelper
 {
+    /// <summary>
+    /// Deep clones an object using DataContractJsonSerializer.
+    /// </summary>
+    /// <typeparam name="T">The type of the object to clone.</typeparam>
+    /// <param name="obj">The object to clone.</param>
+    /// <returns>A deep clone of the provided object.</returns>
     public static T DeepClone<T>(T obj)
     {
         using MemoryStream memoryStream = new MemoryStream();

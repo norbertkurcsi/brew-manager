@@ -1,25 +1,30 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using BrewManager.Contracts.Services;
 using BrewManager.Contracts.ViewModels;
 using BrewManager.Core.Contracts.Services;
 using BrewManager.Core.Models;
-using BrewManager.Core.Services;
 using BrewManager.Helpers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace BrewManager.ViewModels;
 
+/// <summary>
+/// ViewModel for recipe details, allowing modification and management of individual recipes.
+/// </summary>
 public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAware
 {
     [ObservableProperty]
     private Recipe? recipe;
+
     private Recipe? originalRecipe;
     private readonly IRecipeService recipeService;
     private readonly IIngredientService ingredientService;
     private readonly ILoginService loginService;
 
+    /// <summary>
+    /// Collection of ingredients used in the recipe.
+    /// </summary>
     public ObservableCollection<Ingredient> Ingredients = new();
 
     [ObservableProperty]
@@ -28,6 +33,12 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
     [ObservableProperty]
     private bool isLoggedIn = false;
 
+    /// <summary>
+    /// Constructs the RecipesDetailViewModel with necessary services.
+    /// </summary>
+    /// <param name="recipeService">Service for recipe-related operations.</param>
+    /// <param name="ingredientService">Service for ingredient-related operations.</param>
+    /// <param name="loginService">Service for handling login operations.</param>
     public RecipesDetailViewModel(IRecipeService recipeService, IIngredientService ingredientService, ILoginService loginService)
     {
         this.recipeService = recipeService;
@@ -35,11 +46,14 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         this.loginService = loginService;
     }
 
-
+    /// <summary>
+    /// Invoked when navigating to the view, initializes the recipe data and ingredients list.
+    /// </summary>
+    /// <param name="parameter">The recipe object passed as navigation parameter.</param>
     public async void OnNavigatedTo(object parameter)
     {
         IsLoggedIn = loginService.GetLoggedInUser() != null;
-        if(IsLoggedIn)
+        if (IsLoggedIn)
         {
             if (parameter is Recipe recipeParam)
             {
@@ -63,6 +77,9 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         }
     }
 
+    /// <summary>
+    /// Adds a selected ingredient to the recipe.
+    /// </summary>
     [RelayCommand]
     private void AddIngredient()
     {
@@ -79,6 +96,10 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         SaveRecipeCommand.NotifyCanExecuteChanged();
     }
 
+    /// <summary>
+    /// Increases the amount of a specific ingredient in the recipe.
+    /// </summary>
+    /// <param name="ingredient">The ingredient to modify.</param>
     [RelayCommand]
     private void AddAmount(RecipeIngredient ingredient)
     {
@@ -87,10 +108,14 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         SaveRecipeCommand.NotifyCanExecuteChanged();
     }
 
+    /// <summary>
+    /// Decreases the amount of a specific ingredient in the recipe.
+    /// </summary>
+    /// <param name="ingredient">The ingredient to modify.</param>
     [RelayCommand]
     private void RemoveAmount(RecipeIngredient ingredient)
     {
-        if(ingredient.Amount >= 1 )
+        if (ingredient.Amount >= 1)
         {
             ingredient.Amount -= 1;
             IngredientChanged(ingredient.Ingredient.Id);
@@ -98,6 +123,10 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         }
     }
 
+    /// <summary>
+    /// Removes an ingredient from the recipe.
+    /// </summary>
+    /// <param name="ingredient">The ingredient to remove.</param>
     [RelayCommand]
     private void RemoveIngredient(RecipeIngredient ingredient)
     {
@@ -107,6 +136,9 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         SaveRecipeCommand.NotifyCanExecuteChanged();
     }
 
+    /// <summary>
+    /// Saves modifications to the recipe if changes have been made.
+    /// </summary>
     [RelayCommand(CanExecute = nameof(isRecipeModified))]
     private async void SaveRecipe()
     {
@@ -115,6 +147,10 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         SaveRecipeCommand.NotifyCanExecuteChanged();
     }
 
+    /// <summary>
+    /// Determines if the recipe has been modified compared to the original.
+    /// </summary>
+    /// <returns>True if modified, false otherwise.</returns>
     private bool isRecipeModified()
     {
         if (originalRecipe == null || Recipe == null)
@@ -142,9 +178,13 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         return false;
     }
 
+    /// <summary>
+    /// Updates the ingredient within the recipe list to refresh bindings.
+    /// </summary>
+    /// <param name="id">The ID of the ingredient to update.</param>
     private void IngredientChanged(string id)
     {
-        if(Recipe == null) { return; }
+        if (Recipe == null) return;
         var old = Recipe.Ingredients.FirstOrDefault(ing => ing.Ingredient.Id == id);
         var index = Recipe.Ingredients.IndexOf(old);
         Recipe.Ingredients[index] = new RecipeIngredient
@@ -154,6 +194,9 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
         };
     }
 
+    /// <summary>
+    /// Method called when navigating away from this ViewModel.
+    /// </summary>
     public void OnNavigatedFrom()
     {
     }

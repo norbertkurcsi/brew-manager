@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace BrewManager.Core.Models;
 
-namespace BrewManager.Core.Models;
+/// <summary>
+/// Represents a response containing inventory information.
+/// </summary>
 public class InventoryGetResponse
 {
+    /// <summary>
+    /// Gets or sets the total number of pages.
+    /// </summary>
     public int Pages
     {
-        get;
-        set;
+        get; set;
     }
 
-    public List<Ingredient> Data
-    {
-        get;
-        set;
+    /// <summary>
+    /// Gets or sets the data containing inventory items.
+    /// </summary>
+    public List<Ingredient> Data {
+        get; set;
     }
 }

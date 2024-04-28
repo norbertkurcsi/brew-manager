@@ -1,17 +1,52 @@
-﻿using System;
+﻿using BrewManager.Core.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using BrewManager.Core.Models;
 
 namespace BrewManager.Core.Contracts.Services;
+
+/// <summary>
+/// Provides an interface for managing recipe data within the application.
+/// This includes retrieving, posting, deleting, and modifying recipes.
+/// </summary>
 public interface IRecipeService
 {
-    public Task<List<Recipe>> GetRecipesAsync();
-    public Task<List<Recipe>> GetRecipesReadyForBrewingAsync();
-    public Task PostRecipeAsync(RecipePostDto recipe);
-    public Task DeleteRecipeAsync(string id);
-    public Task ModifyRecipeAsync(Recipe recipe);
-    public Task<Recipe> GetRecipeByIdAsync(string recipe);
+    /// <summary>
+    /// Retrieves all recipes asynchronously.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation and contains a list of recipes.</returns>
+    Task<List<Recipe>> GetRecipesAsync();
+
+    /// <summary>
+    /// Retrieves recipes that are ready for brewing asynchronously.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation and contains a list of recipes ready for brewing.</returns>
+    Task<List<Recipe>> GetRecipesReadyForBrewingAsync();
+
+    /// <summary>
+    /// Posts a new recipe asynchronously.
+    /// </summary>
+    /// <param name="recipe">The recipe data transfer object containing the details of the new recipe.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task PostRecipeAsync(RecipePostDto recipe);
+
+    /// <summary>
+    /// Deletes a recipe by its identifier asynchronously.
+    /// </summary>
+    /// <param name="id">The identifier of the recipe to delete.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task DeleteRecipeAsync(string id);
+
+    /// <summary>
+    /// Modifies an existing recipe asynchronously.
+    /// </summary>
+    /// <param name="recipe">The recipe object containing the updated details.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task ModifyRecipeAsync(Recipe recipe);
+
+    /// <summary>
+    /// Retrieves a recipe by its identifier asynchronously.
+    /// </summary>
+    /// <param name="id">The identifier of the recipe to retrieve.</param>
+    /// <returns>A task that represents the asynchronous operation and contains the recipe.</returns>
+    Task<Recipe> GetRecipeByIdAsync(string id);
 }

@@ -1,29 +1,15 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using BrewManager.Contracts.Services;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using WinRT.Interop;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using BrewManager.Contracts.Services;
 
 namespace BrewManager.Views;
+
 /// <summary>
-/// An empty page that can be used on its own or navigated to within a Frame.
+/// A dialog content page used for creating a new recipe. It allows users to input recipe details and select an image.
 /// </summary>
 public sealed partial class NewRecipeDialogContent : Page, INotifyPropertyChanged
 {
@@ -31,65 +17,87 @@ public sealed partial class NewRecipeDialogContent : Page, INotifyPropertyChange
 
     private string name;
 
+    /// <summary>
+    /// Gets or sets the name of the recipe. Setting the name will notify property changed and update the dialog service.
+    /// </summary>
     public string Name
     {
-        get
-        {
-            return name;
-        }
+        get => name;
         set
         {
-            name = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
-            dialogService.Title = name;
+            if (name != value)
+            {
+                name = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                dialogService.Title = name;
+            }
         }
     }
 
     private string imageName = "<not selected>";
 
+    /// <summary>
+    /// Gets or sets the display name of the image associated with the recipe.
+    /// This only updates the UI and does not load the image itself.
+    /// </summary>
     public string ImageName
     {
-        get
-        {
-            return imageName;
-        }
+        get => imageName;
         set
         {
-            imageName = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageName)));
+            if (imageName != value)
+            {
+                imageName = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageName)));
+            }
         }
     }
 
     private Stream image;
 
+    /// <summary>
+    /// Gets or sets the image stream for the recipe.
+    /// Setting the image will also update the image property in the dialog service.
+    /// </summary>
     public Stream Image
     {
-        get
-        {
-            return image;
-        }
+        get => image;
         set
         {
-            image = value;
-            dialogService.Image = image;
+            if (image != value)
+            {
+                image = value;
+                dialogService.Image = image;
+            }
         }
     }
 
-
+    /// <summary>
+    /// Constructor that initializes the NewRecipeDialogContent.
+    /// </summary>
+    /// <param name="dialogService">The service used to manage new recipe dialog interactions.</param>
     public NewRecipeDialogContent(INewRecipeDialogService dialogService)
     {
         this.InitializeComponent();
         this.dialogService = dialogService;
     }
 
+    /// <summary>
+    /// Event triggered when a property changes. Implements INotifyPropertyChanged.
+    /// </summary>
     public event PropertyChangedEventHandler? PropertyChanged;
 
+    /// <summary>
+    /// Event handler for clicking the add image button. Opens a FileOpenPicker to select an image and updates the image properties.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">Event data.</param>
     private async void AddImageClicked(object sender, RoutedEventArgs e)
     {
         FileOpenPicker fileOpenPicker = new()
         {
             ViewMode = PickerViewMode.Thumbnail,
-            FileTypeFilter = { ".jpg", ".png", ".jpeg"},
+            FileTypeFilter = { ".jpg", ".png", ".jpeg" },
         };
 
         var windowHandle = WindowNative.GetWindowHandle(App.MainWindow);
