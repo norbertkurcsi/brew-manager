@@ -41,6 +41,7 @@
                     <Grid MaxWidth="300" x:Name="itemThumbnail">
                         <Image 
                             Source="{x:Bind ImageUrl}"
+                            
                             AutomationProperties.Name="{x:Bind Name}"/>
                         <Border Height="40"
                             Padding="10,0,0,0"

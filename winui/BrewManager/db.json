@@ -126,6 +126,10 @@
         {
           "id": "4",
           "amount": 5
+        },
+        {
+          "id": "16",
+          "amount": 0
         }
       ]
     },
@@ -198,7 +202,12 @@
       "id": "50ee",
       "name": "sdfsdf",
       "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/18bae224-81c0-437a-b41b-6e5b8b1e9e1f.jpg",
-      "ingredients": []
+      "ingredients": [
+        {
+          "id": "4",
+          "amount": 0
+        }
+      ]
     }
   ],
   "scheduled-brews": [

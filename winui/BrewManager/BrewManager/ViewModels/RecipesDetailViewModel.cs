@@ -19,6 +19,7 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
     private readonly IRecipeService recipeService;
     private readonly IIngredientService ingredientService;
     private readonly ILoginService loginService;
+
     public ObservableCollection<Ingredient> Ingredients = new();
 
     [ObservableProperty]
@@ -65,7 +66,7 @@ public partial class RecipesDetailViewModel : ObservableRecipient, INavigationAw
     [RelayCommand]
     private void AddIngredient()
     {
-        if (Recipe == null) return;
+        if (Recipe == null || SelectedIngredient == null) return;
 
         Recipe.Ingredients.Add(new RecipeIngredient
         {

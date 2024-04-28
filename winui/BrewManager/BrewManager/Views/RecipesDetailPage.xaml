@@ -8,7 +8,10 @@
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea" DataContext="{x:Bind ViewModel}" Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
@@ -27,75 +30,109 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <StackPanel x:Name="contentPanel" Margin="12">
-            <RelativePanel>
-                <Grid
-                    x:Name="itemHero"
-                    Width="200"
-                    Height="200"
-                    Margin="{StaticResource SmallRightMargin}"
-                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    RelativePanel.AlignTopWithPanel="True"
-                    RelativePanel.AlignLeftWithPanel="True">
+        <Grid Background="FloralWhite">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid
+                x:Name="itemHero"
+                Width="200"
+                Height="200"
+                Margin="{StaticResource SmallRightMargin}"
+                Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Grid.RowSpan="2">
+                <Border CornerRadius="20">
                     <Image
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Source="{x:Bind ViewModel.Recipe.ImageUrl, Mode=OneWay}"
                         Stretch="UniformToFill"
                         AutomationProperties.Name="{x:Bind ViewModel.Recipe.Name, Mode=TwoWay}" />
-                </Grid>
-
-                <StackPanel Orientation="Vertical"
-                            RelativePanel.AlignTopWithPanel="True"
-                            RelativePanel.RightOf="itemHero">
-                    <TextBlock
-                        x:Name="title"
-                        Margin="{StaticResource XXSmallTopMargin}"
-                        Style="{ThemeResource TitleTextBlockStyle}"
-                        Text="{x:Bind ViewModel.Recipe.Name, Mode=OneWay}" />
-                    <Button Command="{x:Bind ViewModel.SaveRecipeCommand}" Margin="0,0,6,0">
+                </Border>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock
+                    x:Name="title"
+                    Margin="{StaticResource XXSmallTopMargin}"
+                    FontSize="30"
+                    FontWeight="Medium"
+                    FontStretch="ExtraExpanded"
+                    Text="{x:Bind ViewModel.Recipe.Name, Mode=OneWay}" />
+                <Button Command="{x:Bind ViewModel.SaveRecipeCommand}" VerticalAlignment="Center" Background="LightSkyBlue" Margin="20,10,0,0">
+                    <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Save"/>
-                    </Button>
-                    <ComboBox
-                        ItemsSource="{x:Bind ViewModel.Ingredients, Mode=TwoWay}"
-                        SelectedItem="{x:Bind ViewModel.SelectedIngredient, Mode=TwoWay}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate x:DataType="models:Ingredient">
-                                <TextBlock Text="{x:Bind Name}"/>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                     <Button Command="{x:Bind ViewModel.AddIngredientCommand}" Margin="0,0,6,0">
+                        <TextBlock Text="Save changes" Margin="5,0,0,0" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            
+            <StackPanel 
+                Orientation="Horizontal"
+                Grid.Column="1"
+                Grid.Row="1">
+                <TextBlock Text="Add new ingredient:" FontSize="17" Margin="0,0,20,0"/>
+                <ComboBox
+                    Width="150"
+                    ItemsSource="{x:Bind ViewModel.Ingredients, Mode=TwoWay}"
+                    SelectedItem="{x:Bind ViewModel.SelectedIngredient, Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:Ingredient">
+                            <TextBlock Text="{x:Bind Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Command="{x:Bind ViewModel.AddIngredientCommand}" Margin="20,0,0,0" VerticalAlignment="Top" Background="LightGreen">
+                    <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Add"/>
-                    </Button>
-                </StackPanel>
-            </RelativePanel>
+                        <TextBlock Text="Add" Margin="5,0,0,0" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
 
-            <ScrollViewer Margin="12,12,12,0">
-                <ListView ItemsSource="{x:Bind ViewModel.Recipe.Ingredients, Mode=TwoWay}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:RecipeIngredient">
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
-                                <Image Source="{x:Bind Ingredient.ImageUrl, Mode=OneWay}" Width="50" Height="50" Margin="0,0,12,0" />
-                                <TextBlock Text="{x:Bind Ingredient.Name, Mode=TwoWay}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}" />
-                                <Button Command="{Binding ElementName=ContentArea, Path=DataContext.AddAmountCommand}" CommandParameter="{Binding}" Margin="0,0,6,0">
+        <ScrollViewer Margin="12,12,12,0" Grid.Row="1">
+            <ListView ItemsSource="{x:Bind ViewModel.Recipe.Ingredients, Mode=TwoWay}" MaxWidth="600" HorizontalAlignment="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:RecipeIngredient">
+                        <Grid MaxWidth="600" MinWidth="500" ColumnSpacing="20" Padding="20" Background="LightGoldenrodYellow" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Ellipse Height="80" Width="80" Grid.Column="0" VerticalAlignment="Center" Grid.RowSpan="2">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{x:Bind Ingredient.ImageUrl, Mode=OneWay}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Grid.Column="1" Text="{x:Bind Ingredient.Name, Mode=TwoWay}" VerticalAlignment="Center" FontSize="20" />
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                <Button Command="{Binding ElementName=ContentArea, Path=DataContext.AddAmountCommand}" CommandParameter="{Binding}" Margin="0,0,6,0" Background="LightSkyBlue">
                                     <SymbolIcon Symbol="Add"/>
                                 </Button>
-                                <TextBlock Text="{x:Bind Amount, Mode=TwoWay}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,0,6,0" />
-                                <Button Command="{Binding ElementName=ContentArea, Path=DataContext.RemoveAmountCommand}" CommandParameter="{Binding}" Margin="0,0,6,0">
+                                <TextBlock Text="{x:Bind Amount, Mode=TwoWay}" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Margin="0,0,6,0" />
+                                <Button Command="{Binding ElementName=ContentArea, Path=DataContext.RemoveAmountCommand}" CommandParameter="{Binding}" Margin="0,0,6,0" Background="LightSkyBlue">
                                     <SymbolIcon Symbol="Remove"/>
                                 </Button>
-                                <Button Command="{Binding ElementName=ContentArea, Path=DataContext.RemoveIngredientCommand}" CommandParameter="{Binding}" Margin="0,0,6,0">
-                                    <SymbolIcon Symbol="Delete"/>
-                                </Button>
                             </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
-        </StackPanel>
-
+                            <Button Grid.Column="2" Grid.RowSpan="2" Command="{Binding ElementName=ContentArea, Path=DataContext.RemoveIngredientCommand}" CommandParameter="{Binding}" Margin="0,0,6,0" Height="50" Width="50" Background="#ff9999">
+                                <SymbolIcon Symbol="Delete"/>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>

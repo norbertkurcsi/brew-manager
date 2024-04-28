@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "D:\\klitech\\brew-manager\\winui\\BrewManager\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\viewmodels\\recipesdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\viewmodels\\recipesdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\views\\recipesdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\views\\recipesdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\views\\inventorypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\views\\inventorypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\viewmodels\\recipesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\viewmodels\\recipesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\views\\recipespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\views\\recipespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{06C6F7B6-8E4A-43F4-A123-E77E58054D81}|BrewManager.Core\\BrewManager.Core.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager.core\\models\\scheduledbrewing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06C6F7B6-8E4A-43F4-A123-E77E58054D81}|BrewManager.Core\\BrewManager.Core.csproj|solutionrelative:brewmanager.core\\models\\scheduledbrewing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,32 +47,12 @@
       "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\viewmodels\\scheduledbrewingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\viewmodels\\recipesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\viewmodels\\recipesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\views\\recipesdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\views\\recipesdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\viewmodels\\recipesdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\viewmodels\\recipesdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\views\\scheduledbrewingpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\views\\scheduledbrewingpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\views\\recipespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\views\\recipespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\views\\newrecipedialogcontent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\views\\newrecipedialogcontent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\views\\inventorypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|solutionrelative:brewmanager\\views\\inventorypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D0DE367-3CBD-4846-B98E-BD3B2AAEC72D}|BrewManager\\BrewManager.csproj|d:\\klitech\\brew-manager\\winui\\brewmanager\\brewmanager\\viewmodels\\inventoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -94,29 +94,29 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "ScheduledBrewing.cs",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\ScheduledBrewing.cs",
               "RelativeDocumentMoniker": "BrewManager.Core\\Models\\ScheduledBrewing.cs",
               "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\ScheduledBrewing.cs",
               "RelativeToolTip": "BrewManager.Core\\Models\\ScheduledBrewing.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-27T20:52:40.686Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Recipe.cs",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\Recipe.cs",
               "RelativeDocumentMoniker": "BrewManager.Core\\Models\\Recipe.cs",
-              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\Recipe.cs*",
-              "RelativeToolTip": "BrewManager.Core\\Models\\Recipe.cs*",
+              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\Recipe.cs",
+              "RelativeToolTip": "BrewManager.Core\\Models\\Recipe.cs",
               "ViewState": "AQIAADYAAAAAAAAAAAAAAEQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-27T20:52:22.88Z",
@@ -124,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "InventoryGetResponse.cs",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\InventoryGetResponse.cs",
               "RelativeDocumentMoniker": "BrewManager.Core\\Models\\InventoryGetResponse.cs",
@@ -137,12 +137,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "IngredientPostDto.cs",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\IngredientPostDto.cs",
               "RelativeDocumentMoniker": "BrewManager.Core\\Models\\IngredientPostDto.cs",
-              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\IngredientPostDto.cs*",
-              "RelativeToolTip": "BrewManager.Core\\Models\\IngredientPostDto.cs*",
+              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\IngredientPostDto.cs",
+              "RelativeToolTip": "BrewManager.Core\\Models\\IngredientPostDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-27T20:52:11.26Z",
@@ -150,12 +150,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "Ingredient.cs",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\Ingredient.cs",
               "RelativeDocumentMoniker": "BrewManager.Core\\Models\\Ingredient.cs",
-              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\Ingredient.cs*",
-              "RelativeToolTip": "BrewManager.Core\\Models\\Ingredient.cs*",
+              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager.Core\\Models\\Ingredient.cs",
+              "RelativeToolTip": "BrewManager.Core\\Models\\Ingredient.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-27T20:51:59.544Z",
@@ -163,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "ScheduledBrewingViewModel.cs",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\ViewModels\\ScheduledBrewingViewModel.cs",
               "RelativeDocumentMoniker": "BrewManager\\ViewModels\\ScheduledBrewingViewModel.cs",
@@ -176,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "RecipesViewModel.cs",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\ViewModels\\RecipesViewModel.cs",
               "RelativeDocumentMoniker": "BrewManager\\ViewModels\\RecipesViewModel.cs",
@@ -189,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "ScheduledBrewingPage.xaml",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\ScheduledBrewingPage.xaml",
               "RelativeDocumentMoniker": "BrewManager\\Views\\ScheduledBrewingPage.xaml",
@@ -202,33 +202,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 4,
               "Title": "RecipesPage.xaml",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\RecipesPage.xaml",
               "RelativeDocumentMoniker": "BrewManager\\Views\\RecipesPage.xaml",
               "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\RecipesPage.xaml",
               "RelativeToolTip": "BrewManager\\Views\\RecipesPage.xaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAB3AAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACsAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-04-27T20:28:08.035Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "RecipesDetailPage.xaml",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\RecipesDetailPage.xaml",
               "RelativeDocumentMoniker": "BrewManager\\Views\\RecipesDetailPage.xaml",
-              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\RecipesDetailPage.xaml",
-              "RelativeToolTip": "BrewManager\\Views\\RecipesDetailPage.xaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABAAAAA",
+              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\RecipesDetailPage.xaml*",
+              "RelativeToolTip": "BrewManager\\Views\\RecipesDetailPage.xaml*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-04-27T20:27:56.352Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "NewRecipeDialogContent.xaml",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\NewRecipeDialogContent.xaml",
               "RelativeDocumentMoniker": "BrewManager\\Views\\NewRecipeDialogContent.xaml",
@@ -241,13 +241,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "RecipesDetailViewModel.cs",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\ViewModels\\RecipesDetailViewModel.cs",
               "RelativeDocumentMoniker": "BrewManager\\ViewModels\\RecipesDetailViewModel.cs",
-              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\ViewModels\\RecipesDetailViewModel.cs",
-              "RelativeToolTip": "BrewManager\\ViewModels\\RecipesDetailViewModel.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABoAAAAEAAAA",
+              "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\ViewModels\\RecipesDetailViewModel.cs*",
+              "RelativeToolTip": "BrewManager\\ViewModels\\RecipesDetailViewModel.cs*",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAFAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-27T20:24:59.35Z",
               "EditorCaption": ""
@@ -306,13 +306,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 2,
               "Title": "InventoryPage.xaml",
               "DocumentMoniker": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\InventoryPage.xaml",
               "RelativeDocumentMoniker": "BrewManager\\Views\\InventoryPage.xaml",
               "ToolTip": "D:\\klitech\\brew-manager\\winui\\BrewManager\\BrewManager\\Views\\InventoryPage.xaml",
               "RelativeToolTip": "BrewManager\\Views\\InventoryPage.xaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABBAAAA",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAAAJYAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-04-27T19:20:00.839Z",
               "EditorCaption": ""
