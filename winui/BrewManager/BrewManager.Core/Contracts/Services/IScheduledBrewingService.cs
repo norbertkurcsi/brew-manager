@@ -30,6 +30,11 @@ public interface IScheduledBrewingService
     /// <returns>A task that represents the asynchronous operation.</returns>
     Task DeleteScheduledBrewingAsync(ScheduledBrewing scheduledBrewing);
 
+    /// <summary>
+    /// Deletes all scheduled brewing sessions that are based on a specific recipe asynchronously.
+    /// </summary>
+    /// <param name="recipeId">The identifier of the recipe used to find and delete related scheduled brewings.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
     Task DeleteAllSchedulesThatAreBasedOnRecipe(string recipeId);
 
     /// <summary>

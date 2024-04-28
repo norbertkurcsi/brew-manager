@@ -33,6 +33,15 @@ public class ScheduledBrewingService : IScheduledBrewingService
         await client.DeleteAsync($"{Secrets.BaseUrl}/scheduled-brews/{scheduledBrewing.Id}");
     }
 
+    /// <summary>
+    /// Deletes all scheduled brewing sessions that are associated with a specific recipe.
+    /// </summary>
+    /// <param name="recipeId">The identifier of the recipe for which all related scheduled brewings will be deleted.</param>
+    /// <remarks>
+    /// This method retrieves all scheduled brewings and filters them to find those associated with the specified recipe.
+    /// Each matching scheduled brewing is then deleted. This operation could impact performance if there are a large number
+    /// of brewings, as each deletion involves a separate API call.
+    /// </remarks>
     public async Task DeleteAllSchedulesThatAreBasedOnRecipe(string recipeId)
     {
         var brewings = await GetScheduledBrewingsAsync();
