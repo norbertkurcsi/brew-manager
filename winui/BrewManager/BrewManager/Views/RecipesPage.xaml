@@ -6,66 +6,84 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:models="using:BrewManager.Core.Models"
+    xmlns:models="using:BrewManager.Core.Models" xmlns:converters="using:BrewManager.Converters"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" DataContext="{x:Bind ViewModel}" Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Text="Recipes" FontWeight="Bold" FontSize="30" VerticalAlignment="Center" Margin="10,20,40,30"/>
-        <Button Grid.Column="1" HorizontalAlignment="Left" Background="LightGreen" Command="{x:Bind ViewModel.AddButtonClickedCommand}">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-                <SymbolIcon Symbol="Add"/>
-                <TextBlock Margin="5,0,0,0">Add new</TextBlock>
-            </StackPanel>
-        </Button>
-        <controls:AdaptiveGridView
-            Grid.Row="1" Grid.ColumnSpan="2"
-            animations:Connected.ListItemElementName="itemThumbnail"
-            animations:Connected.ListItemKey="animationKeyContentGrid"
-            DesiredWidth="180"
-            ItemHeight="160"
-            IsItemClickEnabled="True"
-            ItemClickCommand="{x:Bind ViewModel.ItemClickCommand}"
-            ItemsSource="{x:Bind ViewModel.Source,Mode=OneWay}"
-            SelectionMode="None"
-            StretchContentForSingleRow="False">
-            <controls:AdaptiveGridView.ItemTemplate>
-                <DataTemplate x:DataType="models:Recipe">
-                    <Grid MaxWidth="300" x:Name="itemThumbnail">
-                        <Image 
-                            Source="{x:Bind ImageUrl}"
-                            
-                            AutomationProperties.Name="{x:Bind Name}"/>
-                        <Border Height="40"
-                            Padding="10,0,0,0"
-                            VerticalAlignment="Bottom"
-                            Background="#88000000">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock VerticalAlignment="Center"
-                                    Foreground="White"
-                                    Text="{x:Bind Name}" />
-                                <Button Grid.Column="1" 
+    <Page.Resources>
+        <converters:BoolNegationToVisibilityConvrter x:Key="BoolNegationToVisibilityConvrter" />
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel
+            Orientation="Vertical"
+            Width="500"
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center" 
+            Padding="60" 
+            Background="AntiqueWhite"
+            Visibility="{x:Bind ViewModel.IsLoggedIn, Converter={StaticResource BoolNegationToVisibilityConvrter}}">
+            <TextBlock Text="You are not logged in!" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center"/>
+            <TextBlock Text="Please head to the login page and log in" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <Grid x:Name="ContentArea" DataContext="{x:Bind ViewModel}" Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Recipes" FontWeight="Bold" FontSize="30" VerticalAlignment="Center" Margin="10,20,40,30"/>
+            <Button Grid.Column="1" HorizontalAlignment="Left" Background="LightGreen" Command="{x:Bind ViewModel.AddButtonClickedCommand}">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                    <SymbolIcon Symbol="Add"/>
+                    <TextBlock Margin="5,0,0,0">Add new</TextBlock>
+                </StackPanel>
+            </Button>
+            <controls:AdaptiveGridView
+                Grid.Row="1" Grid.ColumnSpan="2"
+                animations:Connected.ListItemElementName="itemThumbnail"
+                animations:Connected.ListItemKey="animationKeyContentGrid"
+                DesiredWidth="200"
+                ItemHeight="200"
+                IsItemClickEnabled="True"
+                ItemClickCommand="{x:Bind ViewModel.ItemClickCommand}"
+                ItemsSource="{x:Bind ViewModel.Source,Mode=OneWay}"
+                SelectionMode="None"
+                StretchContentForSingleRow="False"
+                Margin="50,0">
+                <controls:AdaptiveGridView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Recipe">
+                        <Grid MaxWidth="300" x:Name="itemThumbnail">
+                            <Image 
+                                Source="{x:Bind ImageUrl}"
+                                AutomationProperties.Name="{x:Bind Name}"/>
+                            <Border Height="40"
+                                Padding="10,0,0,0"
+                                VerticalAlignment="Bottom"
+                                Background="#88000000">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="{x:Bind Name}" />
+                                    <Button Grid.Column="1" 
                                         Background="Transparent"
                                         Command="{Binding ElementName=ContentArea, Path=DataContext.DeleteRecipeCommand}" 
                                         CommandParameter="{Binding}">
-                                    <SymbolIcon Symbol="Delete" Foreground="White"/>
-                                </Button>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                </DataTemplate>
-            </controls:AdaptiveGridView.ItemTemplate>
-        </controls:AdaptiveGridView>
+                                        <SymbolIcon Symbol="Delete" Foreground="White"/>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </controls:AdaptiveGridView.ItemTemplate>
+            </controls:AdaptiveGridView>
+        </Grid>
     </Grid>
 </Page>

@@ -136,7 +136,7 @@
     <value>Select an item from the list.</value>
   </data>
   <data name="Shell_ScheduledBrewing.Content" xml:space="preserve">
-    <value>ScheduledBrewing</value>
+    <value>Schedule Brewings</value>
   </data>
   <data name="Shell_Login.Content" xml:space="preserve">
     <value>Login</value>

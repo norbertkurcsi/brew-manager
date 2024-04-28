@@ -37,12 +37,12 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Uid="Shell_Login" helpers:NavigationHelper.NavigateTo="BrewManager.ViewModels.LoginViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xea37;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE77B;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Inventory" helpers:NavigationHelper.NavigateTo="BrewManager.ViewModels.InventoryViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xea37;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE133;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Recipes" helpers:NavigationHelper.NavigateTo="BrewManager.ViewModels.RecipesViewModel">
@@ -52,7 +52,7 @@
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_ScheduledBrewing" helpers:NavigationHelper.NavigateTo="BrewManager.ViewModels.ScheduledBrewingViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xea37;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE73A;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>

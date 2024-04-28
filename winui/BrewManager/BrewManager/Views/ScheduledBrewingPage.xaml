@@ -4,145 +4,170 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:models="using:BrewManager.Core.Models"
-    xmlns:views="using:BrewManager.Views"
+    xmlns:models="using:BrewManager.Core.Models" xmlns:converters="using:BrewManager.Converters"
     mc:Ignorable="d">
 
-    <Grid Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <Page.Resources>
+        <converters:BoolNegationToVisibilityConvrter x:Key="BoolNegationToVisibilityConvrter" />
+    </Page.Resources>
 
-        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="{ThemeResource AppBarBackgroundThemeBrush}" Padding="20,15">
+    <Grid>
+        <StackPanel
+            Orientation="Vertical"
+            Width="500"
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center" 
+            Padding="60" 
+            Background="AntiqueWhite"
+            Visibility="{x:Bind ViewModel.IsLoggedIn, Converter={StaticResource BoolNegationToVisibilityConvrter}}">
+            <TextBlock Text="You are not logged in!" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center"/>
+            <TextBlock Text="Please head to the login page and log in" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <Grid Visibility="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Schedule Brewings" VerticalAlignment="Center" FontWeight="Bold" FontSize="30"/>
-            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                <ComboBox ItemsSource="{x:Bind ViewModel.AvailableRecipes, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.SelectedRecipe, Mode=TwoWay}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate x:DataType="models:Recipe">
-                            <TextBlock Text="{x:Bind Name}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <DatePicker Date="{x:Bind ViewModel.SelectedDate, Mode=TwoWay}"/>
-                <Button Command="{x:Bind ViewModel.AddScheduledBrewingCommand}">
-                    <StackPanel Orientation="Horizontal">
-                        <SymbolIcon Symbol="Add"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-        </Grid>
 
-        <ListView Grid.Row="1"
-                  Grid.RowSpan="2"
-                  Grid.Column="0"
-                  Background="{ThemeResource AppBarBackgroundThemeBrush}"
-                  ItemsSource="{x:Bind ViewModel.SampleItems, Mode=OneWay}"
-                  SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"
-                  Padding="20">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:ScheduledBrewing">
-                    <Border CornerRadius="10">
-                        <Grid Height="90" Padding="5,15">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Ellipse Height="60" Width="60" Grid.Column="0" VerticalAlignment="Center">
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{x:Bind Recipe.ImageUrl}"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-
-                            <StackPanel Orientation="Vertical" Grid.Column="1">
-                                <TextBlock Text="{x:Bind Recipe.Name}" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" FontWeight="ExtraBold"/>
-                                <TextBlock Text="{x:Bind Date.ToString('yyyy.MM.dd', x:Null)}" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" FontWeight="Normal"/>
-                            </StackPanel>
-
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <ScrollViewer Grid.Column="1" Grid.Row="1" Visibility="{x:Bind ViewModel.IsDetailsVisible, Mode=OneWay}">
-            <Grid Margin="0,20,0,0">
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="{ThemeResource AppBarBackgroundThemeBrush}" Padding="20,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid ColumnSpacing="40" RowSpacing="20">
+                <TextBlock Grid.RowSpan="3" Text="Schedule Brewings" VerticalAlignment="Center" FontWeight="Bold" FontSize="30"/>
+                <TextBlock Grid.Column="1" Text="Add new brewing:" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="20"/>
+                <DatePicker Grid.Column="1" Grid.Row="1" Date="{x:Bind ViewModel.SelectedDate, Mode=TwoWay}" HorizontalAlignment="Right" Margin="0,10"/>
+                <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+                    <ComboBox ItemsSource="{x:Bind ViewModel.AvailableRecipes, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.SelectedRecipe, Mode=TwoWay}" Width="200" Margin="0,0,10,0">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Recipe">
+                                <TextBlock Text="{x:Bind Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Command="{x:Bind ViewModel.AddScheduledBrewingCommand}" Background="LightGreen">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Add"/>
+                            <TextBlock Text="Add" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <ListView Grid.Row="1"
+                      Grid.RowSpan="2"
+                      Grid.Column="0"
+                      Background="{ThemeResource AppBarBackgroundThemeBrush}"
+                      ItemsSource="{x:Bind ViewModel.SampleItems, Mode=OneWay}"
+                      SelectedItem="{x:Bind ViewModel.Selected, Mode=TwoWay}"
+                      Padding="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ScheduledBrewing">
+                        <Border CornerRadius="10">
+                            <Grid Height="90" Padding="5,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Ellipse Height="60" Width="60" Grid.Column="0" VerticalAlignment="Center">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{x:Bind Recipe.ImageUrl}"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+
+                                <StackPanel Orientation="Vertical" Grid.Column="1">
+                                    <TextBlock Text="{x:Bind Recipe.Name}" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" FontWeight="ExtraBold"/>
+                                    <TextBlock Text="{x:Bind Date.ToString('yyyy.MM.dd', x:Null)}" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" FontWeight="Normal"/>
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ScrollViewer Grid.Column="1" Grid.Row="1" Visibility="{x:Bind ViewModel.IsDetailsVisible, Mode=OneWay}">
+                <Grid Margin="0,20,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Ellipse Height="150" Width="150" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="{x:Bind ViewModel.Selected.Recipe.ImageUrl, Mode=OneWay}"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <Button Command="{x:Bind ViewModel.CompleteScheduledBrewingCommand}">
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Accept"/>
-                            </StackPanel>
-                        </Button>
-                        <Button Command="{x:Bind ViewModel.DeleteScheduledBrewingCommand}">
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Delete"/>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Width="Auto" HorizontalAlignment="Center">
-                        <TextBlock Text="{x:Bind ViewModel.Selected.Recipe.Name, Mode=OneWay}" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center"/>
-                        <TextBlock Text=" - " FontSize="25" FontWeight="Bold"/>
-                        <TextBlock Text="{x:Bind ViewModel.Selected.Date.ToString('yyyy.MM.dd', x:Null), Mode=OneWay}" FontSize="25" FontWeight="Bold"/>
-                    </StackPanel>
+                    <Grid ColumnSpacing="40" RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Height="150" Width="150" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{x:Bind ViewModel.Selected.Recipe.ImageUrl, Mode=OneWay}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button Command="{x:Bind ViewModel.CompleteScheduledBrewingCommand}" Background="LightGreen" Margin="0,0,0,10">
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="Accept"/>
+                                    <TextBlock Text="Complete" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Command="{x:Bind ViewModel.DeleteScheduledBrewingCommand}" Background="#ff9999">
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="Delete"/>
+                                    <TextBlock Text="Delete" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Width="Auto" HorizontalAlignment="Center">
+                            <TextBlock Text="{x:Bind ViewModel.Selected.Recipe.Name, Mode=OneWay}" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            <TextBlock Text=" - " FontSize="25" FontWeight="Bold"/>
+                            <TextBlock Text="{x:Bind ViewModel.Selected.Date.ToString('yyyy.MM.dd', x:Null), Mode=OneWay}" FontSize="25" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Grid>
+                    <ListView 
+                        Grid.Row="1"
+                        ItemsSource="{x:Bind ViewModel.Selected.Recipe.Ingredients, Mode=OneWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:RecipeIngredient">
+                                <Border CornerRadius="10">
+                                    <Grid Height="90" Padding="5,15">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Ellipse Height="60" Width="60" Grid.Column="0" VerticalAlignment="Center">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{x:Bind Ingredient.ImageUrl, Mode=OneWay}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+
+                                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                            <TextBlock Text="{x:Bind Ingredient.Name}" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" FontWeight="ExtraBold"/>
+                                            <TextBlock Text="Amount:" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{x:Bind Amount}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
-                <ListView 
-                    Grid.Row="1"
-                    ItemsSource="{x:Bind ViewModel.Selected.Recipe.Ingredients, Mode=OneWay}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:RecipeIngredient">
-                            <Border CornerRadius="10">
-                                <Grid Height="90" Padding="5,15">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Ellipse Height="60" Width="60" Grid.Column="0" VerticalAlignment="Center">
-                                        <Ellipse.Fill>
-                                            <ImageBrush ImageSource="{x:Bind Ingredient.ImageUrl, Mode=OneWay}"/>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-
-                                    <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                        <TextBlock Text="{x:Bind Ingredient.Name}" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" FontWeight="ExtraBold"/>
-                                        <TextBlock Text="Amount:" VerticalAlignment="Center"/>
-                                        <TextBlock Text="{x:Bind Amount}" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                                    </StackPanel>
-
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </ScrollViewer>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

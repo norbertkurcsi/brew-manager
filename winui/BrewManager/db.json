@@ -1,176 +1,117 @@
 {
   "inventory": [
     {
-      "id": "4",
-      "name": "ztzthtzh",
-      "stock": 223,
-      "threshold": 100,
-      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/95eaaf4b-6085-4305-9f12-8d99194d0d4f.jpg"
-    },
-    {
-      "id": "5",
-      "name": "malt",
-      "stock": 15,
-      "threshold": 2222,
-      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/3c1227ce-d42c-4a94-98d1-cc939d645eca.jpg"
-    },
-    {
       "id": "1",
-      "name": "ezededed",
-      "stock": 64,
+      "name": "Pale Malt",
+      "stock": 500,
       "threshold": 100,
-      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/207a71d9-7a53-489a-96a6-1c04f48fb352.jpg"
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/db645ebd-db44-40de-9675-4fa55049b85b.jpg"
     },
     {
       "id": "2",
-      "name": "az",
-      "stock": 55,
-      "threshold": 7,
-      "imageUrl": "asdasd"
+      "name": "Cascade Hops",
+      "stock": 140,
+      "threshold": 150,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/a1c2c90f-9b27-42c1-a532-a3235c7a8bc9.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Yeast",
+      "stock": 200,
+      "threshold": 30,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/14ed52b0-3a67-4af1-9031-e290042eacc4.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Crystal Malt",
+      "stock": 400,
+      "threshold": 80,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/c80e3196-5503-488e-bfd0-76d3383117b5.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Amarillo Hops",
+      "stock": 150,
+      "threshold": 200,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/818ab08d-edab-4b92-9873-58d38c76e8c5.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Chocolate Malt",
+      "stock": 60,
+      "threshold": 70,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/694289fe-3945-44f8-b774-544469374a0c.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Wheat Malt",
+      "stock": 450,
+      "threshold": 90,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/6faa232d-bf32-42b4-81e9-ab77387e590e.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Saaz Hops",
+      "stock": 280,
+      "threshold": 60,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/29fd2fc7-fafd-47de-80a1-437aa262aee4.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Roasted Barley",
+      "stock": 150,
+      "threshold": 25,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/9927f937-7e99-4672-b2db-fa09d08d4fab.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Centennial Hops",
+      "stock": 200,
+      "threshold": 35,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/41166f81-f446-4b5b-b065-139ea4d1fa09.jpg"
     },
     {
       "id": "11",
-      "name": "malt",
-      "stock": 17,
-      "threshold": 7,
-      "imageUrl": "https://picsum.photos/200"
+      "name": "Munich Malt",
+      "stock": 350,
+      "threshold": 60,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/6cdb41d3-e120-49dd-bd46-5c6972ebbaef.jpg"
     },
     {
-      "id": "14",
-      "name": "barmi",
-      "stock": 65,
-      "threshold": 2,
-      "imageUrl": "https://picsum.photos/200"
-    },
-    {
-      "id": "15",
-      "name": "barmi",
-      "stock": 24,
-      "threshold": 10,
-      "imageUrl": "https://picsum.photos/200"
-    },
-    {
-      "id": "16",
-      "name": "asd",
-      "stock": 78,
-      "threshold": 3,
-      "imageUrl": "https://picsum.photos/200"
-    },
-    {
-      "id": "17",
-      "name": "dfdgf",
-      "stock": 70,
-      "threshold": 4,
-      "imageUrl": "https://picsum.photos/200"
-    },
-    {
-      "id": "844c",
-      "name": "",
-      "stock": 0,
-      "threshold": 0,
-      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/anonym.jpeg"
-    },
-    {
-      "id": "29eb",
-      "name": "hvtmnvjh",
-      "stock": 0,
-      "threshold": 1,
-      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/6398eff7-3369-473b-83b9-39bcbab35854.jpg"
+      "id": "12",
+      "name": "Fuggles Hops",
+      "stock": 180,
+      "threshold": 30,
+      "imageUrl": "https://brewmanager.blob.core.windows.net/ingredients/5d4fa25c-ebae-4100-9c8c-e74f6bc7a7ad.jpg"
     }
   ],
   "recipes": [
     {
       "id": "1",
-      "name": "Crazy racoon",
-      "imageUrl": "https://picsum.photos/200",
+      "name": "American Pale Ale",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/american-pale-ale.jpg",
       "ingredients": [
-        {
-          "id": "15",
-          "amount": 2
-        },
-        {
-          "id": "16",
-          "amount": 10
-        },
-        {
-          "id": "17",
-          "amount": 15
-        },
-        {
-          "id": "14",
-          "amount": 1
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Fincsa mincsa",
-      "imageUrl": "https://picsum.photos/200",
-      "ingredients": [
-        {
-          "id": "15",
-          "amount": 2
-        },
         {
           "id": "1",
-          "amount": 14
+          "amount": 4
         },
-        {
-          "id": "11",
-          "amount": 8
-        },
-        {
-          "id": "5",
-          "amount": 2
-        },
-        {
-          "id": "4",
-          "amount": 5
-        },
-        {
-          "id": "16",
-          "amount": 0
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "name": "Barna sorocske",
-      "imageUrl": "https://picsum.photos/200",
-      "ingredients": [
         {
           "id": "2",
           "amount": 3
         },
         {
-          "id": "11",
+          "id": "3",
           "amount": 2
-        },
-        {
-          "id": "15",
-          "amount": 2
-        },
-        {
-          "id": "16",
-          "amount": 3
-        },
-        {
-          "id": "14",
-          "amount": 3
-        },
-        {
-          "id": "4",
-          "amount": 7
         }
       ]
     },
     {
-      "id": "5",
-      "name": "Safe recipe",
-      "imageUrl": "https://picsum.photos/200",
+      "id": "2",
+      "name": "Chocolate Stout",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/Chocolate_Stout.jpg",
       "ingredients": [
         {
-          "id": "18",
+          "id": "1",
           "amount": 5
         },
         {
@@ -178,60 +119,412 @@
           "amount": 2
         },
         {
-          "id": "5",
-          "amount": 1
-        }
-      ]
-    },
-    {
-      "id": "0",
-      "name": "Valami új",
-      "imageUrl": "https://picsum.photos/200",
-      "ingredients": [
-        {
-          "id": "4",
-          "amount": 1
-        },
-        {
-          "id": "15",
+          "id": "6",
           "amount": 3
         }
       ]
     },
     {
-      "id": "50ee",
-      "name": "sdfsdf",
-      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/18bae224-81c0-437a-b41b-6e5b8b1e9e1f.jpg",
+      "id": "3",
+      "name": "Belgian Wheat Beer",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/Belgian_Wheat_Beer.png",
       "ingredients": [
         {
+          "id": "1",
+          "amount": 3
+        },
+        {
+          "id": "7",
+          "amount": 4
+        },
+        {
+          "id": "8",
+          "amount": 2
+        },
+        {
+          "id": "3",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "IPA",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/IPA.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 6
+        },
+        {
+          "id": "5",
+          "amount": 4
+        },
+        {
+          "id": "2",
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Imperial Stout",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/Imperial_Stout.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 8
+        },
+        {
           "id": "4",
-          "amount": 0
+          "amount": 5
+        },
+        {
+          "id": "3",
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "English Bitter",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/english_bitter.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 4
+        },
+        {
+          "id": "11",
+          "amount": 2
+        },
+        {
+          "id": "12",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Irish Red Ale",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/irish_red_ale.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 5
+        },
+        {
+          "id": "9",
+          "amount": 3
+        },
+        {
+          "id": "8",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Double IPA",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/double_ipa.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 10
+        },
+        {
+          "id": "5",
+          "amount": 6
+        },
+        {
+          "id": "2",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Session IPA",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/session_ipa.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 5
+        },
+        {
+          "id": "5",
+          "amount": 3
+        },
+        {
+          "id": "3",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Wheat Ale",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/wheat_ale.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 4
+        },
+        {
+          "id": "7",
+          "amount": 3
+        },
+        {
+          "id": "8",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "English Porter",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/english_porter.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 6
+        },
+        {
+          "id": "6",
+          "amount": 2
+        },
+        {
+          "id": "3",
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Belgian Dubbel",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/belgian_dubbel.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 5
+        },
+        {
+          "id": "11",
+          "amount": 3
+        },
+        {
+          "id": "3",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "name": "Scottish Ale",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/scottish_ale.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 7
+        },
+        {
+          "id": "9",
+          "amount": 2
+        },
+        {
+          "id": "3",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Czech Pilsner",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/czeh_pilsner.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 4
+        },
+        {
+          "id": "8",
+          "amount": 4
+        },
+        {
+          "id": "3",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "name": "California Common",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/california_common.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 6
+        },
+        {
+          "id": "2",
+          "amount": 3
+        },
+        {
+          "id": "3",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "name": "German Hefeweizen",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/german_hef.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 4
+        },
+        {
+          "id": "7",
+          "amount": 4
+        },
+        {
+          "id": "3",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "name": "Amber Ale",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/amber_ale.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 5
+        },
+        {
+          "id": "4",
+          "amount": 3
+        },
+        {
+          "id": "3",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "name": "Russian Imperial Stout",
+      "imageUrl": "https://brewmanager.blob.core.windows.net/recipes/russian_imperial.jpg",
+      "ingredients": [
+        {
+          "id": "1",
+          "amount": 8
+        },
+        {
+          "id": "6",
+          "amount": 4
+        },
+        {
+          "id": "3",
+          "amount": 2
         }
       ]
     }
   ],
   "scheduled-brews": [
     {
-      "id": "8475",
+      "id": "1",
+      "recipe": "1",
+      "date": "2024-05-01T09:00:00"
+    },
+    {
+      "id": "2",
       "recipe": "2",
-      "date": "2024-04-27T16:52:13.2786873+02:00"
+      "date": "2024-05-03T14:00:00"
+    },
+    {
+      "id": "3",
+      "recipe": "3",
+      "date": "2024-05-05T10:30:00"
+    },
+    {
+      "id": "4",
+      "recipe": "4",
+      "date": "2024-05-07T11:45:00"
+    },
+    {
+      "id": "5",
+      "recipe": "5",
+      "date": "2024-05-09T13:15:00"
+    },
+    {
+      "id": "6",
+      "recipe": "9",
+      "date": "2024-05-12T10:00:00"
+    },
+    {
+      "id": "7",
+      "recipe": "10",
+      "date": "2024-05-14T11:00:00"
+    },
+    {
+      "id": "8",
+      "recipe": "11",
+      "date": "2024-05-16T12:00:00"
+    },
+    {
+      "id": "9",
+      "recipe": "12",
+      "date": "2024-05-18T13:00:00"
+    },
+    {
+      "id": "10",
+      "recipe": "13",
+      "date": "2024-05-20T14:00:00"
+    },
+    {
+      "id": "11",
+      "recipe": "14",
+      "date": "2024-05-22T15:00:00"
+    },
+    {
+      "id": "12",
+      "recipe": "15",
+      "date": "2024-05-24T16:00:00"
+    },
+    {
+      "id": "13",
+      "recipe": "16",
+      "date": "2024-05-26T17:00:00"
+    },
+    {
+      "id": "14",
+      "recipe": "17",
+      "date": "2024-05-28T18:00:00"
+    },
+    {
+      "id": "15",
+      "recipe": "18",
+      "date": "2024-05-30T19:00:00"
     }
   ],
   "users": [
     {
       "login": "admin",
       "password": "admin",
-      "id": "1864"
+      "id": "1"
     },
     {
-      "login": "cook",
-      "password": "cook",
-      "id": "6e8f"
+      "login": "brewer",
+      "password": "brewer",
+      "id": "2"
     },
     {
-      "login": "brewmaster",
-      "password": "brewmaster",
-      "id": "c9ef"
+      "login": "assistant",
+      "password": "assistant",
+      "id": "3"
     }
   ]
 }
