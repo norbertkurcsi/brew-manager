@@ -30,6 +30,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -84,6 +85,13 @@
                     </DataTemplate>
                 </controls:AdaptiveGridView.ItemTemplate>
             </controls:AdaptiveGridView>
+            <InfoBar 
+                Grid.Column="0"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                IsOpen="{x:Bind ViewModel.IsInfoBarOpen, Mode=OneWay}" 
+                Message="{x:Bind ViewModel.InfoBarMassege, Mode=OneWay}" 
+                Severity="{x:Bind ViewModel.InfoBarSeverity, Mode=OneWay}" />
         </Grid>
     </Grid>
 </Page>

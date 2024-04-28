@@ -26,16 +26,6 @@ public class RecipeService : IRecipeService
     }
 
     /// <summary>
-    /// Deletes a recipe by its identifier.
-    /// </summary>
-    /// <param name="id">The identifier of the recipe to delete.</param>
-    public async Task DeleteRecipeAsync(string id)
-    {
-        using var client = new HttpClient();
-        await client.DeleteAsync($"{Secrets.BaseUrl}/recipes/{id}");
-    }
-
-    /// <summary>
     /// Retrieves all recipes from the server.
     /// </summary>
     /// <returns>A list of recipes with their complete information including related ingredients.</returns>
@@ -92,6 +82,42 @@ public class RecipeService : IRecipeService
     {
         using var client = new HttpClient();
         await client.PostAsJsonAsync($"{Secrets.BaseUrl}/recipes", recipe);
+    }
+
+    /// <summary>
+    /// Deletes a recipe by its identifier.
+    /// </summary>
+    /// <param name="id">The identifier of the recipe to delete.</param>
+    public async Task DeleteRecipeAsync(string id)
+    {
+        using var client = new HttpClient();
+        await client.DeleteAsync($"{Secrets.BaseUrl}/recipes/{id}");
+    }
+
+    /// <summary>
+    /// Retrieves the names of all recipes that contain a specific ingredient.
+    /// </summary>
+    /// <param name="ingredientId">The ID of the ingredient to search for within recipes.</param>
+    /// <returns>A task that returns a list of recipe names containing the specified ingredient.</returns>
+    public async Task<List<string>> GetRecipeNamesThatContainIngredient(string ingredientId)
+    {
+        using var client = new HttpClient();
+        var result = new List<string>();
+
+        var recipes = await GetRecipesAsync();
+        foreach (var recipe in recipes)
+        {
+            foreach (var ingredient in recipe.Ingredients)
+            {
+                if (ingredient.Ingredient.Id == ingredientId)
+                {
+                    result.Add(recipe.Name);
+                    break;
+                }
+            }
+        }
+
+        return result;
     }
 
     /// <summary>

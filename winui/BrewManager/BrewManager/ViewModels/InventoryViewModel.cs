@@ -23,7 +23,7 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
     private readonly IIngredientService _ingredientService;
     private readonly IStorageService _storageService;
     private readonly ILoginService loginService;
-
+    private readonly IRecipeService recipeService;
     [ObservableProperty]
     private Ingredient? selected;
 
@@ -82,11 +82,12 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
     /// <param name="ingredientService">The ingredient service.</param>
     /// <param name="storageService">The storage service.</param>
     /// <param name="loginService">The login service.</param>
-    public InventoryViewModel(IIngredientService ingredientService, IStorageService storageService, ILoginService loginService)
+    public InventoryViewModel(IIngredientService ingredientService, IStorageService storageService, ILoginService loginService, IRecipeService recipeService)
     {
         _ingredientService = ingredientService;
         this._storageService = storageService;
         this.loginService = loginService;
+        this.recipeService = recipeService;
         var ingredientType = typeof(Ingredient);
         var properties = ingredientType.GetProperties();
         SortProperties.Add("<none>");
@@ -224,11 +225,20 @@ public partial class InventoryViewModel : ObservableRecipient, INavigationAware
     /// Command to delete the selected ingredient.
     /// </summary>
     [RelayCommand]
-    private void DeleteItem()
+    private async void DeleteItem()
     {
         if (EditedIngredient == null) return;
 
-        _ingredientService.DeleteIngredientAsync(EditedIngredient.Id);
+        List<string> recipes = await recipeService.GetRecipeNamesThatContainIngredient(EditedIngredient.Id);
+
+        if(recipes.Count != 0)
+        {
+            var message = "Unable to delete. The following recipes contain this ingredient: " + string.Join(", ", recipes);
+            ShowInfoBar(null, new SnackbarEventArgs(message, false));
+            return;
+        }
+
+        await _ingredientService.DeleteIngredientAsync(EditedIngredient.Id);
     }
 
     /// <summary>

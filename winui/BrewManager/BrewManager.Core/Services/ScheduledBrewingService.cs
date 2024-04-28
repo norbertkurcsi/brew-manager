@@ -33,6 +33,18 @@ public class ScheduledBrewingService : IScheduledBrewingService
         await client.DeleteAsync($"{Secrets.BaseUrl}/scheduled-brews/{scheduledBrewing.Id}");
     }
 
+    public async Task DeleteAllSchedulesThatAreBasedOnRecipe(string recipeId)
+    {
+        var brewings = await GetScheduledBrewingsAsync();
+        foreach(var brewing in brewings)
+        {
+            if(brewing.Recipe.Id == recipeId)
+            {
+                await DeleteScheduledBrewingAsync(brewing);
+            }
+        }
+    }
+
     /// <summary>
     /// Deletes a scheduled brewing and restores the associated ingredient stocks.
     /// </summary>

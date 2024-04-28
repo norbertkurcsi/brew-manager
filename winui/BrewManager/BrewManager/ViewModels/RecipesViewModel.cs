@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
 using BrewManager.Contracts.Services;
 using BrewManager.Contracts.ViewModels;
 using BrewManager.Core.Contracts.Services;
@@ -8,7 +7,6 @@ using BrewManager.Core.Services;
 using BrewManager.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace BrewManager.ViewModels;
@@ -22,6 +20,15 @@ public partial class RecipesViewModel : ObservableRecipient, INavigationAware
     private readonly IRecipeService _recipeService;
     private readonly INewRecipeDialogService newRecipeDialogService;
     private readonly ILoginService loginService;
+    private readonly IScheduledBrewingService scheduledBrewingService;
+    [ObservableProperty]
+    private string infoBarMassege = "";
+
+    [ObservableProperty]
+    private InfoBarSeverity infoBarSeverity;
+
+    [ObservableProperty]
+    private bool isInfoBarOpen = false;
 
     [ObservableProperty]
     private bool isLoggedIn = false;
@@ -51,12 +58,14 @@ public partial class RecipesViewModel : ObservableRecipient, INavigationAware
         INavigationService navigationService,
         IRecipeService recipeService,
         INewRecipeDialogService newRecipeDialogService,
-        ILoginService loginService)
+        ILoginService loginService,
+        IScheduledBrewingService scheduledBrewingService)
     {
         _navigationService = navigationService;
         _recipeService = recipeService;
         this.newRecipeDialogService = newRecipeDialogService;
         this.loginService = loginService;
+        this.scheduledBrewingService = scheduledBrewingService;
     }
 
     /// <summary>
@@ -110,6 +119,16 @@ public partial class RecipesViewModel : ObservableRecipient, INavigationAware
         newRecipeDialogService.Clear();
     }
 
+    private async void ShowInfoBar(object? sender, SnackbarEventArgs e)
+    {
+        InfoBarSeverity = e.isSuccess ? InfoBarSeverity.Success : InfoBarSeverity.Error;
+        InfoBarMassege = e.Message;
+        if (e.isSuccess)
+        IsInfoBarOpen = true;
+        await Task.Delay(3000);
+        IsInfoBarOpen = false;
+    }
+
     /// <summary>
     /// Method called when navigating away from this ViewModel.
     /// </summary>
@@ -138,6 +157,7 @@ public partial class RecipesViewModel : ObservableRecipient, INavigationAware
     [RelayCommand]
     private async void DeleteRecipe(Recipe recipe)
     {
+        await scheduledBrewingService.DeleteAllSchedulesThatAreBasedOnRecipe(recipe.Id);
         await _recipeService.DeleteRecipeAsync(recipe.Id);
         refreshRecipes();
     }

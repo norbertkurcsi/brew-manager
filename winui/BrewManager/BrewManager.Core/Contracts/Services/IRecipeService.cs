@@ -49,4 +49,11 @@ public interface IRecipeService
     /// <param name="id">The identifier of the recipe to retrieve.</param>
     /// <returns>A task that represents the asynchronous operation and contains the recipe.</returns>
     Task<Recipe> GetRecipeByIdAsync(string id);
+
+    /// <summary>
+    /// Retrieves the names of recipes that contain a specific ingredient.
+    /// </summary>
+    /// <param name="ingredientId">The identifier of the ingredient used to filter the recipes.</param>
+    /// <returns>A task that represents the asynchronous operation and contains a list of recipe names.</returns>
+    Task<List<string>> GetRecipeNamesThatContainIngredient(string ingredientId);
 }
