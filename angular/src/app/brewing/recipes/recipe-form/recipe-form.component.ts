@@ -82,7 +82,7 @@ export class RecipeFormComponent implements OnInit {
     this.filteredIngredients$ = this.selectedIngredients$.pipe(
       combineLatestWith(ingredients$),
       map(([selectedIngredients, ingredients]) => {
-        return ingredients.filter(ingredient => !selectedIngredients.includes(ingredient.id));
+        return ingredients.filter(ingredient => !selectedIngredients.includes(ingredient.id!));
       }),
     );
 
@@ -152,7 +152,7 @@ export class RecipeFormComponent implements OnInit {
   private createRecipeFromFormValues(): Recipe {
     let name = this.form.value.name || "";
     let recipe: Recipe = {
-      id: this.recipe?.id || "0",
+      id: this.recipe?.id,
       name: name,
       ingredients: [] as RecipeIngredient[]
     }

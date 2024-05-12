@@ -1,5 +1,5 @@
 export interface ScheduledBrew {
-    id: string;
+    id?: string;
     recipe: string;
     recipeName?: string;
     date: number;

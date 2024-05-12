@@ -3,6 +3,7 @@ p {
 }
 
 p button {
+  margin-top: 20px;
     padding: 4px 30px;
     background-color: lightskyblue;
     transition: all .5s;

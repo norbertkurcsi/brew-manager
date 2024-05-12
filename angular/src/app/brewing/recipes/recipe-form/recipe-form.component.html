@@ -1,41 +1,47 @@
 <div id="form" [formGroup]="form">
-    <p>
-        <label for="name">Recipe name: </label>
-        <input firstCap type="text" formControlName="name" id="name" (focus)="showError = false" (blur)="showError = true">
-        <span *ngIf="form.controls.name.invalid && showError" class="error">
-            Hibsás név formátum!
-        </span>
-    </p>
-    <h2>
-        Ingredients
-        <button (click)="addIngredient()"><i class="fa fa-plus"></i> New ingredient</button>
-    </h2>
-    <ng-container formArrayName="ingredients">
-        <ng-container *ngFor="let ingredientForm of ingredients.controls; let i = index">
-            <div id="ingredient" [formGroupName]="i">
-                <label for="ing">Ingredient: </label>
-                <select id="ing" formControlName="ingredient"  (change)="selectChanged()">
-                    <option [ngValue]="getOwnSelectedValue(i)">{{getOwnSelectedValue(i).name}}</option>
-                    <option *ngFor="let ing of filteredIngredients$ | async" [ngValue]="ing">
-                        {{ing.name}}
-                    </option>
-                </select>
-                <label for="amount">Amount: </label>
-                <input id="amount" formControlName="amount" type="number">
+  <div>
+    <h2>Edit recipe</h2>
+  </div>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Recipe name:</mat-label>
+      <input matInput firstCap type="text" formControlName="name" id="name" (focus)="showError = false"
+             (blur)="showError = true">
+      <mat-error *ngIf="form.controls.name.invalid && showError">
+        Hibsás név formátum!
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <h2>
+    Ingredients
+    <button mat-button (click)="addIngredient()"><i class="fa fa-plus"></i> New ingredient</button>
+  </h2>
+  <ng-container formArrayName="ingredients">
+    <ng-container *ngFor="let ingredientForm of ingredients.controls; let i = index">
+      <div id="ingredient" [formGroupName]="i">
+        <label for="ing">Ingredient: </label>
+        <select matNativeControl id="ing" formControlName="ingredient" (change)="selectChanged()">
+          <option [ngValue]="getOwnSelectedValue(i)">{{ getOwnSelectedValue(i).name }}</option>
+          <option *ngFor="let ing of filteredIngredients$ | async" [ngValue]="ing">
+            {{ ing.name }}
+          </option>
+        </select>
+        <label for="amount">Amount: </label>
+        <input id="amount" formControlName="amount" type="number">
 
-                <button (click)="deleteIngredient(i)"><i class="fa fa-trash"></i></button>
-                <div *ngIf="ingredientForm.invalid && ingredientForm.touched" class="error">
-                    *invalid ingredient
-                </div>
-            </div>
-        </ng-container>
+        <button mat-button (click)="deleteIngredient(i)"><i class="fa fa-trash"></i></button>
+        <div *ngIf="ingredientForm.invalid && ingredientForm.touched" class="error">
+          *invalid ingredient
+        </div>
+      </div>
     </ng-container>
+  </ng-container>
 
-    <div id="line"></div>
+  <div id="line"></div>
 
-    <div id="submit">
-        <button (click)="submitForm()">Submit</button>
-        <button id="cancel" (click)="cancelOperation()">Cancel</button>
-    </div>
+  <div id="submit">
+    <button mat-button (click)="submitForm()">Submit</button>
+    <button mat-button id="cancel" (click)="cancelOperation()">Cancel</button>
+  </div>
 
 </div>

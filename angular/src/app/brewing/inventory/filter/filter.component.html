@@ -1,5 +1,8 @@
 <div>
-    <form [formGroup]="form">
-        Filter: <input type="text" formControlName="search" (keyup)="valueChange()">
-    </form>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Filter</mat-label>
+      <input matInput type="text" formControlName="search" (keyup)="valueChange()">
+    </mat-form-field>
+  </form>
 </div>

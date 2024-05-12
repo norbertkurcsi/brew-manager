@@ -6,7 +6,7 @@
         <span class="ing" *ngFor="let ing of recipe?.ingredients">{{ing.name}} {{ing.amount | number: '1.2-2'}}</span>
     </p>
     <div id="button-container">
-        <button id="delete" (click)="deleteRecipe()"><i class="fa fa-trash"></i></button>
-        <button id="edit" (click)="navigateToEditRecipe()"><i class="fa fa-edit"></i></button>
+        <button mat-button id="delete" (click)="deleteRecipe()"><i class="fa fa-trash"></i></button>
+        <button mat-button id="edit" (click)="navigateToEditRecipe()"><i class="fa fa-edit"></i></button>
     </div>
 </div>

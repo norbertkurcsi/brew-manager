@@ -7,6 +7,7 @@ import {NewBrewingComponent} from "./new-brewing/new-brewing.component";
 import {ScheduledItemComponent} from "./scheduled-item/scheduled-item.component";
 import {MatSortModule} from "@angular/material/sort";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
 
 const routes: Routes = [
   { path: '', component: ScheduledBrewingComponent, canActivate: [() => inject(LoginService).isLoggedIn()] },
@@ -19,12 +20,13 @@ const routes: Routes = [
     ScheduledItemComponent,
     ScheduledBrewingComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatSortModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatSortModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+    ],
   exports: [RouterModule]
 })
 export class ScheduledBrewingModule { }

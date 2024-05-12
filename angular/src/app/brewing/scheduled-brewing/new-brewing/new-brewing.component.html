@@ -1,28 +1,31 @@
 <div id="new-item-container">
-    <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <h2>New Scheduled Brew</h2>
-        <p *ngIf="recipes$ | async as recipes">
-            <label for="recipe">Recipe: </label>
-            <select formControlName="recipe" id="recipe" [ngClass]="{redBorder: notEnoughIngredients}" (change)="notEnoughIngredients=false">
-                <option value="0">select a recipe</option>
-                <option *ngFor="let recipe of recipes" [value]="recipe.id">{{recipe.name}}</option>
-            </select>
-            <span data-testid="required-recipe" *ngIf="form.controls.recipe.invalid && (form.controls.recipe.dirty || form.controls.recipe.touched || showError)">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <h2>New Scheduled Brew</h2>
+    <p *ngIf="recipes$ | async as recipes">
+      <label for="recipe">Recipe: </label>
+      <select formControlName="recipe" id="recipe" [ngClass]="{redBorder: notEnoughIngredients}"
+              (change)="notEnoughIngredients=false">
+        <option value="0">select a recipe</option>
+        <option *ngFor="let recipe of recipes" [value]="recipe.id">{{ recipe.name }}</option>
+      </select>
+      <span data-testid="required-recipe"
+            *ngIf="form.controls.recipe.invalid && (form.controls.recipe.dirty || form.controls.recipe.touched || showError)">
                 *please select a recipe
             </span>
-            <span *ngIf="notEnoughIngredients">
+      <span *ngIf="notEnoughIngredients">
                 *not enough ingredients for this recipe
             </span>
-        </p>
-        <p>
-            <label for="date">Date: </label>
-            <input type="date" formControlName="date" id="date">
-            <span data-testid="required-date" *ngIf="form.controls.date.invalid && (form.controls.date.dirty || form.controls.date.touched)">
+    </p>
+    <p>
+      <label for="date">Date: </label>
+      <input type="date" formControlName="date" id="date">
+      <span data-testid="required-date"
+            *ngIf="form.controls.date.invalid && (form.controls.date.dirty || form.controls.date.touched)">
                 *please select a date that is not in the past
             </span>
-        </p>
-        <button>Submit</button>
-    </form>
+    </p>
+    <button mat-button>Submit</button>
+    <button mat-button id="cancel" (click)="navigateBackToBrewingList()">Cancel</button>
+  </form>
 
-    <button id="cancel" (click)="navigateBackToBrewingList()">Cancel</button>
 </div>

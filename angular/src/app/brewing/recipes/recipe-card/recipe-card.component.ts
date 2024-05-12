@@ -22,7 +22,7 @@ export class RecipeCardComponent {
    */
   public deleteRecipe(): void {
     this.recipeService.deleteRecipe(this.recipe).subscribe({
-      error: () => alert("Delete operation failed! Try again!")
+      error: (er) => alert(er.message)
     });
   }
 

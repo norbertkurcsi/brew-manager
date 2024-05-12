@@ -21,16 +21,15 @@ form h2 {
 button {
     padding: 5px 15px;
     border-radius: 10px;
-    display: block;
     margin: 0 auto;
     border: 2px solid black;
 }
 
 #cancel {
-    margin-top: 20px;
     color: white;
     background-color: rgb(255, 82, 82);
     transition: all .5s;
+    margin-left: 20px;
 }
 
 #cancel:hover {

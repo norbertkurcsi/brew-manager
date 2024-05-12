@@ -1,8 +1,23 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { combineLatestWith, exhaustMap, interval, map, merge, Observable, of, Subject, take, tap } from "rxjs";
-import { IngredientService } from "../../inventory/ingredient/ingredient.service";
-import { Recipe } from "../interfaces/recipe.interface";
+import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
+import {
+  combineLatestWith,
+  concatMap,
+  exhaustMap,
+  interval,
+  map,
+  merge,
+  Observable,
+  of,
+  scheduled,
+  Subject,
+  take,
+  tap
+} from "rxjs";
+import {IngredientService} from "../../inventory/ingredient/ingredient.service";
+import {Recipe} from "../interfaces/recipe.interface";
+import {Ingredient} from "../../inventory/ingredient/ingredient.interface";
+import {ScheduledBrew} from "../../scheduled-brewing/interfaces/schedules-brews.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +25,9 @@ import { Recipe } from "../interfaces/recipe.interface";
 export class RecipeService {
   constructor(
     private ingredientService: IngredientService,
-    private  http: HttpClient
-  ) { }
+    private http: HttpClient
+  ) {
+  }
 
   /**
    * Subject for triggering events to refresh recipe data.
@@ -22,7 +38,7 @@ export class RecipeService {
    * Retrieves recipes with resolved ingredients' names.
    */
   public getRecipes(): Observable<Recipe[]> {
-    let merged$ = merge(of(1),interval(3000), this.deleteEvent$);
+    let merged$ = merge(of(1), interval(3000), this.deleteEvent$);
 
     return merged$
       .pipe(
@@ -44,9 +60,18 @@ export class RecipeService {
    * @param recipe The recipe to be deleted.
    * @returns An observable indicating the success of the delete operation.
    */
-  public deleteRecipe(recipe: Recipe | undefined){
-    return this.http.delete<Recipe>(`http://localhost:3000/recipes/${recipe?.id}`)
-      .pipe(tap(() => this.deleteEvent$.next(true)));
+  public deleteRecipe(recipe: Recipe | undefined) {
+    return this.http.get<ScheduledBrew[]>(`http://localhost:3000/scheduled-brews`).pipe(
+      tap(brews => {
+        brews.forEach(brew => {
+          if (brew.recipe === recipe?.id) {
+            throw new Error("Nem lehet törölni");
+          }
+        })
+      }),
+      concatMap(() => this.http.delete<Recipe>(`http://localhost:3000/recipes/${recipe?.id}`)),
+      tap(() => this.deleteEvent$.next(true))
+    )
   }
 
   /**
@@ -88,7 +113,7 @@ export class RecipeService {
    * @param recipe The recipe to update.
    * @returns An observable indicating the success of the update operation.
    */
-  public editRecipe(recipe : Recipe): Observable<Recipe> {
+  public editRecipe(recipe: Recipe): Observable<Recipe> {
     return this.http.put<Recipe>(`http://localhost:3000/recipes/${recipe.id}`, recipe);
   }
 

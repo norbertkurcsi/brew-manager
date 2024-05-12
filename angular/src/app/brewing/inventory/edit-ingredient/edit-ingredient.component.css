@@ -45,18 +45,18 @@ form button:hover {
     background-color: rgb(30, 146, 192);
 }
 
-form input {
-    background-color: yellow;
-    width: 100%;
-    clear: both;
-    border-radius: 10px;
-    margin-bottom: 3px;
-    padding: 5px 15px;
-}
+/*form input {*/
+/*    background-color: yellow;*/
+/*    width: 100%;*/
+/*    clear: both;*/
+/*    border-radius: 10px;*/
+/*    margin-bottom: 3px;*/
+/*    padding: 5px 15px;*/
+/*}*/
 
-form input:hover {
-    background-color: rgb(213, 213, 0);
-}
+/*form input:hover {*/
+/*    background-color: rgb(213, 213, 0);*/
+/*}*/
 
 span {
     color: white;

@@ -1,4 +1,9 @@
 <span>
-    <button (click)="stepOnPrevPage()" id="prev"><i class="fa fa-arrow-left"></i></button>
-    <button (click)="stepOnNextPage()"><i class="fa fa-arrow-right"></i></button>
+    <button mat-icon-button (click)="stepOnPrevPage()" aria-label="Previous page">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="stepOnNextPage()" aria-label="Next page">
+        <mat-icon>arrow_forward</mat-icon>
+    </button>
 </span>

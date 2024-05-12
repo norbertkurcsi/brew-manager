@@ -65,7 +65,7 @@ export class IngredientViewService {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'id':
-          return this.compare(a.id, b.id, isAsc);
+          return this.compare(a.id!, b.id!, isAsc);
         case 'name':
           return this.compare(a.name, b.name, isAsc);
         case 'stock':

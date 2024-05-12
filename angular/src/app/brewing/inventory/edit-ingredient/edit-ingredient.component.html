@@ -1,22 +1,22 @@
 <div id="edit-container">
-    <form [formGroup]="form" (ngSubmit)="submitChange()">
-        <h2>Edit ingredient stock</h2>
-        <p>ID : {{ingredient?.id}}</p>
-        <p>Name : {{ingredient?.name}}</p>
-        <p>Threshold : {{ingredient?.threshold}}</p>
-        <p>
-            <label for="stock">Stock: </label>
-            <input id="stock" type="number" formControlName="stock" min="0">
-            <span *ngIf="form.controls.stock.invalid && (form.controls.stock.dirty || form.controls.stock.touched)">
-                <span *ngIf="form.controls.stock.errors?.['required']" data-testid="stock-required">
-                    *stock is required
-                </span>
-                <span *ngIf="form.controls.stock.errors?.['min']">
-                    *the stock can't be negative number
-                </span>
-            </span>
-        </p>
-        <button id="submit">Change</button>
-    </form>
+  <form [formGroup]="form" (ngSubmit)="submitChange()">
+    <h2>Edit ingredient stock</h2>
+    <p>ID : {{ ingredient?.id }}</p>
+    <p>Name : {{ ingredient?.name }}</p>
+    <p>Threshold : {{ ingredient?.threshold }}</p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" formControlName="stock" min="0">
+        <mat-error *ngIf="form.controls.stock.errors?.['required']">
+          * Stock is required
+        </mat-error>
+        <mat-error *ngIf="form.controls.stock.errors?.['min']">
+          * The stock can't be a negative number
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <button mat-button id="submit">Change</button>
+  </form>
 </div>
-<button id="cancel" (click)="navigateBack()">Cancel</button>
+<button mat-button id="cancel" (click)="navigateBack()">Cancel</button>
