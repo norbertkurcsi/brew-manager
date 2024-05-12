@@ -9,14 +9,12 @@ import {
   merge,
   Observable,
   of,
-  scheduled,
   Subject,
   take,
   tap
 } from "rxjs";
 import {IngredientService} from "../../inventory/ingredient/ingredient.service";
 import {Recipe} from "../interfaces/recipe.interface";
-import {Ingredient} from "../../inventory/ingredient/ingredient.interface";
 import {ScheduledBrew} from "../../scheduled-brewing/interfaces/schedules-brews.interface";
 
 @Injectable({
@@ -42,7 +40,7 @@ export class RecipeService {
 
     return merged$
       .pipe(
-        exhaustMap(() => this.http.get<Recipe[]>("http://localhost:3000/recipes")),
+        exhaustMap(() => this.http.get<Recipe[]>("https://brewmanager-backend.azurewebsites.net/recipes")),
         combineLatestWith(this.ingredientService.getIngredients().pipe(take(1))),
         map(([recipes, ingredients]) => {
           recipes.forEach(recipe => {
@@ -61,7 +59,7 @@ export class RecipeService {
    * @returns An observable indicating the success of the delete operation.
    */
   public deleteRecipe(recipe: Recipe | undefined) {
-    return this.http.get<ScheduledBrew[]>(`http://localhost:3000/scheduled-brews`).pipe(
+    return this.http.get<ScheduledBrew[]>(`https://brewmanager-backend.azurewebsites.net/scheduled-brews`).pipe(
       tap(brews => {
         brews.forEach(brew => {
           if (brew.recipe === recipe?.id) {
@@ -69,7 +67,7 @@ export class RecipeService {
           }
         })
       }),
-      concatMap(() => this.http.delete<Recipe>(`http://localhost:3000/recipes/${recipe?.id}`)),
+      concatMap(() => this.http.delete<Recipe>(`https://brewmanager-backend.azurewebsites.net/recipes/${recipe?.id}`)),
       tap(() => this.deleteEvent$.next(true))
     )
   }
@@ -80,7 +78,7 @@ export class RecipeService {
    * @returns An observable of the recipe with resolved ingredients' names.
    */
   public getRecipeById(id: string): Observable<Recipe> {
-    return this.http.get<Recipe>(`http://localhost:3000/recipes/${id}`).pipe(
+    return this.http.get<Recipe>(`https://brewmanager-backend.azurewebsites.net/recipes/${id}`).pipe(
       combineLatestWith(this.ingredientService.getIngredients().pipe(take(1))),
       map(([recipe, ingredients]) => {
         recipe.ingredients.forEach(ingredient => {
@@ -96,7 +94,7 @@ export class RecipeService {
    * @returns An observable of the raw recipes.
    */
   public getRecipesRaw(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`http://localhost:3000/recipes`);
+    return this.http.get<Recipe[]>(`https://brewmanager-backend.azurewebsites.net/recipes`);
   }
 
   /**
@@ -105,7 +103,7 @@ export class RecipeService {
    * @returns An observable of the raw recipe.
    */
   public getRecipeRawById(id: string): Observable<Recipe> {
-    return this.http.get<Recipe>(`http://localhost:3000/recipes/${id}`);
+    return this.http.get<Recipe>(`https://brewmanager-backend.azurewebsites.net/recipes/${id}`);
   }
 
   /**
@@ -114,7 +112,7 @@ export class RecipeService {
    * @returns An observable indicating the success of the update operation.
    */
   public editRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.put<Recipe>(`http://localhost:3000/recipes/${recipe.id}`, recipe);
+    return this.http.put<Recipe>(`https://brewmanager-backend.azurewebsites.net/recipes/${recipe.id}`, recipe);
   }
 
   /**
@@ -123,6 +121,6 @@ export class RecipeService {
    * @returns An observable of the added recipe.
    */
   public addRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.post<Recipe>(`http://localhost:3000/recipes`, recipe);
+    return this.http.post<Recipe>(`https://brewmanager-backend.azurewebsites.net/recipes`, recipe);
   }
 }

@@ -11,7 +11,7 @@ import { Ingredient } from "./ingredient.interface";
 export class IngredientService {
   constructor(private http: HttpClient) { }
 
-  private HOST: string = "http://localhost:3000";
+  private HOST: string = "https://brewmanager-backend.azurewebsites.net/";
   private deleteEvent = new Subject<boolean>();
 
   /**

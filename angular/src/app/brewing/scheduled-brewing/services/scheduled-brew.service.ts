@@ -30,7 +30,7 @@ export class ScheduledBrewService {
    */
   public getBrewings(): Observable<ScheduledBrew[]> {
     return this.deleteEvent.pipe(
-      exhaustMap(() => this.http.get<ScheduledBrew[]>('http://localhost:3000/scheduled-brews')),
+      exhaustMap(() => this.http.get<ScheduledBrew[]>('https://brewmanager-backend.azurewebsites.net/scheduled-brews')),
       combineLatestWith(this.recipeService.getRecipesRaw()),
       map(([brewings, recipes]) => {
         brewings.forEach(brewing => {
@@ -84,7 +84,7 @@ export class ScheduledBrewService {
 
     return patchRequests$.pipe(
       last(),
-      concatMap(() => this.http.delete<ScheduledBrew>(`http://localhost:3000/scheduled-brews/${brew.id}`)),
+      concatMap(() => this.http.delete<ScheduledBrew>(`https://brewmanager-backend.azurewebsites.net/scheduled-brews/${brew.id}`)),
       tap(() => this.deleteEvent.next(true))
     );
   }
@@ -114,7 +114,7 @@ export class ScheduledBrewService {
 
     return patchRequests$.pipe(
       last(),
-      concatMap(() => this.http.post<ScheduledBrew>(`http://localhost:3000/scheduled-brews`, brew)),
+      concatMap(() => this.http.post<ScheduledBrew>(`https://brewmanager-backend.azurewebsites.net/scheduled-brews`, brew)),
       map(() => alert)
     );
   }

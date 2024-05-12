@@ -9,7 +9,7 @@ import { User } from "./user.interface";
 })
 export class LoginService {
   private userLoggedIn: User | null;
-  private HOST: string = "http://localhost:3000";
+  private HOST: string = "https://brewmanager-backend.azurewebsites.net";
 
   constructor(private http: HttpClient, private router: Router) {
     this.userLoggedIn = JSON.parse(localStorage.getItem('user')!);
