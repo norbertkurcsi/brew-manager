@@ -96,7 +96,6 @@ export class NewBrewingComponent implements OnInit {
       let recipe = this.form.value.recipe || "";
       let date = Date.parse(this.form.value.date || "");
       let brew: ScheduledBrew = {
-        id: "0",
         recipe: recipe,
         date: date
       }
